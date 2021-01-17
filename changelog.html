@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<title>Changelog - Sonnet</title>
+		<link rel="stylesheet" href="/style.css">
+		<link rel="icon" href="/favicon.png" sizes="32x32" type="image/png">
+	</head>
+	<body>
+		<div class="title">
+			<a href="/">
+				<img src="/resources/sonnet-sidebyside-shadow.svg" alt="Sonnet">
+			</a>
+		</div>
+		<div class="menubar">
+			<a href="/">Home </a><a href="/downloads.html">Downloads </a><a href="/instances.html">Public&nbsp;Instances </a><a href="/changelog.html">Changelog </a><a href="/docs/">Documentation </a>
+		</div>
+		<div class="content">
+			<h1>Changelog</h1>
+			<h2>v1.1.0 "The All Seeing Eye"</h2>
+			<h3>Frontend</h3>
+			<ul>
+				<li>Remove <span class="codequote">joinlog</span> command</li>
+				<li>Add <span class="codequote">antispam-set</span> system</li>
+				<li>Rename blacklist category to automod category</li>
+				<li>Add joke ban command</li>
+				<li>Change <span class="codequote">mute</span> to be <span class="codequote">mute &lt;uid&gt; [time] [reason]</span></li>
+				<li>Add <span class="codequote">infraction-search</span> of members not in guild, add infraction count to infraction search</li>
+				<li>Change <span class="codequote">ping</span> command to represent blacklist and antispam as just automod</li>
+				<li>Add <span class="codequote">serverinfo</span> command</li>
+				<li>Add padding to <span class="codequote">uptime</span> and <span class="codequote">version-info</span> uptime counters</li>
+				<li>Add 1 and 0 as valid boolean inputs</li>
+				<li>Add color to <span class="codequote">version-info</span></li>
+				<li>Add <span class="codequote">statistics</span> command</li>
+				<li>Make starboard timestamps show starred message timestamps</li>
+			</ul>
+			<h3>Under the Hood</h3>
+			<ul>
+				<li>Add statistics system</li>
+				<li>Add kernel ramfs that is persistent</li>
+				<li>Ability to ban/warn members not in guild</li>
+				<li>Faster async based processing of infractions</li>
+				<li>Make wiwb space stripping work correctly</li>
+				<li>Split message handlers into 3 files</li>
+				<li>Add vnum processors to statistics system</li>
+				<li>Make LeXdPyK kernel, includes more headers and an inbuilt ramfs, new Kapi, and cleaner layout</li>
+				<li>Do antispam and blacklist actions in async to lower response times</li>
+				<li>Move ramfs into kernel</li>
+				<li>Add smart image detection of message images to starboard</li>
+				<li>Make database hlapi not create db on every call</li>
+				<li>Process commands in async to not interrupt main thread</li>
+				<li>Make <span class="codequote">db_obfuscator</span> only load sonnet dbs</li>
+			</ul>
+			<h3>Runtime Environment</h3>
+			<ul>
+				<li>Add LeXdPyK kernel configuration</li>
+				<li>Remove <span class="codequote">sqlite3_type</span> from sonnet configuration</li>
+				<li>Add documentation of kernel api, command api, event handler overview, quickstart guide</li>
+				<li>Version bump to discord.py module</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.0.2 "EndlessTime"</h2>
+			<h3>Frontend</h3>
+			<ul>
+				<li>Add <span class="codequote">uptime</span> command</li>
+				<li>Add starboard for old messages and images</li>
+				<li>Fix starboard for boarding messages in starboard channel</li>
+				<li>Improve <span class="codequote">version-info</span> command</li>
+			</ul>
+			<h3>Under the Hood</h3>
+			<ul>
+				<li>Rewrite portions of <span class="codequote">help</span> command to make it less bad</li>
+				<li>Change db connection type to keep connections open per module</li>
+				<li>Convert <span class="codequote">lib_sql_handler</span> to unix line endings</li>
+			</ul>
+			<h3>Runtime Environment</h3>
+			<ul>
+				<li>Make all static libs able to be edited during runtime</li>
+			</ul>
+			<h3>Bugs</h3>
+			<ul>
+				<li>Fix editing null message caused by images</li>
+				<li>Fix dmmessage errors</li>
+				<li>Fix editing messages over 1024 length causing error in embed field limits</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.0.1.1</h2>
+			<h3>Bugs</h3>
+			<ul>
+				<li>Fix fatal flaw in profile command that stemmed from misreading code initially</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.0.1 "Collision of Worlds"</h2>
+			<h3>Frontend</h3>
+			<ul>
+				<li>Add antispam to mainloop processor and GDPR system</li>
+				<li>Add caches to GDPR downloader</li>
+				<li>Improve documentation of commands</li>
+				<li>No longer break on <span class="codequote">list-blacklist</span> over 2k characters</li>
+				<li>Add unban message</li>
+				<li>Improve grammar on infraction commands</li>
+				<li>Add mutetime response to mute command</li>
+				<li>Add curcount return to <span class="codequote">starboard-count</span> command</li>
+				<li>Add <span class="codequote">version-info</span> command</li>
+				<li>Update blacklist processor to be less prone to bypasses</li>
+				<li>Add logchannel setting no input to show the current log channel</li>
+			</ul>
+			<h3>Under the Hood</h3>
+			<ul>
+				<li>Fix all mutetimer collision</li>
+				<li>Change command processing to kwargs system</li>
+				<li>Add version info to all command modules</li>
+				<li>Move all message handling to dynamiclibs</li>
+				<li>Add mute recovery subsystem, may collide timers but it's better than all mutes being dropped</li>
+				<li>Change messgae config loader to be more modular</li>
+				<li>Update db_handlers to include <span class="codequote">list_tables</span> command</li>
+			</ul>
+			<h3>Runtime Environment</h3>
+			<ul>
+				<li>Remove support for Rhea type databases that have shown to be problematic</li>
+				<li>Remove support for Python 3.7 and Python 3.6 in favor of cleaner, future-proof code</li>
+				<li>Add <span class="codequote">SONNET_TOKEN</span> alongside <span class="codequote">RHEA_TOKEN</span> for environment vars to get token from</li>
+				<li>Add warning for bot not having token</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.0.0.1</h2>
+			<h3>Bugs</h3>
+			<ul>
+				<li>Patches to various minor bugs</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.0.0 "QuickSilver"</h2>
+			<p>Initial release</p>
+		</div>
+		<div class="footer">
+			<div class="divider"></div>
+			<p>Sonnet made by <a href="https://github.com/xFuney">Funey</a>, <a href="https://ultrabear.xyz">Ultrabear</a>, and <a href="https://github.com/bredo228">Bredo</a>. Website made by <a href="https://mckinley.cc/">McKinley</a>.</p>
+		</div>
+	</body>
+</html>

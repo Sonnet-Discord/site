@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="132.29mm" height="132.29mm" version="1.1" viewBox="0 0 132.29 132.29" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<defs>
+<filter id="a" color-interpolation-filters="sRGB">
+<feFlood flood-color="rgb(0,0,0)" flood-opacity=".49804" result="flood"/>
+<feComposite in="flood" in2="SourceGraphic" operator="in" result="composite1"/>
+<feGaussianBlur in="composite1" result="blur" stdDeviation="1"/>
+<feOffset dx="0.5" dy="0.5" result="offset"/>
+<feComposite in="SourceGraphic" in2="offset" result="composite2"/>
+</filter>
+</defs>
+<metadata>
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<g transform="translate(-38.854 -82.354)">
+<rect x="38.854" y="82.354" width="132.29" height="132.29" fill="#262626" style="paint-order:markers stroke fill"/>
+</g>
+<g transform="translate(-38.854 -82.354)">
+<g transform="matrix(2.4509 0 0 2.4509 52.083 115.66)" filter="url(#a)">
+<g transform="translate(-83.409,-120.27)" fill="#f9bd00">
+<path d="m126.46 130.32-9.6469 10.877s-0.7359-1.126-1.2475-1.7356-1.4926-1.5299-1.4926-1.5299z" style="paint-order:markers stroke fill"/>
+<path d="m114.59 128.15-5.5869 6.9371s1.2727 0.43552 1.9896 0.78093c0.71699 0.34543 1.8508 1.0692 1.8508 1.0692z" style="paint-order:markers stroke fill"/>
+<path d="m126.59 142.63-8.9054 0.17926s0.48443 1.2549 0.68069 2.0261c0.19622 0.7713 0.37057 2.105 0.37057 2.105z" style="paint-order:markers stroke fill"/>
+</g>
+<g transform="translate(-83.409,-120.27)">
+<path d="m105 120.27 2.1314 14.382s-1.3356-0.16001-2.1314-0.16001-2.1314 0.16001-2.1314 0.16001z" fill="#f9bd00" style="paint-order:markers stroke fill"/>
+</g>
+<g transform="translate(-83.409,-120.27)">
+<path d="m93.945 147.07s1.3157-9.9888 11.055-9.9888c9.7398 0 11.055 9.9888 11.055 9.9888z" fill="#f9bd00"/>
+</g>
+<g transform="translate(-83.409,-120.27)" fill="#f9bd00">
+<path d="m83.54 130.32 9.6469 10.877s0.73589-1.126 1.2475-1.7356 1.4926-1.5299 1.4926-1.5299z" style="paint-order:markers stroke fill"/>
+<path d="m95.413 128.15 5.5869 6.9371s-1.2727 0.43552-1.9896 0.78093c-0.71699 0.34543-1.8507 1.0692-1.8507 1.0692z" style="paint-order:markers stroke fill"/>
+<path d="m83.409 142.63 8.9053 0.17926s-0.48443 1.2549-0.68068 2.0261c-0.19622 0.7713-0.37057 2.105-0.37057 2.105z" style="paint-order:markers stroke fill"/>
+</g>
+</g>
+</g>
+</svg>

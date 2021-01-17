@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<title>Normal Operation - Sonnet</title>
+		<link rel="stylesheet" href="/style.css">
+		<link rel="icon" href="/favicon.png" sizes="32x32" type="image/png">
+	</head>
+	<body>
+		<div class="title">
+			<a href="/">
+				<img src="/resources/sonnet-sidebyside-shadow.svg" alt="Sonnet">
+			</a>
+		</div>
+		<div class="menubar">
+			<a href="/">Home </a><a href="/downloads.html">Downloads </a><a href="/instances.html">Public&nbsp;Instances </a><a href="/changelog.html">Changelog </a><a href="/docs/">Documentation </a>
+		</div>
+		<div class="content">
+			<h1>Normal Operation</h1>
+			<p>Event passed from kapi</p>
+			<h2>Message Handlers</h2>
+			<ul>
+				<li>on-message
+					<ul>
+						<li>Message is skipped if DM message, bot or self</li>
+						<li>Message is scanned for blacklist, antispam</li>
+						<li>If message has commands, execute command if permissions are allowed
+							<ul>
+								<li>If command cache commands are purge or regenerate, drop guilds cache</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>on-message-edit
+					<ul>
+						<li>Message is skipped if DM message, bot, or self</li>
+						<li>Message is scanned for blacklist</li>
+						<li>Message is logged in logging channel if set
+							<ul>
+								<li>Logging will account for mlen over embed field limit</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>on-message-delete
+					<ul>
+						<li>Message is skipped if DM message, bot or self</li>
+						<li>Message is logged in logging channel if set</li>
+					</ul>
+				</li>
+			</ul>
+			<h2>Reaction Handlers</h2>
+			<ul>
+				<li>on-reaction-add
+					<ul>
+						<li>Reaction is checked for count, type, and if starboard is enabled</li>
+						<li>If all tests pass, grab starboard channel from database
+							<ul>
+								<li>If starboard channel exists, post starboard message</li>
+								<li>If messages files in png, jpeg, jpg, or bmp, add an image embed</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>on-raw-reaction-add
+					<ul>
+						<li>Grab message and then call <span class="codequote">on-reaction-add</span></li>
+					</ul>
+				</li>
+			</ul>
+			<h2>Init/Startup Handlers</h2>
+			<ul>
+				<li>on-ready
+					<ul>
+						<li>Test if client is bot, warn to console if true</li>
+						<li>Test if any mute timers are left in mute database
+							<ul>
+								<li>If mute timers left, unmute overdue mute timers, start async timer to wait for next mute to unmute</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>on-guild-join
+					<ul>
+						<li>Run <span class="codequote">db_hlapi.create_guild_db</span></li>
+					</ul>
+				</li>
+			</ul>
+			<h2>Blacklist Handling</h2>
+			<p>If message fails blacklist, (filetype, word, wordinword, regex) do action (warn, mute, kick, ban) as configured per guild</p>
+			<h2>Antispam Handling</h2>
+			<p>If more than X messages in Y seconds, mute for 20 seconds</p>
+		</div>
+		<div class="footer">
+			<div class="divider"></div>
+			<p>Sonnet made by <a href="https://github.com/xFuney">Funey</a>, <a href="https://ultrabear.xyz">Ultrabear</a>, and <a href="https://github.com/bredo228">Bredo</a>. Website made by <a href="https://mckinley.cc/">McKinley</a>.</p>
+		</div>
+	</body>
+</html>
