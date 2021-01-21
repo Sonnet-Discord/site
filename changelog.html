@@ -18,6 +18,33 @@
 		</div>
 		<div class="content">
 			<h1>Changelog</h1>
+			<h2>v1.1.1</h2>
+			<h3>Frontend</h3>
+			<ul>
+				<li>Improve docs on antispam-set</li>
+				<li>If mutetime >=256 hours, default to no unmute</li>
+				<li>Add grab-message command</li>
+				<li>Add poll command</li>
+				<li>Add coinflip command</li>
+				<li>Add python version to version-info</li>
+				<li>Add deleted file logging</li>
+				<li>If bot is mentioned it will now give guild prefix</li>
+			</ul>
+			<h3>Under the Hood</h3>
+			<ul>
+				<li>Add gif, webp to starboard image scanner</li>
+				<li>Desort wordlist loader, increases max possible combinations at cost of speed</li>
+				<li>Skip blank lines in wordlist loader, allows flexibility in wordlist.txt</li>
+				<li>Add encrypted fileio wrapper</li>
+				<li>Move blacklist whitelist to completely skip blacklist parsing</li>
+				<li>Improve handling of raw-reaction dblocking</li>
+				<li>New kernel supports proper tree and ls commands</li>
+			</ul>
+			<h3>Runtime Environment</h3>
+			<ul>
+				<li>Add cryptography and lz4 dependency</li>
+			</ul>
+			<div class="divider"></div>
 			<h2>v1.1.0-2</h2>
 			<h3>Under The Hood</h3>
 			<ul>
