@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<title>Default Command Reference - Sonnet</title>
+		<link rel="stylesheet" href="/style.css">
+		<link rel="icon" href="/favicon.png" sizes="32x32" type="image/png">
+	</head>
+	<body>
+		<div class="title">
+			<a href="/">
+				<img src="/resources/sonnet-sidebyside-shadow.svg" alt="Sonnet">
+			</a>
+		</div>
+		<div class="menubar">
+			<a href="/">Home </a><a href="/downloads.html">Downloads </a><a href="/instances.html">Public&nbsp;Instances </a><a href="/changelog.html">Changelog </a><a href="/docs/">Documentation </a>
+		</div>
+		<div class="content">
+			<h1>Default Command Reference</h1>
+			<p>The same information on this page can be found using the <span class="codequote">help</span> command. This page assumes you're using the default command prefix, <span class="codequote">=</span></p>
+			<p>Command options in &lt;inequality symbols&gt; are required to use the command. Options in [square brackets] are optional.</p>
+			<h2 id="administration">
+				<a href="#administration">Administration</a>
+			</h2>
+			<table>
+				<tr>
+					<th>Command Syntax</th>
+					<th>Description</th>
+					<th>Permission Level</th>
+				</tr>
+				<tr>
+					<td>=message-log &lt;channel&gt;</td>
+					<td>Change message log</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>=infraction-log &lt;channel&gt;</td>
+					<td>Change infraction log</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>=gdpr</td>
+					<td>Enforce your GDPR rights, Guild Owner only</td>
+					<td>Owner</td>
+				</tr>
+				<tr>
+					<td>=member-view-infractions &lt;boolean&nbsp;value&gt;</td>
+					<td>Set whether members of the guild can view their own infraction count</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>=set-prefix &lt;prefix&gt;</td>
+					<td>Set the guild prefix</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>=set-muterole &lt;role&gt;</td>
+					<td>Set the mute role</td>
+					<td>Administrator</td>
+				</tr>
+			</table>
+			<h2 id="version">
+				<a href="#version">Version</a>
+			</h2>
+			<table>
+				<tr>
+					<th>Command Syntax</th>
+					<th>Description</th>
+					<th>Permission Level</th>
+				</tr>
+				<tr>
+					<td>=version-info</td>
+					<td>Prints version info on sonnet modules</td>
+					<td>Everyone</td>
+				</tr>
+				<tr>
+					<td>=uptime</td>
+					<td>Prints uptime</td>
+					<td>Everyone</td>
+				</tr>
+				<tr>
+					<td>=statistics</td>
+					<td>Prints stats about messages</td>
+					<td>Everyone</td>
+				</tr>
+			</table>
+			<h2 id="utilities">
+				<a href="#utilities">Utilities</a>
+			</h2>
+			<table>
+				<tr>
+					<th>Command Syntax</th>
+					<th>Description</th>
+					<th>Permission Level</th>
+				</tr>
+				<tr>
+					<td>=ping</td>
+					<td>Test connection to bot</td>
+					<td>Everyone</td>
+				</tr>
+				<tr>
+					<td>=profile [user]</td>
+					<td>Get a user's profile</td>
+					<td>Everyone</td>
+				</tr>
+				<tr>
+					<td>=help [category]</td>
+					<td>Print helptext</td>
+					<td>Everyone</td>
+				</tr>
+				<tr>
+					<td>=avatar [user]</td>
+					<td>Get avatar of a user</td>
+					<td>Everyone</td>
+				</tr>
+				<tr>
+					<td>=serverinfo</td>
+					<td>Get info on this guild</td>
+					<td>Everyone</td>
+				</tr>
+				<tr>
+					<td>=poll</td>
+					<td>Start a reaction based poll on the message</td>
+					<td>Everyone</td>
+				</tr>
+				<tr>
+					<td>=coinflip</td>
+					<td>Flip a coin</td>
+					<td>Everyone</td>
+				</tr>
+			</table>
+			<h2 id="jokes">
+				<a href="#jokes">Jokes</a>
+			</h2>
+			<table>
+				<tr>
+					<th>Command Syntax</th>
+					<th>Description</th>
+					<th>Permission Level</th>
+				</tr>
+				<tr>
+					<td>=jban &lt;uid&gt;</td>
+					<td>"Bans" a user</td>
+					<td>Moderator</td>
+				</tr>
+			</table>
+			<h2 id="automod">
+				<a href="#automod">Automod</a>
+			</h2>
+			<table>
+				<tr>
+					<th>Command Syntax</th>
+					<th>Description</th>
+					<th>Permission Level</th>
+				</tr>
+				<tr>
+					<td>=wb-change &lt;csv&nbsp;list&gt;</td>
+					<td>Change word blacklist</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>=add-regexblacklist &lt;regex&gt;</td>
+					<td>Add an item to regex blacklist</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>=wiwb-change &lt;csv&nbsp;list&gt;</td>
+					<td>Change the WordInWord blacklist</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>=remove-regexblacklist&lt;regex&gt;</td>
+					<td>Remove an item from regex blacklist</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>=ftb-change &lt;csv&nbsp;list&gt;</td>
+					<td>Change filetype blacklist</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>=list-blacklist</td>
+					<td>List all blacklists</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
+					<td>=blacklist-action &lt;warn|mute|kick|ban&gt;</td>
+					<td>Set the action to occur when blacklist is broken</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>=blacklist-whitelist &lt;role&gt;</td>
+					<td>Set a role that grants immunity from blacklisting</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>=antispam-set &lt;messages&gt; &lt;seconds&gt;</td>
+					<td>Set how many messages in seconds to trigger antispam automute</td>
+					<td>Administrator</td>
+				</tr>
+			</table>
+			<h2 id="starboard">
+				<a href="#starboard">Starboard</a>
+			</h2>
+			<table>
+				<tr>
+					<th>Command Syntax</th>
+					<th>Description</th>
+					<th>Permission Level</th>
+				</tr>
+				<tr>
+					<td>=starboard-channel &lt;channel&gt;</td>
+					<td>Change starboard</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>=starboard-emoji &lt;emoji&gt;</td>
+					<td>Set the starboard emoji</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>=starboard-enabled &lt;boolean&nbsp;value&gt;</td>
+					<td>Toggle starboard on or off</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>=starboard-count &lt;number&gt;</td>
+					<td>Set starboard reaction count threshold</td>
+					<td>Administrator</td>
+				</tr>
+			</table>
+			<h2 id="moderation">
+				<a href="#moderation">Moderation</a>
+			</h2>
+			<table>
+				<tr>
+					<th>Command Syntax</th>
+					<th>Description</th>
+					<th>Permission Level</th>
+				</tr>
+				<tr>
+					<td>=warn &lt;uid&gt; [reason]</td>
+					<td>Warn a user</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
+					<td>=kick &lt;uid&gt; [reason]</td>
+					<td>Kick a user</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
+					<td>=ban &lt;uid&gt; [reason]</td>
+					<td>Ban a user</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
+					<td>=unban &lt;uid&gt;</td>
+					<td>Unban a user</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
+					<td>=mute &lt;uid&gt; [time[h|m|S]] [reason]</td>
+					<td>Mute a user, defaults to no unmute (0s)</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
+					<td>=unmute &lt;uid&gt;</td>
+					<td>Unmute a user</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
+					<td>=search-infractions &lt;uid&gt;</td>
+					<td>Grab infractions of a user</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
+					<td>=infraction-details &lt;infractionID&gt;</td>
+					<td>Grab details of an infractionID</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
+					<td>=delete-infraction &lt;infractionID&gt;</td>
+					<td>Delete an infraction by infractionID</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>=grab-message &lt;channelID&gt; &lt;messageID&gt;</td>
+					<td>Grab a message and show its contents</td>
+					<td>Moderator</td>
+				</tr>
+			</table>
+		</div>
+		<div class="footer">
+			<div class="divider"></div>
+			<p>Sonnet made by <a href="https://github.com/xFuney">Funey</a>, <a href="https://ultrabear.xyz">Ultrabear</a>, and <a href="https://github.com/bredo228">Bredo</a>. Website made by <a href="https://mckinley.cc/">McKinley</a>.</p>
+		</div>
+	</body>
+</html>
