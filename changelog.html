@@ -18,6 +18,31 @@
 		</div>
 		<div class="content">
 			<h1>Changelog</h1>
+			<h2>v1.1.2 "Flashback"</h2>
+			<h3>Frontend:</h3>
+			<ul>
+				<li>Add regex notifier system</li>
+				<li>Add usermention to infraction commands</li>
+				<li>Add flags to search-infractions</li>
+				<li>Allow parsing URLs in grab-message without disallowing additional args</li>
+				<li>Add replies to grab-message</li>
+				<li>Change profile command status to show status as a color</li>
+				<li>Change @ing bot to only work when bot is directly mentioned</li>
+				<li>Add replies to starboard</li>
+				<li>Return log channel as channel object instead of int when displayed</li>
+			</ul>
+			<h3>Under the Hood:</h3>
+			<ul>
+				<li>Make grab-message parse files every time</li>
+				<li>Refactor on-message automod to not use, well whatever that thing was</li>
+				<li>No longer attempt to log files if a message is deleted instantly</li>
+				<li>Close encrypted files when done reading them, possibly caused errors</li>
+			</ul>
+			<h3>Bugs</h3>
+			<ul>
+				<li>More random errors that apparently raw-reaction-add has</li>
+			</ul>
+			<div class="divider"></div>
 			<h2>v1.1.1-2</h2>
 			<h3>Bugs</h3>
 			<ul>
