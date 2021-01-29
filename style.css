@@ -4,7 +4,7 @@ body {
 	color: #f7f7f7;
 	line-height: 1.8;
 	font-family: sans-serif;
-	max-width: 900px;
+	max-width: 1000px;
 	margin: auto;
 	font-size: 16px
 }
@@ -59,11 +59,17 @@ h1 {font-size: 25px}
 h2 {font-size: 20px}
 h3,h4,h5,h6 {font-size: 16px}
 
-table {border-collapse: collapse}
+table {
+	border-collapse: collapse;
+	margin: auto;
+	width: 100%;
+}
 td,th {
 	border: 1px solid #f7f7f7;
 	padding: 6px
 }
+.ctr,.lastctr tr td:last-child {text-align: center}
+.noctr {text-align: left}
 
 .codequote {
 	background-color: #191919;
@@ -91,10 +97,3 @@ a.fancybtn:hover {
 	background-color: #bc4700;
 	color: #f7f7f7
 }
-
-.focus {margin: auto}
-table.focus {
-	min-width: 75%;
-	text-align: center
-}
-table.focus td.noctr {text-align: left}
