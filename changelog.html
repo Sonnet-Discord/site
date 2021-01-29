@@ -18,6 +18,33 @@
 		</div>
 		<div class="content">
 			<h1>Changelog</h1>
+			<h2>v1.1.3 "The Value of a Name"</h2>
+			<h3>Frontend</h3>
+			<ul>
+				<li>Add admin role setting</li>
+				<li>Add moderator role setting</li>
+				<li>Add aliases to commands</li>
+				<li>Show current config on all config set commands with empty input</li>
+				<li>Rename antispam-set to set-antispam</li>
+				<li>Rename blacklist-whitelist to set-whitelist</li>
+				<li>Send to log channel when dmming a user an infraction failed</li>
+				<li>Refactor search-infractions to allow grabbing by mod or by user</li>
+				<li>Add channel to starboard embed</li>
+			</ul>
+			<h3>Under the Hood</h3>
+			<ul>
+				<li>Add conf_cache to commands api</li>
+				<li>Moved role parsing to shared processor</li>
+				<li>Improve sort on search-infractions</li>
+				<li>Refactor the help command again</li>
+				<li>Garbage collection on file objects once deleted</li>
+				<li>Improve encryption_wrapper to be seekable and peekable</li>
+			</ul>
+			<h3>Bugs</h3>
+			<ul>
+				<li>Readback error in encrypted_reader</li>
+			</ul>
+			<div class="divider"></div>
 			<h2>v1.1.2 "Flashback"</h2>
 			<h3>Frontend:</h3>
 			<ul>
