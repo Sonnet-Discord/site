@@ -18,6 +18,42 @@
 		</div>
 		<div class="content">
 			<h1>Changelog</h1>
+			<div class="divider"></div>
+			<h2>v1.1.4-1</h2>
+			<h3>Bugs</h3>
+			<ul>
+				<li>Deprecation warning on jban was completely nonfunctional</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.1.4</h2>
+			<h3>Frontend</h3>
+			<ul>
+				<li>Infractions now check role hierarchy</li>
+				<li>Jban renamed to jkb</li>
+			</ul>			
+			<h3>Under the Hood</h3>
+			<ul>
+				<li>New kernel (LeXdPyK 1.2.1) with new features and stability</li>
+				<ul>
+					<li>Offers new f_type and f_args for ramfs</li>
+					<li>Encrypted token boot using miniflip encryption</li>
+					<li>Blacklisting</li>
+					<li>Logging file system</li>
+					<li>Return values on debug commands</li>
+					<li>Remote shutdown of bot</li>
+					<li>Stability in event of broken module load</li>
+				</ul>
+				<li>Regex blacklists are stored as compiled objects</li>
+				<li>Optional compile C acceleration for wordlist loader</li>
+			</ul>
+			<h3>Runtime Environment</h3>
+			<ul>
+				<li>Option for encrypted token boot</li>
+			</ul>
+			<h3>Bugs</h3>
+			<ul>
+				<li>Muting a user and then banning them caused mute timers to error out</li>
+			</ul>
 			<h2>v1.1.3-2</h2>
 			<h3>Under the Hood</h3>
 			<ul>
