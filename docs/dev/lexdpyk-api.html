@@ -18,6 +18,7 @@
 		</div>
 		<div class="content">
 			<h1>LeXdPyK (Bot kernel) API</h1>
+			<h2>Revised for LeXdPyK 1.2.1</h2>
 			<p>discord.py: on-*</p>
 			<h2>Supported Events:</h2>
 			<ul>
@@ -94,31 +95,31 @@
 					<th>Description</th>
 				</tr>
 				<tr>
-					<td>ramfs.mkdir(dir)</td>
+					<td><b>ramfs</b>.mkdir(<i>dir</i>)</td>
 					<td>Makes a directory at the specified path</td>
 				</tr>
 				<tr>
-					<td>ramfs.rmdir(dir)</td>
+					<td><b>ramfs</b>.rmdir(<i>dir</i>)</td>
 					<td>Removes a directory at the specified path</td>
 				</tr>
 				<tr>
-					<td>ramfs.tree(*dir(optional))</td>
+					<td><b>ramfs</b>.tree(<i>[dir]</i>)</td>
 					<td>Returns a treemap of every folder and file from origin</td>
 				</tr>
 				<tr>
-					<td>ramfs.ls(*dir(optional))</td>
+					<td><b>ramfs</b>.ls(<i>[dir]</i>)</td>
 					<td>Returns a listmap of every folder and file in current directory</td>
 				</tr>
 				<tr>
-					<td>ramfs.create_f(path)</td>
-					<td>Creates a file in location, if folders do not exist it will make them</td>
+					<td><b>ramfs</b>.create_f(<i>path, f_type=io.BytesIO, f_args=[]</i>)</td>
+					<td>Creates a file in location, if folders do not exist it will make them, specify object type and args if you wish to store a non file like object</td>
 				</tr>
 				<tr>
-					<td>ramfs.read_f(path)</td>
-					<td>Reads a file in a location, raises FileNotFoundError if directory of file does not exist</td>
+					<td><b>ramfs</b>.read_f(<i>path</i>)</td>
+					<td>Returns a file in a location, raises FileNotFoundError if directory of file does not exist</td>
 				</tr>
 				<tr>
-					<td>ramfs.remove_f(path)</td>
+					<td><b>ramfs</b>.remove_f(<i>path</i>)</td>
 					<td>Deletes a file, raises FileNotFoundError if directory or file does not exist</td>
 				</tr>
 			</table>
