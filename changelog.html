@@ -19,6 +19,25 @@
 		<div class="content">
 			<h1>Changelog</h1>
 			<div class="divider"></div>
+			<h2>v1.1.5 "Hard Split"</h2>
+			<h3>Frontend:</h3>
+			<ul>
+				<li>Add username change logging</li>
+				<li>Add reactionroles subsystem</li>
+			</ul>
+			<h3>Under the Hood:</h3>
+			<ul>
+				<li>Change lib_parsers to have unique error types</li>
+				<li>Refactor ramfs storing to use unified <code>guild_id/data</code> from root dir</li>
+				<li>Refactor statistics to use dict objects instead of vnum datatype</li>
+				<li>Add cache configs to database cache loader</li>
+				<li>Add parse messageid lib, this will be replacing self handled messageid libs in later versions</li>
+			</ul>
+			<h3>Runtime Environment:</h3>
+			<ul>
+				<li>Remove win build scripts, these are legacy and were never maintained</li>
+			</ul>
+			<div class="divider"></div>
 			<h2>v1.1.4-2</h2>
 			<h3>Bugs</h3>
 			<ul>
