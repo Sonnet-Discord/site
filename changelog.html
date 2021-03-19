@@ -19,6 +19,34 @@
 		<div class="content">
 			<h1>Changelog</h1>
 			<div class="divider"></div>
+			<h2>Sonnet V1.2.0 "Waterfront"</h2>
+			<h3>Frontend:</h3>
+			<ul>
+				<li>list-blacklist renamed to list-automod</li>
+				<li>upload file on rr-list being overloaded instead of just error messaging</li>
+				<li>add map command to run one command with multiple arguments</li>
+				<li>update profile command to be more accessible (removed reliance on colors)</li>
+				<li>add support for individual command help</li>
+			</ul>
+			<h3>Under the Hood:</h3>
+			<ul>
+				<li>update profile command to be cleaner internally</li>
+				<li>database connections moved to self handling connection cache</li>
+				<li>infraction grabber no longer relies on message.content allowing sonnetsh scripting</li>
+				<li>add support for rich descriptions in command help</li>
+				<li>speed optomizations to lib_encryption_wrappr</li>
+				<li>support for file like objects in lib_encryption_wrapper</li>
+			</ul>
+			<h3>Runtime Environment:</h3>
+			<ul>
+				<li>rename cmd_blacklist.py to cmd_automod.py</li>
+				<li>rename dlib_reactions.py to dlib_starboard.py</li>
+			</ul>
+			<h3>Bugs:</h3>
+			<ul>
+				<li>patch embed overflow 0 day in help command</li>
+			</ul>
+			<div class="divider"></div>
 			<h2>Sonnet V1.1.6-1</h2>
 			<h3>Frontend</h3>
 			<ul>

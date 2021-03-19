@@ -132,9 +132,9 @@
 					<td>Administrator</td>
 				</tr>
 				<tr>
+					<td>list-automod</td>
+					<td>List automod configs</td>
 					<td>list-blacklist</td>
-					<td>List all blacklists</td>
-					<td>None</td>
 					<td>Moderator</td>
 				</tr>
 				<tr>
@@ -250,7 +250,7 @@
 					<td>Administrator</td>
 				</tr>
 				<tr>
-					<td>grab-message &lt;channelID&gt; &lt;messageID&gt;</td>
+					<td>grab-message &lt;message&gt;</td>
 					<td>Grab a message and show its contents</td>
 					<td>get-message</td>
 					<td>Moderator</td>
@@ -302,8 +302,16 @@
 					<th>Permission Level</th>
 				</tr>
 				<tr>
-					<td>sonnetsh [args] \n &lt;command&gt; &lt;args&gt;</td>
+					<td>sonnetsh [args]
+&lt;command1&gt;
+...</td>
 					<td>Sonnet shell runtime, useful for automating setup</td>
+					<td>None</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
+					<td>map &lt;command&gt; (&lt;args&gt;)+</td>
+					<td>Map a single command with multiple arguments</td>
 					<td>None</td>
 					<td>Moderator</td>
 				</tr>
@@ -320,7 +328,7 @@
 				</tr>
 				<tr>
 					<td>starboard-channel &lt;channel&gt;</td>
-					<td>Change Starboard</td>
+					<td>Change Starboard channel</td>
 					<td>None</td>
 					<td>Administrator</td>
 				</tr>
@@ -366,7 +374,7 @@
 					<td>Everyone</td>
 				</tr>
 				<tr>
-					<td>help [category]</td>
+					<td>help [category|command]</td>
 					<td>Print helptext</td>
 					<td>None</td>
 					<td>Everyone</td>
