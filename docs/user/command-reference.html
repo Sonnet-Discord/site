@@ -18,7 +18,7 @@
 		</div>
 		<div class="content">
 			<h1>Default Command Reference</h1>
-			<p>The same information on this page can be found using the <span class="codequote">help</span> command. Commands are listed here without the prefix, the default prefix is <span class="codequote">=</span>. Example: <span class="codequote">=help</span></p>
+			<p>The same information on this page can be found using the <span class="codequote">help</span> command. Commands are listed here without the prefix, the default prefix is <span class="codequote">!</span>. Example: <span class="codequote">=help</span></p>
 			<p>Command options in &lt;inequality symbols&gt; are required to use the command. Options in [square brackets] are optional.</p>
 			<h2 id="administration">
 				<a href="#administration">Administration</a>
@@ -162,6 +162,12 @@
 					<td>Administrator</td>
 				</tr>
 				<tr>
+					<td>set-mutetime &lt;time&gt;</td>
+					<td>Set how long a person should be muted for with antispam automute</td>
+					<td>None</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
 					<td>add-regexnotifier &lt;regex&gt;</td>
 					<td>Add an item to regex notifier list</td>
 					<td>None</td>
@@ -208,6 +214,12 @@
 					<td>Moderator</td>
 				</tr>
 				<tr>
+					<td>note &lt;uid&gt; [note]</td>
+					<td>Put a note into a users infraction log, does not dm user</td>
+					<td>None</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
 					<td>kick &lt;uid&gt; [reason]</td>
 					<td>Kick a user</td>
 					<td>None</td>
@@ -221,7 +233,7 @@
 				</tr>
 				<tr>
 					<td>unban &lt;uid&gt;</td>
-					<td>Unban a user</td>
+					<td>Unban a user, does not dm user</td>
 					<td>None</td>
 					<td>Moderator</td>
 				</tr>
@@ -233,7 +245,7 @@
 				</tr>
 				<tr>
 					<td>unmute &lt;uid&gt;</td>
-					<td>Unmute a user</td>
+					<td>Unmute a user, does not dm user</td>
 					<td>None</td>
 					<td>Moderator</td>
 				</tr>
@@ -279,6 +291,12 @@
 					<td>Administrator</td>
 				</tr>
 				<tr>
+					<td>rr-purge &lt;message id&gt;</td>
+					<td>Purge all reactionroles from a message</td>
+					<td>None</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
 					<td>rr-remove &lt;message&gt; &lt;emoji&gt;</td>
 					<td>Remove a reactionrole from a message</td>
 					<td>None</td>
@@ -316,7 +334,7 @@
 					<td>Moderator</td>
 				</tr>
 				<tr>
-					<td>map &lt;command&gt; (&lt;args&gt;)+</td>
+					<td>map [-e args] &lt;command&gt; (&lt;args&gt;)+</td>
 					<td>Map a single command with multiple arguments</td>
 					<td>None</td>
 					<td>Moderator</td>

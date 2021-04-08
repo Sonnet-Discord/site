@@ -19,6 +19,54 @@
 		<div class="content">
 			<h1>Changelog</h1>
 			<div class="divider"></div>
+			<h2>Sonnet V1.2.2 "A Moderation Focused bot"</h2>
+			<h3>Frontend:</h3>
+			<ul>
+				<li>Add stricter input validation to set-antispam</li>
+				<li>Add set-mutetime command</li>
+				<li>unban and unmute now insert reasons and logs into database</li>
+				<li>note infractions are like warns but dont log to infraction log or dm the user</li>
+				<li>Infraction searching now supports negative indexing</li>
+				<li>rr-purge added to remove all reactionroles from a message</li>
+				<li>map now takes -e parameter for appending args to the end of every command</li>
+				<li>Add absolute totals to % totals in statistics command</li>
+				<li>Support floating point seconds in antispam time</li>
+			</ul>
+			<h3>Under the Hood:</h3>
+			<ul>
+				<li>Added return state to most commands, allows sonnetsh and map to stop execution after a failure</li>
+				<li>Remove unneeded imports from all files, this is thanks to the new addition of pyflakes and pylint in the workflow</li>
+				<li>GDPR now instancizes commands before running them</li>
+				<li>General infraction processor is no longer garbage</li>
+				<ul>
+					<li>now gaurantees a user object or failure</li>
+					<li>can specify to not add an infraction to logs but put it in the database</li>
+					<li>just look at it its so much cleaner</li>
+				</ul>
+				<li>muting a user now first clears them from the mute database and unmuting will also clear them from the database</li>
+				<li>Ping function now uses timestamp generation template function</li>
+				<li>Uptime printing now uses shared function, no longer prints as days when the count of days is 1</li>
+				<li>Userupdate no longer checks for changed usernames as that event happens on on-user-update</li>
+				<li>Update kernel to LeXdPyK 1.3.1</li>
+				<ul>
+					<li>Updates to support discord.py 1.7 deprecations</li>
+					<li>error printing is now pretty</li>
+				</ul>
+			</ul>
+			<h3>Runtime Environment:</h3>
+			<ul>
+				<li>Make re2 optional</li>
+				<li>Make loading the C lib optional</li>
+				<li>Add default lite config for running the bot without mariadb or re2</li>
+				<li>Move requirements.txt to requirements.txt and requirements.extras.txt to allow for not installing re2 or mariadb</li>
+			</ul>
+			<h3>Bugs:</h3>
+			<ul>
+				<li>Fix jkb on a non user would print None</li>
+				<li>Fix negative mute times that would proceed to not mute</li>
+				<li>Infraction searching no longer goes to last page when 0 is passed into it</li>
+			</ul>
+			<div class="divider"></div>
 			<h2>Sonnet V1.2.1-2</h2>
 			<h3>Bugs:</h3>
 			<ul>
