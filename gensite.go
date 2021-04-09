@@ -39,6 +39,30 @@ func walkerfunc(fpath string, info fs.FileInfo, err error) error {
 	return nil
 }
 
+func transform(file AbsoluteFile, nextemp string, templates *map[string]string) {
+	dat := strings.Split(file.Data, "\n")
+	if dat[0] == "0" {
+		title := dat[1]
+		content := strings.Join(dat[2:], "\n\t\t\t")
+		// Add templatedata files
+		for k, v := range *templates {
+			ev := strings.Join(strings.Split(v, "\n"), "\n\t\t\t")
+			nextemp = strings.Replace(nextemp, "<TEMPLATE>["+k+"]</TEMPLATE>", ev, 1)
+		}
+		// Add title and content
+		nextemp = strings.Replace(nextemp, "<TEMPLATE>[HTML-TITLE]</TEMPLATE>", title, 1)
+		nextemp = strings.Replace(nextemp, "<TEMPLATE>[HTML-CONTENT]</TEMPLATE>", content, 1)
+		newfile, ferr := os.Create(file.Path[:len(file.Path)-6] + "html")
+		if ferr != nil {
+			log.Fatal(ferr)
+		}
+		_, werr := newfile.Write([]byte(nextemp))
+		if werr != nil {
+			log.Fatal(werr)
+		}
+	}
+}
+
 func main() {
 
 	templates := make(map[string]string)
@@ -75,28 +99,6 @@ func main() {
 	rawstart := string(templatefile)
 
 	for _, file := range ConvFiles {
-		dat := strings.Split(file.Data, "\n")
-		if dat[0] == "0" {
-			nextemp := rawstart
-			title := dat[1]
-			content := strings.Join(dat[2:], "\n\t\t\t")
-			// Add templatedata files
-			for k, v := range templates {
-				ev := strings.Join(strings.Split(v, "\n"), "\n\t\t\t")
-				nextemp = strings.Replace(nextemp, "<TEMPLATE>["+k+"]</TEMPLATE>", ev, 1)
-			}
-			// Add title and content
-			nextemp = strings.Replace(nextemp, "<TEMPLATE>[HTML-TITLE]</TEMPLATE>", title, 1)
-			nextemp = strings.Replace(nextemp, "<TEMPLATE>[HTML-CONTENT]</TEMPLATE>", content, 1)
-			newfile, ferr := os.Create(file.Path[:len(file.Path)-6] + "html")
-			if ferr != nil {
-				log.Fatal(ferr)
-			}
-			_, werr := newfile.Write([]byte(nextemp))
-			if werr != nil {
-				log.Fatal(werr)
-			}
-		}
+		go transform(file, rawstart, &templates)
 	}
-
 }
