@@ -1,0 +1,64 @@
+0
+First Time Setup - Sonnet
+<h1>First Time Setup</h1>
+<p>Follow the instructions for your desired database. If you are not migrating from Sonnet's predecessor, Rhea, follow instructions for a "Fresh Install"</p>
+<h2>Part 1: Init Database</h2>
+<h3>MariaDB, Fresh Install</h3>
+<ul>
+	<li>Specify <span class="codequote">mariadb</span> for <span class="codequote">DB_TYPE</span> in <span class="codequote">sonnet_cfg</span></li>
+	<li>Install MariaDB migrator for sonnet-mariadb
+		<ul>
+			<li>Run init phase of MariaDB migrator, have a MariaDB server running that you have root to</li>
+		</ul>
+	</li>
+	<li>Copy <span class="codequote">.login-info.txt</span> file to Sonnet run location for MariaDB login.</li>
+</ul>
+<h3>MariaDB, Migrating From Rhea</h3>
+<ul>
+	<li>Specify <span class="codequote">mariadb</span> for <span class="codequote">DB_TYPE</span> in <span class="codequote">sonnet_cfg</span></li>
+	<li>Install MariaDB migrator for sonnet-mariadb in Rhea runtime location
+		<ul>
+			<li>Run init phase of MariaDB migrator, have a MariaDB server running that you have root to</li>
+			<li>Run migration phase of MariaDB migrator</li>
+		</ul>
+	</li>
+	<li>Copy <span class="codequote">.login-info.txt</span> file to Sonnet run location for MariaDB login.</li>
+</ul>
+<h3>SQLite3, Fresh Install</h3>
+<ul>
+	<li>Specify <span class="codequote">sqlite3</span> for <span class="codequote">DB_TYPE</span> in <span class="codequote">sonnet_cfg</span></li>
+	<li>Configure <span class="codequote">SQLITE3_LOCATION</span> in <span class="codequote">sonnet_cfg</span></li>
+</ul>
+<h3>SQLite3, Migrating From Rhea</h3>
+<ul>
+	<li>Specify <span class="codequote">sqlite3</span> for <span class="codequote">DB_TYPE</span> in <span class="codequote">sonnet_cfg</span></li>
+	<li>Install MariaDB migrator for sonnet-sqlite3 in Rhea runtime location
+		<ul>
+			<li>Specify <span class="codequote">sqlite3 db output</span></li>
+			<li>Run migration phase of SQLite3 migrator</li>
+		</ul>
+	</li>
+	<li>Set <span class="codequote">SQLITE3_LOCATION</span> in <span class="codequote">sonnet_cfg</span> to same place as shown in the migration tool</li>
+</ul>
+<h2>Part 2: Configure Bot Token</h2>
+<h3>Migrating From Rhea</h3>
+<p>Rhea token environment variables are accepted by default for logins, no step needed.</p>
+<h3>Fresh Install</h3>
+<p>Configure environment variable <span class="codequote">SONNET_TOKEN</span> or <span class="codequote">RHEA_TOKEN</span> to hold bot token.</p>
+<h2>Part 3: Install Dependencies</h2>
+<ul>
+	<li>Install Python 3.8 or greater</li>
+	<li>Install discord.py >= 1.6 using <span class="codequote">python3 -m pip install --upgrade discord.py</span></li>
+	<li>If using MariaDB, install MariaDB connector using <span class="codequote">python3 -m pip install --upgrade mariadb</span></li>
+</ul>
+<h2>Part 4: Configure and Run Bot</h2>
+<ul>
+	<li>Read through configuration file <span class="codequote">sonnet_cfg</span> and <span class="codequote">LeXdPyK_conf</span>
+		<ul>
+			<li>Decide on global defaults in <span class="codequote">sonnet_cfg</span></li>
+			<li>Configure bot owner in <span class="codequote">LeXdPyK_conf</span>, used for accessing debug commands</li>
+		</ul>
+	</li>
+	<li>Run <span class="codequote">python3 main.py</span></li>
+</ul>
+<p>The bot should initialize with Discord after loading kernel modules</p>

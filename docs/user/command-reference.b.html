@@ -1,0 +1,442 @@
+0
+Default Command Reference - Sonnet
+<h1>Default Command Reference</h1>
+<p>The same information on this page can be found using the <span class="codequote">help</span> command. Commands are listed here without the prefix, the default prefix is <span class="codequote">!</span>. Example: <span class="codequote">=help</span></p>
+<p>Command options in &lt;inequality symbols&gt; are required to use the command. Options in [square brackets] are optional.</p>
+<h2 id="administration">
+	<a href="#administration">Administration</a>
+</h2>
+<table class="lastctr">
+	<tr>
+		<th>Command Syntax</th>
+		<th>Description</th>
+		<th>Aliases</th>
+		<th>Permission Level</th>
+	</tr>
+	<tr>
+		<td>message-log &lt;channel&gt;</td>
+		<td>Change message log</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>join-log &lt;channel&gt;</td>
+		<td>Change join log</td>
+		<td>leave-log</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>infraction-log &lt;channel&gt;</td>
+		<td>Change infraction log</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>notifier-log &lt;channel&gt;</td>
+		<td>Change notifier log</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>username-log &lt;channel&gt;</td>
+		<td>Change username log</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>gdpr</td>
+		<td>Enforce your GDPR rights, Server Owner only</td>
+		<td>None</td>
+		<td>Owner</td>
+	</tr>
+	<tr>
+		<td>set-viewinfractions &lt;bool&gt;</td>
+		<td>Set whether members of the guild can view their own infraction count</td>
+		<td>viewinfractions</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>set-prefix &lt;prefix&gt;</td>
+		<td>Set the Guild prefix</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>set-muterole &lt;role&gt;</td>
+		<td>Set the mute role</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>set-adminrole &lt;role&gt;</td>
+		<td>Set the administrator role</td>
+		<td>None</td>
+		<td>Owner</td>
+	</tr>
+	<tr>
+		<td>set-modrole &lt;role&gt;</td>
+		<td>Set the moderator role</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+</table>
+<h2 id="automod">
+	<a href="#automod">Automod</a>
+</h2>
+<table class="lastctr">
+	<tr>
+		<th>Command Syntax</th>
+		<th>Description</th>
+		<th>Aliases</th>
+		<th>Permission Level</th>
+	</tr>
+	<tr>
+		<td>wb-change &lt;csv list&gt;</td>
+		<td>Change word blacklist</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>add-regexblacklist &lt;regex&gt;</td>
+		<td>Add an item to regex blacklist</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>wiwb-change &lt;csv list&gt;</td>
+		<td>Change the WordInWord blacklist</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>remove-regexblacklist &lt;regex&gt;</td>
+		<td>Remove an item from regex blacklist</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>ftb-change &lt;csv list&gt;</td>
+		<td>Change filetype blacklist</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>list-automod</td>
+		<td>List automod configs</td>
+		<td>list-blacklist</td>
+		<td>Moderator</td>
+	</tr>
+	<tr>
+		<td>blacklist-action &lt;warn|mute|kick|ban&gt;</td>
+		<td>Set the action to occur when blacklist is broken</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>set-whitelist &lt;role&gt;</td>
+		<td>Set a role that grants immunity from blacklisting</td>
+		<td>blacklist-whitelist, whitelist-set</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>set-antispam &lt;messages&gt; &lt;seconds&gt;</td>
+		<td>Set how many messages in seconds to trigger antispam automute</td>
+		<td>antispam-set</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>set-mutetime &lt;time&gt;</td>
+		<td>Set how long a person should be muted for with antispam automute</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>add-regexnotifier &lt;regex&gt;</td>
+		<td>Add an item to regex notifier list</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>remove-regexnotifier &lt;regex&gt;</td>
+		<td>Remove an item from notifier list</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+</table>
+<h2 id="jokes">
+	<a href="#jokes">Jokes</a>
+</h2>
+<table class="lastctr">
+	<tr>
+		<th>Command Syntax</th>
+		<th>Description</th>
+		<th>Aliases</th>
+		<th>Permission Level</th>
+	</tr>
+	<tr>
+		<td>jkb &lt;uid&gt;</td>
+		<td>"bans" a user</td>
+		<td>None</td>
+		<td>Moderator</td>
+	</tr>
+</table>
+<h2 id="moderation">
+	<a href="#moderation">Moderation</a>
+</h2>
+<table class="lastctr">
+	<tr>
+		<th>Command Syntax</th>
+		<th>Description</th>
+		<th>Aliases</th>
+		<th>Permission Level</th>
+	</tr>
+	<tr>
+		<td>warn &lt;uid&gt; [reason]</td>
+		<td>Warn a user</td>
+		<td>None</td>
+		<td>Moderator</td>
+	</tr>
+	<tr>
+		<td>note &lt;uid&gt; [note]</td>
+		<td>Put a note into a users infraction log, does not dm user</td>
+		<td>None</td>
+		<td>Moderator</td>
+	</tr>
+	<tr>
+		<td>kick &lt;uid&gt; [reason]</td>
+		<td>Kick a user</td>
+		<td>None</td>
+		<td>Moderator</td>
+	</tr>
+	<tr>
+		<td>ban &lt;uid&gt; [reason]</td>
+		<td>Ban a user</td>
+		<td>None</td>
+		<td>Moderator</td>
+	</tr>
+	<tr>
+		<td>unban &lt;uid&gt;</td>
+		<td>Unban a user, does not dm user</td>
+		<td>None</td>
+		<td>Moderator</td>
+	</tr>
+	<tr>
+		<td>mute &lt;uid&gt; [time[h|m|S]] [reason]</td>
+		<td>Mute a user, defaults to no unmute (0s)</td>
+		<td>None</td>
+		<td>Moderator</td>
+	</tr>
+	<tr>
+		<td>unmute &lt;uid&gt;</td>
+		<td>Unmute a user, does not dm user</td>
+		<td>None</td>
+		<td>Moderator</td>
+	</tr>
+	<tr>
+		<td>search-infractions &lt;-u USER | -m MOD&gt; [-t TYPE] [-p PAGE] [--no-automod]</td>
+		<td>Grab infractions of a user</td>
+		<td>warnings, list-infractions</td>
+		<td>Moderator</td>
+	</tr>
+	<tr>
+		<td>infraction-details &lt;infractionID&gt;</td>
+		<td>Grab details of an infractionID</td>
+		<td>get-infraction</td>
+		<td>Moderator</td>
+	</tr>
+	<tr>
+		<td>delete-infraction &lt;infractionID&gt;</td>
+		<td>Delete an infraction by infractionID</td>
+		<td>remove-infraction, rm-infraction</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>grab-message &lt;message&gt;</td>
+		<td>Grab a message and show its contents</td>
+		<td>get-message</td>
+		<td>Moderator</td>
+	</tr>
+</table>
+<h2 id="rr">
+	<a href="#rr">Reaction Roles</a>
+</h2>
+<table class="lastctr">
+	<tr>
+		<th>Command Syntax</th>
+		<th>Description</th>
+		<th>Aliases</th>
+		<th>Permission Level</th>
+	</tr>
+	<tr>
+		<td>rr-add &lt;message&gt; &lt;emoji&gt; &lt;role&gt;</td>
+		<td>Add a reactionrole to a message</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>rr-purge &lt;message id&gt;</td>
+		<td>Purge all reactionroles from a message</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>rr-remove &lt;message&gt; &lt;emoji&gt;</td>
+		<td>Remove a reactionrole from a message</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>rr-list</td>
+		<td>List all reactionroles in guild</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>rr-addmany &lt;message&gt; (?:&lt;emoji&gt; &lt;role&gt;)+</td>
+		<td>Add multiple reactionroles</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+</table>
+<h2 id="scripting">
+	<a href="#scripting">Scripting</a>
+</h2>
+<table class="lastctr">
+	<tr>
+		<th>Command Syntax</th>
+		<th>Description</th>
+		<th>Aliases</th>
+		<th>Permission Level</th>
+	</tr>
+	<tr>
+		<td>sonnetsh [args]
+&lt;command1&gt;
+...</td>
+		<td>Sonnet shell runtime, useful for automating setup</td>
+		<td>None</td>
+		<td>Moderator</td>
+	</tr>
+	<tr>
+		<td>map [-e args] &lt;command&gt; (&lt;args&gt;)+</td>
+		<td>Map a single command with multiple arguments</td>
+		<td>None</td>
+		<td>Moderator</td>
+	</tr>
+</table>
+<h2 id="starboard">
+	<a href="#starboard">Starboard</a>
+</h2>
+<table class="lastctr">
+	<tr>
+		<th>Command Syntax</th>
+		<th>Description</th>
+		<th>Aliases</th>
+		<th>Permission Level</th>
+	</tr>
+	<tr>
+		<td>starboard-channel &lt;channel&gt;</td>
+		<td>Change Starboard channel</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>starboard-emoji &lt;emoji&gt;</td>
+		<td>Set the starboard emoji</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>starboard-enabled &lt;bool&gt;</td>
+		<td>Toggle starboard on or off</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>starboard-count &lt;number&gt;</td>
+		<td>Set starboard reaction count threshold</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+</table>
+<h2 id="utilities">
+	<a href="#utilities">Utilities</a>
+</h2>
+<table class="lastctr">
+	<tr>
+		<th>Command Syntax</th>
+		<th>Description</th>
+		<th>Aliases</th>
+		<th>Permission Level</th>
+	</tr>
+	<tr>
+		<td>ping</td>
+		<td>Test connection to bot</td>
+		<td>None</td>
+		<td>Everyone</td>
+	</tr>
+	<tr>
+		<td>profile [user]</td>
+		<td>Get a users profile</td>
+		<td>user-info, userinfo</td>
+		<td>Everyone</td>
+	</tr>
+	<tr>
+		<td>help [category|command]</td>
+		<td>Print helptext</td>
+		<td>None</td>
+		<td>Everyone</td>
+	</tr>
+	<tr>
+		<td>avatar [user]</td>
+		<td>Get avatar of a user</td>
+		<td>None</td>
+		<td>Everyone</td>
+	</tr>
+	<tr>
+		<td>serverinfo</td>
+		<td>Get info on this guild</td>
+		<td>server-info</td>
+		<td>Everyone</td>
+	</tr>
+	<tr>
+		<td>poll</td>
+		<td>Start a reaction based poll on the message</td>
+		<td>None</td>
+		<td>Everyone</td>
+	</tr>
+	<tr>
+		<td>coinflip</td>
+		<td>Flip a coin</td>
+		<td>None</td>
+		<td>Everyone</td>
+	</tr>
+</table>
+<h2 id="version">
+	<a href="#version">Version</a>
+</h2>
+<table class="lastctr">
+	<tr>
+		<th>Command Syntax</th>
+		<th>Description</th>
+		<th>Aliases</th>
+		<th>Permission Level</th>
+	</tr>
+	<tr>
+		<td>version-info</td>
+		<td>Prints version info on sonnet modules</td>
+		<td>version, versions</td>
+		<td>Everyone</td>
+	</tr>
+	<tr>
+		<td>uptime</td>
+		<td>Prints uptime</td>
+		<td>None</td>
+		<td>Everyone</td>
+	</tr>
+	<tr>
+		<td>statistics</td>
+		<td>Prints stats about messages</td>
+		<td>stats</td>
+		<td>Everyone</td>
+	</tr>
+</table>

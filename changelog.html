@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<title>Changelog - Sonnet</title>
+		<link rel="stylesheet" href="/style.css">
+		<link rel="icon" href="/favicon.png" sizes="32x32" type="image/png">
+	</head>
+	<body>
+		<div class="title">
+			<a href="/">
+				<img src="/resources/sonnet-sidebyside-shadow.svg" alt="Sonnet">
+			</a>
+			</div>
+		<div class="menubar">
+			<a href="/">Home </a><a href="/downloads.html">Downloads </a><a href="/instances.html">Public&nbsp;Instances </a><a href="/changelog.html">Changelog </a><a href="/docs/">Documentation </a>
+			</div>
+		<div class="content">
+			<h1>Changelog</h1>
+			<div class="divider"></div>
+			<h2>Sonnet V1.2.2 "A Moderation Focused bot"</h2>
+			<h3>Frontend:</h3>
+			<ul>
+				<li>Add stricter input validation to set-antispam</li>
+				<li>Add set-mutetime command</li>
+				<li>unban and unmute now insert reasons and logs into database</li>
+				<li>note infractions are like warns but dont log to infraction log or dm the user</li>
+				<li>Infraction searching now supports negative indexing</li>
+				<li>rr-purge added to remove all reactionroles from a message</li>
+				<li>map now takes -e parameter for appending args to the end of every command</li>
+				<li>Add absolute totals to % totals in statistics command</li>
+				<li>Support floating point seconds in antispam time</li>
+			</ul>
+			<h3>Under the Hood:</h3>
+			<ul>
+				<li>Added return state to most commands, allows sonnetsh and map to stop execution after a failure</li>
+				<li>Remove unneeded imports from all files, this is thanks to the new addition of pyflakes and pylint in the workflow</li>
+				<li>GDPR now instancizes commands before running them</li>
+				<li>General infraction processor is no longer garbage</li>
+				<ul>
+					<li>now gaurantees a user object or failure</li>
+					<li>can specify to not add an infraction to logs but put it in the database</li>
+					<li>just look at it its so much cleaner</li>
+				</ul>
+				<li>muting a user now first clears them from the mute database and unmuting will also clear them from the database</li>
+				<li>Ping function now uses timestamp generation template function</li>
+				<li>Uptime printing now uses shared function, no longer prints as days when the count of days is 1</li>
+				<li>Userupdate no longer checks for changed usernames as that event happens on on-user-update</li>
+				<li>Update kernel to LeXdPyK 1.3.1</li>
+				<ul>
+					<li>Updates to support discord.py 1.7 deprecations</li>
+					<li>error printing is now pretty</li>
+				</ul>
+			</ul>
+			<h3>Runtime Environment:</h3>
+			<ul>
+				<li>Make re2 optional</li>
+				<li>Make loading the C lib optional</li>
+				<li>Add default lite config for running the bot without mariadb or re2</li>
+				<li>Move requirements.txt to requirements.txt and requirements.extras.txt to allow for not installing re2 or mariadb</li>
+			</ul>
+			<h3>Bugs:</h3>
+			<ul>
+				<li>Fix jkb on a non user would print None</li>
+				<li>Fix negative mute times that would proceed to not mute</li>
+				<li>Infraction searching no longer goes to last page when 0 is passed into it</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>Sonnet V1.2.1-2</h2>
+			<h3>Bugs:</h3>
+			<ul>
+				<li>Regex with / in name would cause the ramfs to create folders, fixed by hashing and hex valuing file names</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>Sonnet V1.2.1-1</h2>
+			<h3>Bugs:</h3>
+			<ul>
+				<li>Some awaitable shit wasint awaited</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>Sonnet V1.2.1 "Expand Beyond"</h2>
+			<h3>Frontend:</h3>
+			<ul>
+				<li>Added join and leave logging</li>
+				<li>General update on all libraries to use ERROR: in their return syntax</li>
+				<li>Version command now prints Clib version grabbed from DotHeaders</li>
+				<li>Automod infrations now print the item that was blacklisted</li>
+			</ul>
+			<h3>Under the Hood:</h3>
+			<ul>
+				<li>Sonnetsh now makes a virtual message content to allow for more scripting possibilities</li>
+				<li>Permissions parser now supports reading custom permissions</li>
+				<li>Profile command flattened to use parsedate</li>
+				<li>DotHeaders added for easier loading of clib functions</li>
+				<li>Return tuple instead of list from lib_handlers</li>
+				<li>Comments added to all lib parsers functions</li>
+				<li>lib parsers does not parse all permissions unless needed, shaving off minor processing time</li>
+				<li>Clean up db_hlapi add_infraction to use zipping</li>
+				<li>Retab and speed bump C loader</li>
+				<li>Update to LeXdPyK 1.3</li>
+				<ul>
+					<li>Supports multi bot owner</li>
+					<li>Supports removing blacklisted users/guilds while running</li>
+					<li>Prints error message to discord instead of just generic text</li>
+					<li>Supports parsing multiple commands per event</li>
+				</ul>
+			</ul>
+			<h3>Runtime Environment</h3>
+			<ul>
+				<li>Add upload function to db_hlapi</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>Sonnet V1.2.0-2</h2>
+			<h3>Bugs:</h3>
+			<ul>
+				<li>delete-infraction on nonexistant infraction would fatal error</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>Sonnet V1.2.0-1</h2>
+			<h3>Bugs:</h3>
+			<ul>
+				<li>lol forgot to test the encrypted reader</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>Sonnet V1.2.0 "Waterfront"</h2>
+			<h3>Frontend:</h3>
+			<ul>
+				<li>list-blacklist renamed to list-automod</li>
+				<li>upload file on rr-list being overloaded instead of just error messaging</li>
+				<li>add map command to run one command with multiple arguments</li>
+				<li>update profile command to be more accessible (removed reliance on colors)</li>
+				<li>add support for individual command help</li>
+			</ul>
+			<h3>Under the Hood:</h3>
+			<ul>
+				<li>update profile command to be cleaner internally</li>
+				<li>database connections moved to self handling connection cache</li>
+				<li>infraction grabber no longer relies on message.content allowing sonnetsh scripting</li>
+				<li>add support for rich descriptions in command help</li>
+				<li>speed optomizations to lib_encryption_wrappr</li>
+				<li>support for file like objects in lib_encryption_wrapper</li>
+			</ul>
+			<h3>Runtime Environment:</h3>
+			<ul>
+				<li>rename cmd_blacklist.py to cmd_automod.py</li>
+				<li>rename dlib_reactions.py to dlib_starboard.py</li>
+			</ul>
+			<h3>Bugs:</h3>
+			<ul>
+				<li>patch embed overflow 0 day in help command</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>Sonnet V1.1.6-1</h2>
+			<h3>Frontend</h3>
+			<ul>
+				<li>sonnetsh moved to moderator command</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>Sonnet V1.1.6 "_sh"</h2>
+			<h3>Frontend:</h3>
+			<ul>
+				<li>Add sonnetsh command</li>
+				<li>Add rr-addmany and rr-list</li>
+			</ul>
+			<h3>Under the Hood:</h3>
+			<ul>
+				<li>optimize infraction searching sort system</li>
+				<li>Add verbose flag to command api</li>
+				<li>Add commands dict to command api</li>
+			</ul>
+			<h3>Bugs:</h3>
+			<ul>
+				<li>Perm check on starboard message sending</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.1.5-2</h2>
+			<h3>Bugs</h3>
+			<ul>
+				<li>starboard confset commands fatal errored on no input</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.1.5-1</h2>
+			<h3>Bugs</h3>
+			<ul>
+				<li>reactionroles were broken on non unicode emoji</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.1.5 "Hard Split"</h2>
+			<h3>Frontend:</h3>
+			<ul>
+				<li>Add username change logging</li>
+				<li>Add reactionroles subsystem</li>
+			</ul>
+			<h3>Under the Hood:</h3>
+			<ul>
+				<li>Change lib_parsers to have unique error types</li>
+				<li>Refactor ramfs storing to use unified <span class="codequote">guild_id/data</span> from root dir</li>
+				<li>Refactor statistics to use dict objects instead of vnum datatype</li>
+				<li>Add cache configs to database cache loader</li>
+				<li>Add parse messageid lib, this will be replacing self handled messageid libs in later versions</li>
+			</ul>
+			<h3>Runtime Environment:</h3>
+			<ul>
+				<li>Remove win build scripts, these are legacy and were never maintained</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.1.4-2</h2>
+			<h3>Bugs</h3>
+			<ul>
+				<li><span class="codequote">re.match</span> does not match the same way that <span class="codequote">re.findall</span> does</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.1.4-1</h2>
+			<h3>Bugs</h3>
+			<ul>
+				<li>Deprecation warning on jban was completely nonfunctional</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.1.4 "Droplets of Salt"</h2>
+			<h3>Frontend</h3>
+			<ul>
+				<li>Infractions now check role hierarchy</li>
+				<li>Jban renamed to jkb</li>
+			</ul>			
+			<h3>Under the Hood</h3>
+			<ul>
+				<li>New kernel (LeXdPyK 1.2.1) with new features and stability</li>
+				<ul>
+					<li>Offers new f_type and f_args for ramfs</li>
+					<li>Encrypted token boot using miniflip encryption</li>
+					<li>Blacklisting</li>
+					<li>Logging file system</li>
+					<li>Return values on debug commands</li>
+					<li>Remote shutdown of bot</li>
+					<li>Stability in event of broken module load</li>
+				</ul>
+				<li>Regex blacklists are stored as compiled objects</li>
+				<li>Optional compile C acceleration for wordlist loader</li>
+			</ul>
+			<h3>Runtime Environment</h3>
+			<ul>
+				<li>Option for encrypted token boot</li>
+			</ul>
+			<h3>Bugs</h3>
+			<ul>
+				<li>Muting a user and then banning them caused mute timers to error out</li>
+			</ul>
+			<h2>v1.1.3-2</h2>
+			<h3>Under the Hood</h3>
+			<ul>
+				<li>Remove on-raw-reaction-add from starboard. It only existed to grab messages that were not in the cache but it has caused too much trouble for what it is worth. The on-raw-reaction-add call is also needed for v1.1.4 reaction roles, so cleaning it up beforehand helps.</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.1.3-1</h2>
+			<h3>Bugs</h3>
+			<ul>
+				<li>Fix fatal exception occurring when a user that doesn't exist is unbanned</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.1.3 "The Value of a Name"</h2>
+			<h3>Frontend</h3>
+			<ul>
+				<li>Add admin role setting</li>
+				<li>Add moderator role setting</li>
+				<li>Add aliases to commands</li>
+				<li>Show current config on all config set commands with empty input</li>
+				<li>Rename antispam-set to set-antispam</li>
+				<li>Rename blacklist-whitelist to set-whitelist</li>
+				<li>Send to log channel when dmming a user an infraction failed</li>
+				<li>Refactor search-infractions to allow grabbing by mod or by user</li>
+				<li>Add channel to starboard embed</li>
+			</ul>
+			<h3>Under the Hood</h3>
+			<ul>
+				<li>Add conf_cache to commands api</li>
+				<li>Moved role parsing to shared processor</li>
+				<li>Improve sort on search-infractions</li>
+				<li>Refactor the help command again</li>
+				<li>Garbage collection on file objects once deleted</li>
+				<li>Improve encryption_wrapper to be seekable and peekable</li>
+			</ul>
+			<h3>Bugs</h3>
+			<ul>
+				<li>Readback error in encrypted_reader</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.1.2 "Flashback"</h2>
+			<h3>Frontend:</h3>
+			<ul>
+				<li>Add regex notifier system</li>
+				<li>Add usermention to infraction commands</li>
+				<li>Add flags to search-infractions</li>
+				<li>Allow parsing URLs in grab-message without disallowing additional args</li>
+				<li>Add replies to grab-message</li>
+				<li>Change profile command status to show status as a color</li>
+				<li>Change @ing bot to only work when bot is directly mentioned</li>
+				<li>Add replies to starboard</li>
+				<li>Return log channel as channel object instead of int when displayed</li>
+			</ul>
+			<h3>Under the Hood:</h3>
+			<ul>
+				<li>Make grab-message parse files every time</li>
+				<li>Refactor on-message automod to not use, well whatever that thing was</li>
+				<li>No longer attempt to log files if a message is deleted instantly</li>
+				<li>Close encrypted files when done reading them, possibly caused errors</li>
+			</ul>
+			<h3>Bugs</h3>
+			<ul>
+				<li>More random errors that apparently raw-reaction-add has</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.1.1-2</h2>
+			<h3>Bugs</h3>
+			<ul>
+				<li>FINALLY the on-raw-reaction-add bug was found and patched</li>
+				<li>THIS BUG HAS EXISTED SINCE 1.0.1</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.1.1</h2>
+			<h3>Frontend</h3>
+			<ul>
+				<li>Improve docs on antispam-set</li>
+				<li>If mutetime >=256 hours, default to no unmute</li>
+				<li>Add grab-message command</li>
+				<li>Add poll command</li>
+				<li>Add coinflip command</li>
+				<li>Add python version to version-info</li>
+				<li>Add deleted file logging</li>
+				<li>If bot is mentioned it will now give guild prefix</li>
+			</ul>
+			<h3>Under the Hood</h3>
+			<ul>
+				<li>Add gif, webp to starboard image scanner</li>
+				<li>Desort wordlist loader, increases max possible combinations at cost of speed</li>
+				<li>Skip blank lines in wordlist loader, allows flexibility in wordlist.txt</li>
+				<li>Add encrypted fileio wrapper</li>
+				<li>Move blacklist whitelist to completely skip blacklist parsing</li>
+				<li>Improve handling of raw-reaction dblocking</li>
+				<li>New kernel supports proper tree and ls commands</li>
+			</ul>
+			<h3>Runtime Environment</h3>
+			<ul>
+				<li>Add cryptography and lz4 dependency</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.1.0-2</h2>
+			<h3>Under The Hood</h3>
+			<ul>
+				<li>Patches to DM message errors</li>
+				<li>Move bot to re2 regex parser, patches regex fork exploit found by <a href="https://github.com/vord1080">Vord</a></li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.1.0-1</h2>
+			<h3>Bugs</h3>
+			<ul>
+				<li>Discord websocket hiccup now accounted for in antispam</li>
+				<li>Starboard no longer breaks down</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.1.0 "The All Seeing Eye"</h2>
+			<h3>Frontend</h3>
+			<ul>
+				<li>Remove <span class="codequote">joinlog</span> command</li>
+				<li>Add <span class="codequote">antispam-set</span> system</li>
+				<li>Rename blacklist category to automod category</li>
+				<li>Add joke ban command</li>
+				<li>Change <span class="codequote">mute</span> to be <span class="codequote">mute &lt;uid&gt; [time] [reason]</span></li>
+				<li>Add <span class="codequote">infraction-search</span> of members not in guild, add infraction count to infraction search</li>
+				<li>Change <span class="codequote">ping</span> command to represent blacklist and antispam as just automod</li>
+				<li>Add <span class="codequote">serverinfo</span> command</li>
+				<li>Add padding to <span class="codequote">uptime</span> and <span class="codequote">version-info</span> uptime counters</li>
+				<li>Add 1 and 0 as valid boolean inputs</li>
+				<li>Add color to <span class="codequote">version-info</span></li>
+				<li>Add <span class="codequote">statistics</span> command</li>
+				<li>Make starboard timestamps show starred message timestamps</li>
+			</ul>
+			<h3>Under the Hood</h3>
+			<ul>
+				<li>Add statistics system</li>
+				<li>Add kernel ramfs that is persistent</li>
+				<li>Ability to ban/warn members not in guild</li>
+				<li>Faster async based processing of infractions</li>
+				<li>Make wiwb space stripping work correctly</li>
+				<li>Split message handlers into 3 files</li>
+				<li>Add vnum processors to statistics system</li>
+				<li>Make LeXdPyK kernel, includes more headers and an inbuilt ramfs, new Kapi, and cleaner layout</li>
+				<li>Do antispam and blacklist actions in async to lower response times</li>
+				<li>Move ramfs into kernel</li>
+				<li>Add smart image detection of message images to starboard</li>
+				<li>Make database hlapi not create db on every call</li>
+				<li>Process commands in async to not interrupt main thread</li>
+				<li>Make <span class="codequote">db_obfuscator</span> only load sonnet dbs</li>
+			</ul>
+			<h3>Runtime Environment</h3>
+			<ul>
+				<li>Add LeXdPyK kernel configuration</li>
+				<li>Remove <span class="codequote">sqlite3_type</span> from sonnet configuration</li>
+				<li>Add documentation of kernel api, command api, event handler overview, quickstart guide</li>
+				<li>Version bump to discord.py module</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.0.2 "EndlessTime"</h2>
+			<h3>Frontend</h3>
+			<ul>
+				<li>Add <span class="codequote">uptime</span> command</li>
+				<li>Add starboard for old messages and images</li>
+				<li>Fix starboard for boarding messages in starboard channel</li>
+				<li>Improve <span class="codequote">version-info</span> command</li>
+			</ul>
+			<h3>Under the Hood</h3>
+			<ul>
+				<li>Rewrite portions of <span class="codequote">help</span> command to make it less bad</li>
+				<li>Change db connection type to keep connections open per module</li>
+				<li>Convert <span class="codequote">lib_sql_handler</span> to unix line endings</li>
+			</ul>
+			<h3>Runtime Environment</h3>
+			<ul>
+				<li>Make all static libs able to be edited during runtime</li>
+			</ul>
+			<h3>Bugs</h3>
+			<ul>
+				<li>Fix editing null message caused by images</li>
+				<li>Fix dmmessage errors</li>
+				<li>Fix editing messages over 1024 length causing error in embed field limits</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.0.1.1</h2>
+			<h3>Bugs</h3>
+			<ul>
+				<li>Fix fatal flaw in profile command that stemmed from misreading code initially</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.0.1 "Collision of Worlds"</h2>
+			<h3>Frontend</h3>
+			<ul>
+				<li>Add antispam to mainloop processor and GDPR system</li>
+				<li>Add caches to GDPR downloader</li>
+				<li>Improve documentation of commands</li>
+				<li>No longer break on <span class="codequote">list-blacklist</span> over 2k characters</li>
+				<li>Add unban message</li>
+				<li>Improve grammar on infraction commands</li>
+				<li>Add mutetime response to mute command</li>
+				<li>Add curcount return to <span class="codequote">starboard-count</span> command</li>
+				<li>Add <span class="codequote">version-info</span> command</li>
+				<li>Update blacklist processor to be less prone to bypasses</li>
+				<li>Add logchannel setting no input to show the current log channel</li>
+			</ul>
+			<h3>Under the Hood</h3>
+			<ul>
+				<li>Fix all mutetimer collision</li>
+				<li>Change command processing to kwargs system</li>
+				<li>Add version info to all command modules</li>
+				<li>Move all message handling to dynamiclibs</li>
+				<li>Add mute recovery subsystem, may collide timers but it's better than all mutes being dropped</li>
+				<li>Change messgae config loader to be more modular</li>
+				<li>Update db_handlers to include <span class="codequote">list_tables</span> command</li>
+			</ul>
+			<h3>Runtime Environment</h3>
+			<ul>
+				<li>Remove support for Rhea type databases that have shown to be problematic</li>
+				<li>Remove support for Python 3.7 and Python 3.6 in favor of cleaner, future-proof code</li>
+				<li>Add <span class="codequote">SONNET_TOKEN</span> alongside <span class="codequote">RHEA_TOKEN</span> for environment vars to get token from</li>
+				<li>Add warning for bot not having token</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.0.0.1</h2>
+			<h3>Bugs</h3>
+			<ul>
+				<li>Patches to various minor bugs</li>
+			</ul>
+			<div class="divider"></div>
+			<h2>v1.0.0 "QuickSilver"</h2>
+			<p>Initial release</p>
+			</div>
+		<div class="footer">
+			<div class="divider"></div>
+			<p><a href="https://github.com/sonnet-discord/sonnet-py">GitHub</a>, Sonnet made by <a href="https://github.com/xFuney">Funey</a>, <a href="https://ultrabear.xyz">Ultrabear</a>, and <a href="https://github.com/bredo228">Bredo</a>. Website made by <a href="https://mckinley.cc/">McKinley</a>. <a href="/resources/">Sonnet logo</a> originally made by Wulf.</p>
+			</div>
+	</body>
+</html>

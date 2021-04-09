@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="132.29167mm"
+   height="132.29167mm"
+   viewBox="0 0 132.29167 132.29167"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="sonnet-sun-square-background-shadow.svg">
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter1548">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood1538" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite1540" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="1"
+         result="blur"
+         id="feGaussianBlur1542" />
+      <feOffset
+         dx="0.5"
+         dy="0.5"
+         result="offset"
+         id="feOffset1544" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite1546" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="243.82623"
+     inkscape:cy="229.43435"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer2"
+     showgrid="false"
+     inkscape:window-width="2560"
+     inkscape:window-height="1377"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Background"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-38.854164,-82.354164)">
+    <rect
+       style="opacity:1;fill:#262626;fill-opacity:1;stroke:none;stroke-width:0.28106061;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect815"
+       width="132.29167"
+       height="132.29167"
+       x="38.854164"
+       y="82.354164" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Sun"
+     transform="translate(-38.854164,-82.354164)">
+    <g
+       id="g862"
+       transform="matrix(2.4509203,0,0,2.4509203,52.083405,115.65767)"
+       style="filter:url(#filter1548)">
+      <g
+         id="g826"
+         transform="translate(-83.409,-120.27)"
+         style="fill:#f9bd00">
+        <path
+           id="path820"
+           style="paint-order:markers stroke fill"
+           d="m 126.46,130.32 -9.6469,10.877 c 0,0 -0.7359,-1.126 -1.2475,-1.7356 -0.5116,-0.6096 -1.4926,-1.5299 -1.4926,-1.5299 z"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path822"
+           style="paint-order:markers stroke fill"
+           d="m 114.59,128.15 -5.5869,6.9371 c 0,0 1.2727,0.43552 1.9896,0.78093 0.71699,0.34543 1.8508,1.0692 1.8508,1.0692 z"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path824"
+           style="paint-order:markers stroke fill"
+           d="m 126.59,142.63 -8.9054,0.17926 c 0,0 0.48443,1.2549 0.68069,2.0261 0.19622,0.7713 0.37057,2.105 0.37057,2.105 z"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g830"
+         transform="translate(-83.409,-120.27)">
+        <path
+           id="path828"
+           style="fill:#f9bd00;paint-order:markers stroke fill"
+           d="m 105,120.27 2.1314,14.382 c 0,0 -1.3356,-0.16001 -2.1314,-0.16001 -0.7958,0 -2.1314,0.16001 -2.1314,0.16001 z"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g834"
+         transform="translate(-83.409,-120.27)">
+        <path
+           id="path832"
+           d="m 93.945,147.07 c 0,0 1.3157,-9.9888 11.055,-9.9888 9.7398,0 11.055,9.9888 11.055,9.9888 z"
+           inkscape:connector-curvature="0"
+           style="fill:#f9bd00" />
+      </g>
+      <g
+         id="g842"
+         transform="translate(-83.409,-120.27)"
+         style="fill:#f9bd00">
+        <path
+           id="path836"
+           style="paint-order:markers stroke fill"
+           d="m 83.54,130.32 9.6469,10.877 c 0,0 0.73589,-1.126 1.2475,-1.7356 0.51161,-0.6096 1.4926,-1.5299 1.4926,-1.5299 z"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path838"
+           style="paint-order:markers stroke fill"
+           d="m 95.413,128.15 5.5869,6.9371 c 0,0 -1.2727,0.43552 -1.9896,0.78093 -0.71699,0.34543 -1.8507,1.0692 -1.8507,1.0692 z"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path840"
+           style="paint-order:markers stroke fill"
+           d="m 83.409,142.63 8.9053,0.17926 c 0,0 -0.48443,1.2549 -0.68068,2.0261 -0.19622,0.7713 -0.37057,2.105 -0.37057,2.105 z"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+  </g>
+</svg>

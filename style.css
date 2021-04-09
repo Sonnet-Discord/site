@@ -1,0 +1,99 @@
+/* Layout */
+body {
+	background-color: #262626;
+	color: #f7f7f7;
+	line-height: 1.8;
+	font-family: sans-serif;
+	max-width: 1000px;
+	margin: auto;
+	font-size: 16px
+}
+
+.title img {
+	margin: 7px auto;
+	width: 250px;
+	display: block
+}
+
+.menubar {
+	background-color: #f9bd00;
+	text-align: center;
+	border-radius: 50px;
+	margin: 0 5px;
+	box-shadow: 2px 2px 2px #111
+}
+.menubar a {
+	color: #262626;
+	text-decoration: none;
+	display: inline-block;
+	padding: 0 12px;
+	font-size: 18px;
+	border-right: 1px solid #262626
+}
+.menubar a:last-child {border-right: none}
+.menubar a:hover {
+	background-color: #bc4700;
+	color: #f7f7f7
+}
+.content {margin: 0 10px}
+.footer {
+	font-size: 11px;
+	text-align: center
+}
+
+@media (max-width: 675px) {
+	.menubar {
+		border-radius: 0;
+		height: 100%;
+		margin: 0
+	}
+	.menubar a {border: none}
+}
+
+/* Content formatting */
+a {color: #f7f7f7}
+a:hover {color: #f9bd00}
+
+h1,h2,h3,h4,h5,h6 {line-height: 1}
+h1 {font-size: 25px}
+h2 {font-size: 20px}
+h3,h4,h5,h6 {font-size: 16px}
+
+table {
+	border-collapse: collapse;
+	margin: auto;
+	width: 100%;
+}
+td,th {
+	border: 1px solid #f7f7f7;
+	padding: 6px
+}
+.ctr,.lastctr tr td:last-child {text-align: center}
+.noctr {text-align: left}
+
+.codequote {
+	background-color: #191919;
+	border: 1px solid #111;
+	border-radius: 4px;
+	padding: 3px 4px;
+	font-family: monospace
+}
+
+div.divider {
+	width: 66%;
+	border-bottom: 1px solid #f7f7f7;
+	margin: 15px auto 0 auto
+}
+
+a.fancybtn {
+	padding: 8px;
+	background-color: #f9bd00;
+	color: #262626;
+	border-radius: 8px;
+	text-decoration: none;
+	box-shadow: 2px 2px 2px #111
+}
+a.fancybtn:hover {
+	background-color: #bc4700;
+	color: #f7f7f7
+}

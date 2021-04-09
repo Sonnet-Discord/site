@@ -1,0 +1,93 @@
+0
+Command Modules Minimum Structure - Sonnet
+<h1>Command Modules Minimum Structure</h1>
+<p>Every command is an async function with passed args: <span class="codequote">message</span>, <span class="codequote">args</span>, and <span class="codequote">client</span>.
+<h2>Passed kwargs</h2>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>stats</td>
+		<td>.01ms timestamps representing process times of the bot</td>
+	</tr>
+	<tr>
+		<td>cmds</td>
+		<td>The command modules</td>
+	</tr>
+	<tr>
+		<td>dlibs</td>
+		<td>The dynamiclib modules</td>
+	</tr>
+	<tr>
+		<td>bot_start</td>
+		<td>The unix timestamp of when the kernel started</td>
+	</tr>
+	<tr>
+		<td>main_version</td>
+		<td>The version string of the kernel</td>
+	</tr>
+	<tr>
+		<td>kernel_ramfs</td>
+		<td>Ramfs passed from kernel</td>
+	</tr>
+	<tr>
+		<td>ramfs</td>
+		<td>Ramfs passed from kernel</td>
+	</tr>
+</table>
+<h2>File format</h2>
+<h3>category_info</h3>
+<p>Type: hmap, required fields:</p>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>name</td>
+		<td>Internal name of module</td>
+	</tr>
+	<tr>
+		<td>pretty_name</td>
+		<td>Prettified name of module used in printing to end user</td>
+	</tr>
+	<tr>
+		<td>description</td>
+		<td>A short description of the module</td>
+	</tr>
+</table>
+<h3>commands</h3>
+<p>Type: hmap, for each command create an hmap within with the name of the command with the following required fields:</p>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>pretty_name</td>
+		<td>A prettified name of the command used for printing to user</td>
+	</tr>
+	<tr>
+		<td>description</td>
+		<td>A short description of what the command does</td>
+	</tr>
+	<tr>
+		<td>permission</td>
+		<td>The required permission level of the command, can be <span class="codequote">everyone</span>, <span class="codequote">moderator</span>, <span class="codequote">administrator</span>, or <span class="codequote">owner</span></td>
+	</tr>
+	<tr>
+		<td>cache</td>
+		<td>Whether to <span class="codequote">keep</span>, <span class="codequote">regenerate</span>, or <span class="codequote">purge</span> cache on command completion</td>
+	</tr>
+	<tr>
+		<td>execute</td>
+		<td>A map to the function this command runs</td>
+	</tr>
+</table>
+<h3>version_info</h2>
+<p>Type: string; a string representing the version of the command module</p>
+<h2>Example module</h2>
+<p>Here is a simple example module that is used for the <span class="codequote">jban</span> command. You can use it to learn the module format.</p>
+<p><a href="/examples/cmd_jokes.py">cmd_jokes.py</a> [910 bytes]</p>

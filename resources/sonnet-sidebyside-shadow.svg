@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="132.37mm" height="26.809mm" version="1.1" viewBox="0 0 132.37 26.809" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<defs>
+<filter id="b" color-interpolation-filters="sRGB">
+<feFlood flood-color="rgb(0,0,0)" flood-opacity=".49804" result="flood"/>
+<feComposite in="flood" in2="SourceGraphic" operator="in" result="composite1"/>
+<feGaussianBlur in="composite1" result="blur" stdDeviation="1"/>
+<feOffset dx="0.5" dy="0.5" result="offset"/>
+<feComposite in="SourceGraphic" in2="offset" result="composite2"/>
+</filter>
+<filter id="a" color-interpolation-filters="sRGB">
+<feFlood flood-color="rgb(0,0,0)" flood-opacity=".49804" result="flood"/>
+<feComposite in="flood" in2="SourceGraphic" operator="in" result="composite1"/>
+<feGaussianBlur in="composite1" result="blur" stdDeviation="1"/>
+<feOffset dx="0.5" dy="0.5" result="offset"/>
+<feComposite in="SourceGraphic" in2="offset" result="composite2"/>
+</filter>
+</defs>
+<metadata>
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<g transform="translate(-34.431 -120.27)" filter="url(#b)">
+<g transform="matrix(.47877 0 0 .47877 -31.602 -147.84)" fill="#bc4700" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal" aria-label="SONNET">
+<path d="m236.59 609.27c2.1867 1.9733 5.28 2.9333 9.2266 2.9333 4 0 7.2-0.96 9.5466-2.9333 2.3467-1.92 3.5733-4.7467 3.5733-8.48 0-5.76-3.2-9.1733-9.4933-10.347l-3.8933-0.69333c-1.76-0.32-3.04-0.85334-3.84-1.6-0.85333-0.74667-1.2267-1.76-1.2267-3.04 0-1.44 0.42666-2.56 1.3867-3.4133 0.90667-0.85334 2.2933-1.28 4.1067-1.28 1.76 0 3.0933 0.42666 4.0533 1.2267 0.90666 0.85333 1.44 2.1333 1.5467 3.8933h6.72c-0.32-3.4667-1.4933-6.1867-3.6267-8.1066-2.1333-1.92-4.96-2.88-8.5866-2.88-3.7333 0-6.7733 1.0133-9.0133 2.9867-2.24 2.0267-3.36 4.6933-3.36 8.1067 0 5.76 3.3067 9.1733 9.9733 10.24l3.4667 0.58666c1.7067 0.32 2.9333 0.85334 3.7333 1.6 0.74666 0.74667 1.1733 1.8667 1.1733 3.3067 0 3.2533-1.9733 4.8533-5.92 4.8533-2.08 0-3.6267-0.37333-4.6933-1.2267-1.0667-0.85333-1.7067-2.2933-1.92-4.32h-6.6133c0.21333 3.7333 1.44 6.6133 3.68 8.5866z" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
+<path d="m263.5 597.65c0 9.8133 4.3733 14.667 13.173 14.667 4.1067 0 7.36-1.12 9.8133-3.4133s3.68-6.0267 3.68-11.253v-8.4267c0-5.1733-1.2267-8.9066-3.5733-11.2-2.4-2.2933-5.6533-3.4667-9.7066-3.4667-8.96 0-13.387 4.9067-13.387 14.667zm18.133 6.4c-1.0667 1.3867-2.6133 2.0267-4.7467 2.0267-2.24 0-3.8933-0.64-4.8533-1.9733-1.0133-1.3333-1.4933-3.52-1.4933-6.56v-7.9466c0-3.2 0.48-5.44 1.4933-6.8267 0.96-1.3867 2.6133-2.08 4.8533-2.08 2.1333 0 3.68 0.74667 4.7467 2.1333 1.0133 1.3867 1.5467 3.68 1.5467 6.7733v7.9466c0 2.9867-0.53333 5.12-1.5467 6.5067z" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
+<path d="m322.94 575.09h-6.9866v23.04l-13.547-23.04h-6.9866v36.8h6.9866v-22.987l13.547 22.987h6.9866z" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
+<path d="m356.78 575.09h-6.9867v23.04l-13.547-23.04h-6.9867v36.8h6.9867v-22.987l13.547 22.987h6.9867z" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
+<path d="m370.08 581.17h16.373v-6.08h-23.36v36.8h23.36v-6.08h-16.373v-9.44h13.973v-6.08h-13.973z" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
+<path d="m414.4 581.17v-6.08h-25.813v6.08h9.3866v30.72h7.04v-30.72z" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
+</g>
+</g>
+<g transform="translate(-34.431 -120.27)" filter="url(#a)">
+<g transform="translate(-48.978)" fill="#f9bd00">
+<path d="m126.46 130.32-9.6469 10.877s-0.7359-1.126-1.2475-1.7356-1.4926-1.5299-1.4926-1.5299z" style="paint-order:markers stroke fill"/>
+<path d="m114.59 128.15-5.5869 6.9371s1.2727 0.43552 1.9896 0.78093c0.71699 0.34543 1.8508 1.0692 1.8508 1.0692z" style="paint-order:markers stroke fill"/>
+<path d="m126.59 142.63-8.9054 0.17926s0.48443 1.2549 0.68069 2.0261c0.19622 0.7713 0.37057 2.105 0.37057 2.105z" style="paint-order:markers stroke fill"/>
+<path d="m105 120.27 2.1314 14.382s-1.3356-0.16001-2.1314-0.16001-2.1314 0.16001-2.1314 0.16001z" style="paint-order:markers stroke fill"/>
+<path d="m93.945 147.07s1.3157-9.9888 11.055-9.9888c9.7398 0 11.055 9.9888 11.055 9.9888z"/>
+<path d="m83.54 130.32 9.6469 10.877s0.73589-1.126 1.2475-1.7356 1.4926-1.5299 1.4926-1.5299z" style="paint-order:markers stroke fill"/>
+<path d="m95.413 128.15 5.5869 6.9371s-1.2727 0.43552-1.9896 0.78093c-0.71699 0.34543-1.8507 1.0692-1.8507 1.0692z" style="paint-order:markers stroke fill"/>
+<path d="m83.409 142.63 8.9053 0.17926s-0.48443 1.2549-0.68068 2.0261c-0.19622 0.7713-0.37057 2.105-0.37057 2.105z" style="paint-order:markers stroke fill"/>
+</g>
+</g>
+</svg>
