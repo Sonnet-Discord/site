@@ -1,13 +1,13 @@
 package main
 
 import (
-	"strings"
-	"io/ioutil"
-	"path/filepath"
-	"io/fs"
-	"log"
 	"fmt"
+	"io/fs"
+	"io/ioutil"
+	"log"
 	"os"
+	"path/filepath"
+	"strings"
 )
 
 var templateroot string = "./builders/"
@@ -39,8 +39,6 @@ func walkerfunc(fpath string, info fs.FileInfo, err error) error {
 	return nil
 }
 
-
-
 func main() {
 
 	templates := make(map[string]string)
@@ -53,7 +51,7 @@ func main() {
 	for _, f := range tfiles {
 		fname := f.Name()
 		if endswith(fname, ".t.html") {
-			cont, readerr := ioutil.ReadFile(templateroot+"templatedata/"+fname)
+			cont, readerr := ioutil.ReadFile(templateroot + "templatedata/" + fname)
 			if readerr != nil {
 				fmt.Println("Error reading file:", fname)
 			} else {
@@ -68,7 +66,7 @@ func main() {
 		log.Fatal(walkerr)
 	}
 
-	templatefile, err := ioutil.ReadFile(templateroot+"TEMPLATE.t.html")
+	templatefile, err := ioutil.ReadFile(templateroot + "TEMPLATE.t.html")
 
 	if err != nil {
 		log.Fatal(err)
@@ -90,7 +88,7 @@ func main() {
 			// Add title and content
 			nextemp = strings.Replace(nextemp, "<TEMPLATE>[HTML-TITLE]</TEMPLATE>", title, 1)
 			nextemp = strings.Replace(nextemp, "<TEMPLATE>[HTML-CONTENT]</TEMPLATE>", content, 1)
-			newfile, ferr := os.Create(file.Path[:len(file.Path)-6]+"html")
+			newfile, ferr := os.Create(file.Path[:len(file.Path)-6] + "html")
 			if ferr != nil {
 				log.Fatal(ferr)
 			}
