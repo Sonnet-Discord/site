@@ -71,7 +71,7 @@ td,th {
 .ctr,.lastctr tr td:last-child {text-align: center}
 .noctr {text-align: left}
 
-.codequote {
+.codequote, code {
 	background-color: #191919;
 	border: 1px solid #111;
 	border-radius: 4px;
