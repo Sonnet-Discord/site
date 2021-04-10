@@ -106,7 +106,7 @@ func main() {
 	for _, file := range ConvFiles {
 		go transform(file, rawstart, templates, rch)
 	}
-	for i := 0; i < len(ConvFiles); i++ {
+	for range ConvFiles {
 		<-rch
 	}
 }
