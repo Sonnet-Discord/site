@@ -39,13 +39,13 @@ func walkerfunc(fpath string, info fs.FileInfo, err error) error {
 	return nil
 }
 
-func transform(file AbsoluteFile, nextemp string, templates *map[string]string) {
+func transform(file AbsoluteFile, nextemp string, tlates map[string]string, rch chan int) {
 	dat := strings.Split(file.Data, "\n")
 	if dat[0] == "0" {
 		title := dat[1]
 		content := strings.Join(dat[2:], "\n\t\t\t")
 		// Add templatedata files
-		for k, v := range *templates {
+		for k, v := range tlates {
 			ev := strings.Join(strings.Split(v, "\n"), "\n\t\t\t")
 			nextemp = strings.Replace(nextemp, "<TEMPLATE>["+k+"]</TEMPLATE>", ev, 1)
 		}
@@ -53,6 +53,7 @@ func transform(file AbsoluteFile, nextemp string, templates *map[string]string) 
 		nextemp = strings.Replace(nextemp, "<TEMPLATE>[HTML-TITLE]</TEMPLATE>", title, 1)
 		nextemp = strings.Replace(nextemp, "<TEMPLATE>[HTML-CONTENT]</TEMPLATE>", content, 1)
 		newfile, ferr := os.Create(file.Path[:len(file.Path)-6] + "html")
+		defer newfile.Close()
 		if ferr != nil {
 			log.Fatal(ferr)
 		}
@@ -61,6 +62,8 @@ func transform(file AbsoluteFile, nextemp string, templates *map[string]string) 
 			log.Fatal(werr)
 		}
 	}
+	// Tell the main thread we are done
+	rch <- 0
 }
 
 func main() {
@@ -98,7 +101,12 @@ func main() {
 
 	rawstart := string(templatefile)
 
+	rch := make(chan int)
+
 	for _, file := range ConvFiles {
-		go transform(file, rawstart, &templates)
+		go transform(file, rawstart, templates, rch)
+	}
+	for i := 0; i < len(ConvFiles); i++ {
+		<-rch
 	}
 }
