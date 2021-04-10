@@ -19,13 +19,7 @@ func endswith(data, end string) bool {
 	}
 	return data[len(data)-len(end):] == end
 }
-
-type AbsoluteFile struct {
-	Path string
-	Data string
-}
-
-var ConvFiles []AbsoluteFile = *new([]AbsoluteFile)
+var ConvFiles map[string]string = make(map[string]string)
 
 func walkerfunc(fpath string, info fs.FileInfo, err error) error {
 
@@ -33,14 +27,14 @@ func walkerfunc(fpath string, info fs.FileInfo, err error) error {
 	if endswith(fname, ".b.html") && !info.IsDir() {
 		cont, err := ioutil.ReadFile(fpath)
 		if err == nil {
-			ConvFiles = append(ConvFiles, AbsoluteFile{fpath, string(cont)})
+			ConvFiles[fpath] = string(cont)
 		}
 	}
 	return nil
 }
 
-func transform(file AbsoluteFile, nextemp string, tlates map[string]string, rch chan int) {
-	dat := strings.Split(file.Data, "\n")
+func transform(filePath, fileData, nextemp string, tlates map[string]string, rch chan int) {
+	dat := strings.Split(fileData, "\n")
 	if dat[0] == "0" {
 		title := dat[1]
 		content := strings.Join(dat[2:], "\n\t\t\t")
@@ -52,7 +46,7 @@ func transform(file AbsoluteFile, nextemp string, tlates map[string]string, rch 
 		// Add title and content
 		nextemp = strings.Replace(nextemp, "<TEMPLATE>[HTML-TITLE]</TEMPLATE>", title, 1)
 		nextemp = strings.Replace(nextemp, "<TEMPLATE>[HTML-CONTENT]</TEMPLATE>", content, 1)
-		newfile, ferr := os.Create(file.Path[:len(file.Path)-6] + "html")
+		newfile, ferr := os.Create(filePath[:len(filePath)-6] + "html")
 		defer newfile.Close()
 		if ferr != nil {
 			log.Fatal(ferr)
@@ -103,8 +97,8 @@ func main() {
 
 	rch := make(chan int)
 
-	for _, file := range ConvFiles {
-		go transform(file, rawstart, templates, rch)
+	for path, data := range ConvFiles {
+		go transform(path, data, rawstart, templates, rch)
 	}
 	for range ConvFiles {
 		<-rch
