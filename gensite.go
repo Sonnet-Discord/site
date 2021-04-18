@@ -13,18 +13,38 @@ import (
 var templateroot string = "./builders/"
 var htmlroot string = "./html/"
 
-func endswith(data, end string) bool {
-	if len(end) > len(data) {
-		return false
-	}
-	return data[len(data)-len(end):] == end
+type Str string
+
+func (S Str) EndsWith(suffix string) bool {
+	return strings.HasSuffix(string(S), suffix)
 }
+
+func (S Str) Join(slice []string) Str {
+	return Str(strings.Join(slice, string(S)))
+}
+
+func (S Str) Split(by string) []string {
+	return strings.Split(string(S), by)
+}
+
+func (S Str) Replace(before, after string) Str {
+	return Str(strings.Replace(string(S), before, after, -1))
+}
+
+func (S Str) Str() string {
+	return string(S)
+}
+
+func nStr(input string) Str {
+	return Str(input)
+}
+
 var ConvFiles map[string]string = make(map[string]string)
 
 func walkerfunc(fpath string, info fs.FileInfo, err error) error {
 
 	fname := info.Name()
-	if endswith(fname, ".b.html") && !info.IsDir() {
+	if nStr(fname).EndsWith(".b.html") && !info.IsDir() {
 		cont, err := ioutil.ReadFile(fpath)
 		if err == nil {
 			ConvFiles[fpath] = string(cont)
@@ -33,19 +53,19 @@ func walkerfunc(fpath string, info fs.FileInfo, err error) error {
 	return nil
 }
 
-func transform(filePath, fileData, nextemp string, tlates map[string]string, rch chan int) {
-	dat := strings.Split(fileData, "\n")
+func transform(filePath, fileData, temp string, tlates map[string]string, rch chan int) {
+	dat := Str(fileData).Split("\n")
 	if dat[0] == "0" {
 		title := dat[1]
-		content := strings.Join(dat[2:], "\n\t\t\t")
+		content := nStr("\n\t\t\t").Join(dat[2:]).Str()
+		nextemp := nStr(temp)
 		// Add templatedata files
 		for k, v := range tlates {
-			ev := strings.Join(strings.Split(v, "\n"), "\n\t\t\t")
-			nextemp = strings.Replace(nextemp, "<TEMPLATE>["+k+"]</TEMPLATE>", ev, 1)
+			ev := nStr("\n\t\t\t").Join(Str(v).Split("\n")).Str()
+			nextemp = nextemp.Replace("<TEMPLATE>["+k+"]</TEMPLATE>", ev)
 		}
 		// Add title and content
-		nextemp = strings.Replace(nextemp, "<TEMPLATE>[HTML-TITLE]</TEMPLATE>", title, 1)
-		nextemp = strings.Replace(nextemp, "<TEMPLATE>[HTML-CONTENT]</TEMPLATE>", content, 1)
+		nextemp = nextemp.Replace("<TEMPLATE>[HTML-TITLE]</TEMPLATE>", title).Replace( "<TEMPLATE>[HTML-CONTENT]</TEMPLATE>", content)
 		newfile, ferr := os.Create(filePath[:len(filePath)-6] + "html")
 		defer newfile.Close()
 		if ferr != nil {
@@ -71,7 +91,7 @@ func main() {
 
 	for _, f := range tfiles {
 		fname := f.Name()
-		if endswith(fname, ".t.html") {
+		if Str(fname).EndsWith(".t.html") {
 			cont, readerr := ioutil.ReadFile(templateroot + "templatedata/" + fname)
 			if readerr != nil {
 				fmt.Println("Error reading file:", fname)
