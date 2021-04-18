@@ -35,16 +35,12 @@ func (S Str) Str() string {
 	return string(S)
 }
 
-func nStr(input string) Str {
-	return Str(input)
-}
-
 var ConvFiles map[string]string = make(map[string]string)
 
 func walkerfunc(fpath string, info fs.FileInfo, err error) error {
 
 	fname := info.Name()
-	if nStr(fname).EndsWith(".b.html") && !info.IsDir() {
+	if Str(fname).EndsWith(".b.html") && !info.IsDir() {
 		cont, err := ioutil.ReadFile(fpath)
 		if err == nil {
 			ConvFiles[fpath] = string(cont)
@@ -57,11 +53,11 @@ func transform(filePath, fileData, temp string, tlates map[string]string, rch ch
 	dat := Str(fileData).Split("\n")
 	if dat[0] == "0" {
 		title := dat[1]
-		content := nStr("\n\t\t\t").Join(dat[2:]).Str()
-		nextemp := nStr(temp)
+		content := Str("\n\t\t\t").Join(dat[2:]).Str()
+		nextemp := Str(temp)
 		// Add templatedata files
 		for k, v := range tlates {
-			ev := nStr("\n\t\t\t").Join(Str(v).Split("\n")).Str()
+			ev := Str("\n\t\t\t").Join(Str(v).Split("\n")).Str()
 			nextemp = nextemp.Replace("<TEMPLATE>["+k+"]</TEMPLATE>", ev)
 		}
 		// Add title and content
