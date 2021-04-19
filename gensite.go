@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io/fs"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -41,7 +40,7 @@ func walkerfunc(fpath string, info fs.FileInfo, err error) error {
 
 	fname := info.Name()
 	if Str(fname).EndsWith(".b.html") && !info.IsDir() {
-		cont, err := ioutil.ReadFile(fpath)
+		cont, err := os.ReadFile(fpath)
 		if err == nil {
 			ConvFiles[fpath] = string(cont)
 		}
@@ -61,7 +60,7 @@ func transform(filePath, fileData, temp string, tlates map[string]string, rch ch
 			nextemp = nextemp.Replace("<TEMPLATE>["+k+"]</TEMPLATE>", ev)
 		}
 		// Add title and content
-		nextemp = nextemp.Replace("<TEMPLATE>[HTML-TITLE]</TEMPLATE>", title).Replace( "<TEMPLATE>[HTML-CONTENT]</TEMPLATE>", content)
+		nextemp = nextemp.Replace("<TEMPLATE>[HTML-TITLE]</TEMPLATE>", title).Replace("<TEMPLATE>[HTML-CONTENT]</TEMPLATE>", content)
 		newfile, ferr := os.Create(filePath[:len(filePath)-6] + "html")
 		defer newfile.Close()
 		if ferr != nil {
@@ -79,7 +78,7 @@ func transform(filePath, fileData, temp string, tlates map[string]string, rch ch
 func main() {
 
 	templates := make(map[string]string)
-	tfiles, direrr := ioutil.ReadDir(templateroot + "templatedata")
+	tfiles, direrr := os.ReadDir(templateroot + "templatedata")
 
 	if direrr != nil {
 		log.Fatal(direrr)
@@ -88,7 +87,7 @@ func main() {
 	for _, f := range tfiles {
 		fname := f.Name()
 		if Str(fname).EndsWith(".t.html") {
-			cont, readerr := ioutil.ReadFile(templateroot + "templatedata/" + fname)
+			cont, readerr := os.ReadFile(templateroot + "templatedata/" + fname)
 			if readerr != nil {
 				fmt.Println("Error reading file:", fname)
 			} else {
@@ -103,7 +102,7 @@ func main() {
 		log.Fatal(walkerr)
 	}
 
-	templatefile, err := ioutil.ReadFile(templateroot + "TEMPLATE.t.html")
+	templatefile, err := os.ReadFile(templateroot + "TEMPLATE.t.html")
 
 	if err != nil {
 		log.Fatal(err)
