@@ -34,15 +34,15 @@ func (S Str) Str() string {
 	return string(S)
 }
 
-var ConvFiles map[string]string = make(map[string]string)
+type Walkstruct map[string]string
 
-func walkerfunc(fpath string, info fs.FileInfo, err error) error {
+func (H *Walkstruct) walkerfunc(fpath string, info fs.FileInfo, err error) error {
 
 	fname := info.Name()
 	if Str(fname).EndsWith(".b.html") && !info.IsDir() {
 		cont, err := os.ReadFile(fpath)
 		if err == nil {
-			ConvFiles[fpath] = string(cont)
+			(*H)[fpath] = string(cont)
 		}
 	}
 	return nil
@@ -96,7 +96,8 @@ func main() {
 		}
 	}
 
-	walkerr := filepath.Walk(htmlroot, walkerfunc)
+	ConvFiles := Walkstruct{}
+	walkerr := filepath.Walk(htmlroot, ConvFiles.walkerfunc)
 
 	if walkerr != nil {
 		log.Fatal(walkerr)
