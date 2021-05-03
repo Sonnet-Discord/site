@@ -1,0 +1,32 @@
+0
+Binary Formats
+<h1>Sonnet Binary Formats</h1>
+<p>This serves as a general nerd documentation on how the binary formats used in sonnet work, it serves no actual purpose to developing modules for the bot as these exist under obfuscation layers, but it is nice knowledge to pass on if you do end up working with them, or just generally want to learn about the cool shit&#8482; that is in sonnet</p>
+<h2>SFDBC "SnowFlake DataBase Cache"</h2>
+<p>
+The snowflake database cache is a simple format utilizing a format where data is defined using a schema and then that data is stored in a binary compacted format<br>
+More simply it compresses the format into a binary stream that can load quicker than the average json stream<br>
+For an example take the dictionary <code>{"blacklist":"shit,dang"}</code>, this would be converted into <code>{"text":["blacklist", ""]}</code> as seen in coding with the blacklist<br>
+And as for the cache it would only store <code>\x01\x09shit,dang</code>, if you expand this to many many guilds having a blacklist string, it ends up saving space by only storing the schema in the load sequence and the <i>data</i> in the cache<br>
+From what I understand protobus works under a similar system of only transferring a schema once allowing for faster data throughput<br>
+</p>
+<h2>VNUM "Variable width NUMbers"</h2>
+<p>
+VNUM is simply a format of compacting binary numbers into a smaller form, it is used in the above SFDBC example with <code>\x01\x09</code>, the first byte is telling the length of the rest of the number<br>
+The use of this format is quite pronounced when you could care less about speed and want to allow for arbitrarily large numbers<br>
+With a maximum first byte size of 255, you can define a number as large as 2 ** (255 * 8) - 1, while still allowing for small numbers, say 1, to only take 2 bytes<br>
+Due to abuse of reading 0s in python you can also define <code>\x00</code> to define the number 0 in a single byte<br>
+</p>
+<h2>WLC "WordList Cache"</h2>
+<p>
+The wordlist cache is a format for storing fixed width words in a large file, the concept behind it is simply that every word is the same width, padded with zeroes, so, knowing the wordlength, you can jump to any point in the file where you know a word starts and only grab it selectively<br>
+This format is used in sonnets insanely fast infractionID generation loop, that was rewritten in C to get even faster<br>
+Sonnets implementation uses the first byte of the file to sign how large each word is, and then at the start of each word is a byte saying how many chars should be read to read the full word in<br>
+</p>
+<h2>SONNETAES</h2>
+<p>
+SONNETAES is a implementation of AES-CTR with encrypt then HMAC archetecture<br>
+The format works with a header of SONNETAES\x01 and then 64 bytes which make up the SHA512 HMAC key, from that point onwards 2 bytes are read that in little endian tell the length of the next chunk<br>
+The next chunk is read into memory and decrypted, and then the next 2 bytes are read, this continues untill it reaches EOF<br>
+The goal of SONNETAES was to utilize dynamic chunk sizes to allow for low memory overhead writing<br>
+</p>
