@@ -27,48 +27,48 @@
 					<th>Description</th>
 				</tr>
 				<tr>
-					<td>stats</td>
+					<td>stats: Dict[str, int]</td>
 					<td>.01ms timestamps representing process times of the bot</td>
 				</tr>
 				<tr>
-					<td>cmds</td>
+					<td>cmds: List[commandmodule]</td>
 					<td>The command modules</td>
 				</tr>
 				<tr>
-					<td>dlibs</td>
+					<td>dlibs: List[dynamiclibmodule]</td>
 					<td>The dynamiclib modules</td>
 				</tr>
 				<tr>
-					<td>bot_start</td>
+					<td>bot_start: float</td>
 					<td>The unix timestamp of when the kernel started</td>
 				</tr>
 				<tr>
-					<td>main_version</td>
+					<td>main_version: str</td>
 					<td>The version string of the kernel</td>
 				</tr>
 				<tr>
-					<td>kernel_ramfs</td>
+					<td>kernel_ramfs: LeXdPyK.ram_filesystem</td>
 					<td>Ramfs passed from kernel</td>
 				</tr>
 				<tr>
-					<td>ramfs</td>
+					<td>ramfs: LeXdPyK.ram_filesystem</td>
 					<td>Ramfs passed from kernel</td>
 				</tr>
 				<tr>
-					<td>conf_cache</td>
+					<td>conf_cache: Dict[str, Any]</td>
 					<td>A cache of sonnets common database entries, what is stored in this cache can change by version but always will include prefix and automod data</td>
 				</tr>
 				<tr>
-					<td>verbose</td>
+					<td>verbose: bool</td>
 					<td>A true|false flag telling the command if it should be verbose, this is up to the command developer to implement, sonnet commands follow the rule that error messages should always print but sucess messages should be based on the verbose flag</td>
 				</tr>
 				<tr>
-					<td>cmds_dict</td>
+					<td>cmds_dict: commandmodule.commands</td>
 					<td>A hashmap of the commands used by sonnet to process and execute commands</td>
 				</tr>
 			</table>
 			<h2>File format</h2>
-			<h3>category_info</h3>
+			<h3>category_info: Dict[str, str]</h3>
 			<p>Type: hmap, required fields:</p>
 			<table>
 				<tr>
@@ -88,7 +88,7 @@
 					<td>A short description of the module</td>
 				</tr>
 			</table>
-			<h3>commands</h3>
+			<h3>commands: Dict[str, Dict[str, Any]]</h3>
 			<p>Type: hmap, for each command create an hmap within with the name of the command with the following required fields:</p>
 			<table>
 				<tr>
@@ -97,32 +97,32 @@
 					<th>Required</th>
 				</tr>
 				<tr>
-					<td>pretty_name</td>
+					<td>pretty_name: str</td>
 					<td>A prettified name of the command used for printing to user</td>
 					<td>Required</td>
 				</tr>
 				<tr>
-					<td>description</td>
+					<td>description: str</td>
 					<td>A short description of what the command does</td>
 					<td>Required</td>
 				</tr>
 				<tr>
-					<td>rich_description</td>
+					<td>rich_description: str</td>
 					<td>A complex description of what the command does, used to explain more advanced features</td>
 					<td>Optional</td>
 				</tr>
 				<tr>
-					<td>permission</td>
+					<td>permission: Union[str, Tuple[str, Callable[[discord.Message], bool]]]</td>
 					<td>The required permission level of the command, can be <code>everyone</code>, <code>moderator</code>, <code>administrator</code>, or <code>owner</code>. Additionally can be a tuple where the 0 value is the name and the 1 value is a function taking a discord.py message parameter that returns true or false, this allows for custom permissions</td>
 					<td>Required</td>
 				</tr>
 				<tr>
-					<td>cache</td>
+					<td>cache: str</td>
 					<td>Whether to <code>keep</code>, <code>regenerate</code>, or <code>purge</code> cache on command completion. Due to implementation updates <code>purge</code> and <code>regenerate</code> do the same job and only both exist for legacy support, as there is no reason to remove it, it is suggested that commands still use <code>purge</code> and <code>regenerate</code> to better specify the intent of the command</td>
 					<td>Required</td>
 				</tr>
 				<tr>
-					<td>execute</td>
+					<td>execute: Callable[[discord.Message, List[str], discord.Client, **Any], Any]</td>
 					<td>A map to the function this command runs</td>
 					<td>Required</td>
 				</tr>
@@ -135,12 +135,12 @@
 					<th>Required</th>
 				</tr>
 				<tr>
-					<th>alias</th>
+					<th>alias: str</th>
 					<th>the hashmap key of another command, cannot alias to another alias</th>
 					<th>Required</th>
 				</tr>
 			</table>
-			<h3>version_info</h2>
+			<h3>version_info: str</h2>
 			<p>Type: string; a string representing the version of the command module</p>
 			<h2>Example module</h2>
 			<p>Here is a simple example module that is used for the <code>jban</code> command. You can use it to learn the module format.</p>
