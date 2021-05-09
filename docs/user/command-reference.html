@@ -162,9 +162,9 @@
 					<td>Administrator</td>
 				</tr>
 				<tr>
-					<td>set-mutetime &lt;time&gt;</td>
-					<td>Set how long a person should be muted for with antispam automute</td>
-					<td>None</td>
+					<td>set-mutetime &lt;time[h|m|S]&gt;</td>
+					<td>Set how many seconds a person should be muted for with antispam automute</td>
+					<td>mutetime-set</td>
 					<td>Administrator</td>
 				</tr>
 				<tr>
@@ -273,6 +273,12 @@
 					<td>get-message</td>
 					<td>Moderator</td>
 				</tr>
+				<tr>
+					<td>purge &lt;limit&gt; [user]</td>
+					<td>Purge messages from a given channel and optionally only from a specified user</td>
+					<td>None</td>
+					<td>Moderator</td>
+				</tr>
 			</table>
 			<h2 id="rr">
 				<a href="#rr">Reaction Roles</a>
@@ -299,13 +305,13 @@
 				<tr>
 					<td>rr-remove &lt;message&gt; &lt;emoji&gt;</td>
 					<td>Remove a reactionrole from a message</td>
-					<td>None</td>
+					<td>rr-rm</td>
 					<td>Administrator</td>
 				</tr>
 				<tr>
 					<td>rr-list</td>
 					<td>List all reactionroles in guild</td>
-					<td>None</td>
+					<td>rr-ls</td>
 					<td>Administrator</td>
 				</tr>
 				<tr>
@@ -406,7 +412,7 @@
 				<tr>
 					<td>avatar [user]</td>
 					<td>Get avatar of a user</td>
-					<td>None</td>
+					<td>pfp</td>
 					<td>Everyone</td>
 				</tr>
 				<tr>
