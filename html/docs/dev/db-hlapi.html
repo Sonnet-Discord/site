@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<title>DB_HLAPI endpoints</title>
+		<link rel="stylesheet" href="/style.css">
+		<link rel="icon" href="/favicon.png" sizes="32x32" type="image/png">
+	</head>
+	<body>
+		<div class="title">
+			<a href="/">
+				<img src="/resources/sonnet-sidebyside-shadow.svg" alt="Sonnet">
+			</a>
+			</div>
+		<div class="menubar">
+			<a href="/">Home </a><a href="/downloads.html">Downloads </a><a href="/instances.html">Public&nbsp;Instances </a><a href="/changelog.html">Changelog </a><a href="/docs/">Documentation </a><a href="https://github.com/sonnet-discord/sonnet-py">GitHub</a>
+			</div>
+		<div class="content">
+			<h1>DB_HLAPI endpoints</h1>
+			<h2>Preface</h2>
+			<p>
+			The db_hlapi, or database high level api, is sonnets default interface with a database<br>
+			It is used in libraries and lower level commands to access configuration data, infractions, and custom tables from guilds<br>
+			Any endpoints not listed here are not supported, and should not be relied on<br>
+			Absolutely do not access the .database parameter of db_hlapi, that is the low level connection to a db_handler, and should never be used to maintain portability
+			</p>
+			<h2>Primary functions</h2>
+			<table>
+				<tr>
+					<th>Function</th>
+					<th>Description</th>
+				</tr>
+				<tr>
+					<td>__init__(guild_id: int)</td>
+					<td>Init connection to hlapi with a guild id parameter</td>
+				</tr>
+				<tr>
+					<td>add_config(config: str, value: str)</td>
+					<td>Adds a named config to the configuration pool, functionally this should be treated as a per guild Dict[str, str]</td>
+				</tr>
+				<tr>
+					<td>add_infraction(infractionID, userID, moderatorID, Type, reason, timestamp)</td>
+					<td>Add an infraction to infraction db</td>
+				</tr>
+				<tr>
+					<td>close()</td>
+					<td>Closes connection to database, called implicitly on __exit__</td>
+				</tr>
+				<tr>
+					<td>create_guild_db()</td>
+					<td>Creates tables of the current guild, may be called up to 1 time in other commands if they get an error relating to a lack of database</td>
+				</tr>
+				<tr>
+					<td>delete_guild_db()</td>
+					<td>Deletes the current guilds db tables, to be used for GDPR compliance or wiping a guild for any reason</td>
+				</tr>
+				<tr>
+					<td>delete_infraction(infraction_id: str)</td>
+					<td>Deletes the infraction as specified by the id, does not raise an error if it does not exist</td>
+				</tr>
+				<tr>
+					<td>download_guild_db() -&gt; Dict[str, List[str, int]]</td>
+					<td>Downloads current guilds database to a hashmap that is json serializable</td>
+				</tr>
+				<tr>
+					<td>fetch_all_mutes() -&gt; List[List[Union[str, int]]]</td>
+					<td>Fetches all mutes from all guilds, does not need a guild_id to init</td>
+				</tr>
+				<tr>
+					<td>grab_config(config: str) -&gt; Optional[str]</td>
+					<td>grabs a config from the current guilds config table, returns None if none found</td>
+				</tr>
+				<tr>
+					<td>grab_filter_infractions(user: int = None, moderator: int = None, itype: str = None)</td>
+					<td>Grabs infractions that meet the search parameters provided</td>
+				</tr>
+				<tr>
+					<td>grab_infraction(infractionID: str) -&gt; Optional[List[Union[str, int]]]</td>
+					<td>Grabs a single infraction by its id</td>
+				</tr>
+			</table>
+			<h2>TODO</h2> <!-- TODO -->
+			<p>unfnished</p>
+			<table>
+				<tr>
+					<td>is_muted</td>
+				</tr>
+				<tr>
+					<td>mute_user</td>
+				</tr>
+				<tr>
+					<td>unmute_user</td>
+				</tr>
+				<tr>
+					<td>upload_guild_db</td>
+				</tr>
+			</table>
+			<p>deprecated</p>
+			<table>
+				<tr>
+					<td>add_to_starboard</td>
+				</tr>
+				<tr>
+					<td>grab_moderator_infractions</td>
+				</tr>
+				<tr>
+					<td>grab_user_infractions</td>
+				</tr>
+				<tr>
+					<td>in_starboard</td>
+				</tr>
+			</table>
+			<p>dbenums</p>
+			<table>
+				<tr>
+					<td>inject_enum</td>
+				</tr>
+				<tr>
+					<td>grab_enum</td>
+				</tr>
+				<tr>
+					<td>set_enum</td>
+				</tr>
+			</table>
+			</div>
+		<div class="footer">
+			<div class="divider"></div>
+			<p>
+				Sonnet developed by <a href="https://ultrabear.xyz">UltraBear</a>, <a href="https://github.com/Saragon4005">Saragon</a>, <a href="https://github.com/xFuney">xFuney</a>, and <a href="https://github.com/bredo228">Bredo</a>.<br>
+				Sonnet website designed and previously maintained by <a href="https://mckinley.cc/">McKinley</a>, now maintained by <a href="https://ultrabear.xyz">UltraBear</a>.<br>
+				<a href="/resources/">Sonnet logo</a> originally made by Wulf.
+			</p>
+			</div>
+	</body>
+</html>
