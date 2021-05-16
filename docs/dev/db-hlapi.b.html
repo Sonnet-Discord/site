@@ -122,7 +122,7 @@ inputs marked <span class="nosql">green</span> denote safe inputs, while inputs 
 		<td>Superceeded by grab_filter_infractions that does <i>multiple</i> filters directly in sql, allowing it to be faster in some situations</td>
 	</tr>
 	<tr>
-		<td>grab_user_infractions(<span class="nosql">userid</span>) -&gt; Tuple[List[Union[str, int]], ...]</td>
+		<td>grab_user_infractions(<span class="nosql">userid</span>: int) -&gt; Tuple[List[Union[str, int]], ...]</td>
 		<td>Grabs all user infractions</td>
 		<td>Superceeded by grab_filter_infractions that does <i>multiple</i> filters directly in sql, allowing it to be faster in some situations</td>
 	</tr>
@@ -132,4 +132,3 @@ inputs marked <span class="nosql">green</span> denote safe inputs, while inputs 
 		<td>Same can be accomplished by db enumerations, as starboard should have been a more modular addition initially</td>
 	</tr>
 </table>
-
