@@ -25,7 +25,7 @@
 			Any endpoints not listed here are not supported, and should not be relied on<br>
 			Absolutely do not access the .database parameter of db_hlapi, that is the low level connection to a db_handler, and should never be used to maintain portability
 			</p>
-			<style>.sql {color: red;} .nosql {color: green;}</style>
+			<style>.sql {color: red;} .nosql {color: lightgreen;}</style>
 			<h2>Documentation Documentation</h2>
 			<p>
 			The functions below interact primarily with a SQL style database, because of this certain functions inputs can lead to SQL injections (Also known as getting bobby tables'd)<br>
@@ -85,50 +85,71 @@
 					<td>grab_infraction(<span class="nosql">infractionID</span>: str) -&gt; Optional[List[Union[str, int]]]</td>
 					<td>Grabs a single infraction by its id</td>
 				</tr>
+				<tr>
+					<td>is_muted(<span class="nosql">userid</span>: Optional[int] = None, <span class="nosql">infractionid</span>: Optional[str] = None) -&gt; bool</td>
+					<td>Returns if a user or infractionid is currently in the mute database, at least one input must be defined</td>
+				</tr>
+				<tr>
+					<td>mute_user(<span class="nosql">user</span>: int, <span class="nosql">endtime</span>: int, <span class="nosql">infractionID</span>: str)</td>
+					<td>Add a user and an accompanying infraction to the mute database</td>
+				</tr>
+				<tr>
+					<td>unmute_user(<span class="nosql">infractionid</span>: Optional[str] = None, <span class="nosql">userid</span>: Optional[int] = None)</td>
+					<td>Remove a user from the mute database either by infraction id or by user id</td>
+				</tr>
+				<tr>
+					<td>upload_guild_db(<span class="nosql">dbdict</span>: Dict[str, List[List[Any]]])</td>
+					<td>Upload a guilds db to the database, <span class="sql">NOTE THAT THIS IS SQL INJECTION SAFE, BUT IS STILL GIVING FULL ACCESS TO ALL DATA ROWS AT ONCE, AND SHOULD NOT BE HANDED TO END USERS PROGRAMATICALLY</span></td>
+				</tr>
 			</table>
-			<h2>TODO</h2> <!-- TODO -->
-			<p>unfnished</p>
+			<h2>Database Enumeration Functions (hazmat layer)</h2>
 			<table>
 				<tr>
-					<td>is_muted</td>
+					<th>Function</th>
+					<th>Description</th>
 				</tr>
 				<tr>
-					<td>mute_user</td>
+					<td>inject_enum(<span class="sql">enumname</span>: str, <span class="sql">schema</span>: List[Tuple[str, Any]])</td>
+					<td>Add a custom table schema to the database</td>
 				</tr>
 				<tr>
-					<td>unmute_user</td>
+					<td>grab_enum(<span class="sql">name</span>: str, <span class="nosql">itemname</span>: str) -&gt; Optional[List[Union[int, str]]]</td>
+					<td>Grabs an item from the database table based on primary key</td>
 				</tr>
 				<tr>
-					<td>upload_guild_db</td>
+					<td>set_enum(<span class="sql">name</span>: str, <span class="nosql">cpush</span>: List[Union[str, int]])</td>
+					<td>Sets a row in the custom table to the cpush data, schema must match what was defined in inject_enum</td>
 				</tr>
 			</table>
-			<p>deprecated</p>
+			<h2>Deprecated Functions</h2>
 			<table>
 				<tr>
-					<td>add_to_starboard</td>
+					<th>Function</th>
+					<th>Description</th>
+					<th>Deprecation reason</th>
 				</tr>
 				<tr>
-					<td>grab_moderator_infractions</td>
+					<td>add_to_starboard(<span class="nosql">message_id</span>: int) -&gt; bool</td>
+					<td>Add a message to the starboard database, the bool returned gives a sucess indicator</td>
+					<td>Same can be accomplished by db enumerations, as starboard should have been a more modular addition initially</td>
 				</tr>
 				<tr>
-					<td>grab_user_infractions</td>
+					<td>grab_moderator_infractions(<span class="nosql">moderatorid</span>: Union[int, str]) -&gt; Tuple[Any, ...]</td>
+					<td>Grabs all moderator infractions</td>
+					<td>Superceeded by grab_filter_infractions that does <i>multiple</i> filters directly in sql, allowing it to be faster in some situations</td>
 				</tr>
 				<tr>
-					<td>in_starboard</td>
+					<td>grab_user_infractions(<span class="nosql">userid</span>) -&gt; Tuple[List[Union[str, int]], ...]</td>
+					<td>Grabs all user infractions</td>
+					<td>Superceeded by grab_filter_infractions that does <i>multiple</i> filters directly in sql, allowing it to be faster in some situations</td>
+				</tr>
+				<tr>
+					<td>in_starboard(<span class="nosql">message_id</span>: int) -&gt; bool</td>
+					<td>Checks if the message id provided is in starboard</td>
+					<td>Same can be accomplished by db enumerations, as starboard should have been a more modular addition initially</td>
 				</tr>
 			</table>
-			<p>dbenums</p>
-			<table>
-				<tr>
-					<td>inject_enum</td>
-				</tr>
-				<tr>
-					<td>grab_enum</td>
-				</tr>
-				<tr>
-					<td>set_enum</td>
-				</tr>
-			</table>
+			
 			</div>
 		<div class="footer">
 			<div class="divider"></div>
