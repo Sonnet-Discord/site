@@ -28,19 +28,19 @@
 				</tr>
 				<tr>
 					<td>stats: Dict[str, int]</td>
-					<td>.01ms timestamps representing process times of the bot</td>
+					<td>.01ms detail integer timestamps representing process times of the bot</td>
 				</tr>
 				<tr>
 					<td>cmds: List[commandmodule]</td>
-					<td>The command modules</td>
+					<td>The command modules as imported by LeXdPyK</td>
 				</tr>
 				<tr>
 					<td>dlibs: List[dynamiclibmodule]</td>
-					<td>The dynamiclib modules</td>
+					<td>The dynamiclib modules as imported by LeXdPyK</td>
 				</tr>
 				<tr>
 					<td>bot_start: float</td>
-					<td>The unix timestamp of when the kernel started</td>
+					<td>The time.time() timestamp of when the kernel started, can vary between UTC or local time based on env vars</td>
 				</tr>
 				<tr>
 					<td>main_version: str</td>
@@ -122,7 +122,7 @@
 					<td>Required</td>
 				</tr>
 				<tr>
-					<td>execute: Callable[[discord.Message, List[str], discord.Client, **Any], Any]</td>
+					<td>execute: Awaitable[[discord.Message, List[str], discord.Client, **Any], Optional[int]]</td>
 					<td>A map to the function this command runs</td>
 					<td>Required</td>
 				</tr>
