@@ -8,7 +8,7 @@ It is used in libraries and lower level commands to access configuration data, i
 Any endpoints not listed here are not supported, and should not be relied on<br>
 Absolutely do not access the .database parameter of db_hlapi, that is the low level connection to a db_handler, and should never be used to maintain portability
 </p>
-<style>.sql {color: red;} .nosql {color: lightgreen;}</style>
+<style>.sql {color: red;} .nosql {color: lightgreen;} .builtin {color: lightblue;}</style>
 <h2>Documentation Documentation</h2>
 <p>
 The functions below interact primarily with a SQL style database, because of this certain functions inputs can lead to SQL injections (Also known as getting bobby tables'd)<br>
@@ -21,15 +21,15 @@ inputs marked <span class="nosql">green</span> denote safe inputs, while inputs 
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>__init__(<span class="sql">guild_id</span>: int)</td>
+		<td>__init__(<span class="sql">guild_id</span>: <span class="builtin">int</span>)</td>
 		<td>Init connection to hlapi with a guild id parameter</td>
 	</tr>
 	<tr>
-		<td>add_config(<span class="nosql">config</span>: str, <span class="nosql">value</span>: str)</td>
-		<td>Adds a named config to the configuration pool, functionally this should be treated as a per guild Dict[str, str]</td>
+		<td>add_config(<span class="nosql">config</span>: <span class="builtin">str</span>, <span class="nosql">value</span>: <span class="builtin">str</span>)</td>
+		<td>Adds a named config to the configuration pool, functionally this should be treated as a per guild Dict[<span class="builtin">str</span>, <span class="builtin">str</span>]</td>
 	</tr>
 	<tr>
-		<td>add_infraction(<span class="nosql">infractionID</span>, <span class="nosql">userID</span>, <span class="nosql">moderatorID</span>, <span class="nosql">Type</span>, <span class="nosql">reason</span>, <span class="nosql">timestamp</span>)</td>
+		<td>add_infraction(<span class="nosql">infractionID</span>: <span class="builtin">str</span>, <span class="nosql">userID</span>: <span class="builtin">str</span>, <span class="nosql">moderatorID</span>: <span class="builtin">str</span>, <span class="nosql">Type</span>: <span class="builtin">str</span>, <span class="nosql">reason</span>: <span class="builtin">str</span>, <span class="nosql">timestamp</span>: <span class="builtin">int</span>)</td>
 		<td>Add an infraction to infraction db</td>
 	</tr>
 	<tr>
@@ -45,43 +45,43 @@ inputs marked <span class="nosql">green</span> denote safe inputs, while inputs 
 		<td>Deletes the current guilds db tables, to be used for GDPR compliance or wiping a guild for any reason</td>
 	</tr>
 	<tr>
-		<td>delete_infraction(<span class="nosql">infraction_id</span>: str)</td>
+		<td>delete_infraction(<span class="nosql">infraction_id</span>: <span class="builtin">str</span>)</td>
 		<td>Deletes the infraction as specified by the id, does not raise an error if it does not exist</td>
 	</tr>
 	<tr>
-		<td>download_guild_db() -&gt; Dict[str, List[str, int]]</td>
+		<td>download_guild_db() -&gt; Dict[<span class="builtin">str</span>, List[<span class="builtin">str</span>, <span class="builtin">int</span>]]</td>
 		<td>Downloads current guilds database to a hashmap that is json serializable</td>
 	</tr>
 	<tr>
-		<td>fetch_all_mutes() -&gt; List[List[Union[str, int]]]</td>
+		<td>fetch_all_mutes() -&gt; List[List[Union[<span class="builtin">str</span>, <span class="builtin">int</span>]]]</td>
 		<td>Fetches all mutes from all guilds, does not need a guild_id to init</td>
 	</tr>
 	<tr>
-		<td>grab_config(<span class="nosql">config</span>: str) -&gt; Optional[str]</td>
+		<td>grab_config(<span class="nosql">config</span>: <span class="builtin">str</span>) -&gt; Optional[<span class="builtin">str</span>]</td>
 		<td>grabs a config from the current guilds config table, returns None if none found</td>
 	</tr>
 	<tr>
-		<td>grab_filter_infractions(<span class="nosql">user</span>: int = None, <span class="nosql">moderator</span>: int = None, <span class="nosql">itype</span>: str = None)</td>
+		<td>grab_filter_infractions(<span class="nosql">user</span>: <span class="builtin">int</span> = <span class="builtin">None</span>, <span class="nosql">moderator</span>: <span class="builtin">int</span> = <span class="builtin">None</span>, <span class="nosql">itype</span>: <span class="builtin">str</span> = <span class="builtin">None</span> <span class="nosql">automod</span>: <span class="builtin">bool</span> = <span class="builtin">True</span>)</td>
 		<td>Grabs infractions that meet the search parameters provided</td>
 	</tr>
 	<tr>
-		<td>grab_infraction(<span class="nosql">infractionID</span>: str) -&gt; Optional[List[Union[str, int]]]</td>
+		<td>grab_infraction(<span class="nosql">infractionID</span>: <span class="builtin">str</span>) -&gt; Optional[List[Union[<span class="builtin">str</span>, <span class="builtin">int</span>]]]</td>
 		<td>Grabs a single infraction by its id</td>
 	</tr>
 	<tr>
-		<td>is_muted(<span class="nosql">userid</span>: Optional[int] = None, <span class="nosql">infractionid</span>: Optional[str] = None) -&gt; bool</td>
+		<td>is_muted(<span class="nosql">userid</span>: Optional[<span class="builtin">int</span>] = <span class="builtin">None</span>, <span class="nosql">infractionid</span>: Optional[<span class="builtin">str</span>] = <span class="builtin">None</span>) -&gt; <span class="builtin">bool</span></td>
 		<td>Returns if a user or infractionid is currently in the mute database, at least one input must be defined</td>
 	</tr>
 	<tr>
-		<td>mute_user(<span class="nosql">user</span>: int, <span class="nosql">endtime</span>: int, <span class="nosql">infractionID</span>: str)</td>
+		<td>mute_user(<span class="nosql">user</span>: <span class="builtin">int</span>, <span class="nosql">endtime</span>: <span class="builtin">int</span>, <span class="nosql">infractionID</span>: <span class="builtin">str</span>)</td>
 		<td>Add a user and an accompanying infraction to the mute database</td>
 	</tr>
 	<tr>
-		<td>unmute_user(<span class="nosql">infractionid</span>: Optional[str] = None, <span class="nosql">userid</span>: Optional[int] = None)</td>
+		<td>unmute_user(<span class="nosql">infractionid</span>: Optional[<span class="builtin">str</span>] = <span class="builtin">None</span>, <span class="nosql">userid</span>: Optional[<span class="builtin">int</span>] = <span class="builtin">None</span>)</td>
 		<td>Remove a user from the mute database either by infraction id or by user id</td>
 	</tr>
 	<tr>
-		<td>upload_guild_db(<span class="nosql">dbdict</span>: Dict[str, List[List[Any]]])</td>
+		<td>upload_guild_db(<span class="nosql">dbdict</span>: Dict[<span class="builtin">str</span>, List[List[Any]]])</td>
 		<td>Upload a guilds db to the database, <span class="sql">NOTE THAT THIS IS SQL INJECTION SAFE, BUT IS STILL GIVING FULL ACCESS TO ALL DATA ROWS AT ONCE, AND SHOULD NOT BE HANDED TO END USERS PROGRAMATICALLY</span></td>
 	</tr>
 </table>
@@ -92,15 +92,15 @@ inputs marked <span class="nosql">green</span> denote safe inputs, while inputs 
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>inject_enum(<span class="sql">enumname</span>: str, <span class="sql">schema</span>: List[Tuple[str, Any]])</td>
+		<td>inject_enum(<span class="sql">enumname</span>: <span class="builtin">str</span>, <span class="sql">schema</span>: List[Tuple[<span class="builtin">str</span>, Any]])</td>
 		<td>Add a custom table schema to the database</td>
 	</tr>
 	<tr>
-		<td>grab_enum(<span class="sql">name</span>: str, <span class="nosql">itemname</span>: str) -&gt; Optional[List[Union[int, str]]]</td>
+		<td>grab_enum(<span class="sql">name</span>: <span class="builtin">str</span>, <span class="nosql">itemname</span>: <span class="builtin">str</span>) -&gt; Optional[List[Union[<span class="builtin">int</span>, <span class="builtin">str</span>]]]</td>
 		<td>Grabs an item from the database table based on primary key</td>
 	</tr>
 	<tr>
-		<td>set_enum(<span class="sql">name</span>: str, <span class="nosql">cpush</span>: List[Union[str, int]])</td>
+		<td>set_enum(<span class="sql">name</span>: <span class="builtin">str</span>, <span class="nosql">cpush</span>: List[Union[<span class="builtin">str</span>, <span class="builtin">int</span>]])</td>
 		<td>Sets a row in the custom table to the cpush data, schema must match what was defined in inject_enum</td>
 	</tr>
 </table>
@@ -112,22 +112,22 @@ inputs marked <span class="nosql">green</span> denote safe inputs, while inputs 
 		<th>Deprecation reason</th>
 	</tr>
 	<tr>
-		<td>add_to_starboard(<span class="nosql">message_id</span>: int) -&gt; bool</td>
+		<td>add_to_starboard(<span class="nosql">message_id</span>: <span class="builtin">int</span>) -&gt; <span class="builtin">bool</span></td>
 		<td>Add a message to the starboard database, the bool returned gives a sucess indicator</td>
 		<td>Same can be accomplished by db enumerations, as starboard should have been a more modular addition initially</td>
 	</tr>
 	<tr>
-		<td>grab_moderator_infractions(<span class="nosql">moderatorid</span>: Union[int, str]) -&gt; Tuple[Any, ...]</td>
+		<td>grab_moderator_infractions(<span class="nosql">moderatorid</span>: Union[<span class="builtin">int</span>, <span class="builtin">str</span>]) -&gt; Tuple[Any, ...]</td>
 		<td>Grabs all moderator infractions</td>
 		<td>Superceeded by grab_filter_infractions that does <i>multiple</i> filters directly in sql, allowing it to be faster in some situations</td>
 	</tr>
 	<tr>
-		<td>grab_user_infractions(<span class="nosql">userid</span>: int) -&gt; Tuple[List[Union[str, int]], ...]</td>
+		<td>grab_user_infractions(<span class="nosql">userid</span>: <span class="builtin">int</span>) -&gt; Tuple[List[Union[<span class="builtin">str</span>, <span class="builtin">int</span>]], ...]</td>
 		<td>Grabs all user infractions</td>
 		<td>Superceeded by grab_filter_infractions that does <i>multiple</i> filters directly in sql, allowing it to be faster in some situations</td>
 	</tr>
 	<tr>
-		<td>in_starboard(<span class="nosql">message_id</span>: int) -&gt; bool</td>
+		<td>in_starboard(<span class="nosql">message_id</span>: <span class="builtin">int</span>) -&gt; <span class="builtin">bool</span></td>
 		<td>Checks if the message id provided is in starboard</td>
 		<td>Same can be accomplished by db enumerations, as starboard should have been a more modular addition initially</td>
 	</tr>
