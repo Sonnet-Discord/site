@@ -19,6 +19,61 @@
 		<div class="content">
 			<h1>Changelog</h1>
 			<div class="divider"></div>
+			<h2>Sonnet V1.2.5 "Gatekeeper"</h2>
+			<h3>Frontend:</h3>
+			<ul>
+				<li>Add: error handling for GDPR download files too big to upload</li>
+				<li>Add: leave-log and message-edit-log overloads to logging channels, allows better seperation</li>
+				<li>Add: joinrules command subsets, allows user, timestamp, and default pfp warnings</li>
+				<li>Add: Show who the bot could not dm in infraction logging</li>
+				<li>Add: error parsing for forbidden errors on sending embeds</li>
+				<li>Add: search-infractions new flag for infractions per page</li>
+				<li>Change: sonnetsh/map now tell how long it took to execute and print a sucess message</li>
+				<li>Change: profile/pfp now support parsing members not in guild</li>
+				<li>Change: help command now shows total commands and total endpoints</li>
+				<li>Change: serverinfo now shows top role as a mention</li>
+				<li>Change: deletion log timestamps now show message creation time, not deletion time</li>
+				<li>Change: parse_log_channel and parse_role now allow typing remove|rm|delete to remove the log item</li>
+			</ul>
+			<h3>Under the Hood:</h3>
+			<ul>
+				<li>Add: more typing to build_tools</li>
+				<li>Add: more typing to sonnet core and everywhere</li>
+				<li>Change: Seperate files from discord.File in GDPR command</li>
+				<li>Add: constants library for discord limits and sonnet error strings</li>
+				<li>Add: delete_config db_hlapi endpoint</li>
+				<li>Add: db_hlapi lock kwarg to allow for locking database queries per guild</li>
+				<li>Add: lib_parsers.parse_user_member to parse a user and member object from args</li>
+				<li>Change: search-infractions now uses SQL to query for infractions</li>
+				<li>Change: search-infractions now uses math to calculate page counts</li>
+				<li>Change: sonnetsh/map now use try: finally: syntax to gaurantee the message.content is not lost</li>
+				<li>Add: limits to deletion and editing logs to not go over (cause 4k char limits)</li>
+				<li>Add: dummy typing class for cryptography</li>
+				<li>Add: cmd_module, dlib_module and _dict counterparts to lib_lexdpyk_h</li>
+				<li>Add: lib_loaders endpoint to get_guild_lock for threadlocks</li>
+				<li>Add: TEXT_KEY endpoint to db_handler that says if TEXT is allowed to be used as a key or not</li>
+				<li>Add: make_new_index endpoint to db_handler to allow for creating indexes</li>
+				<li>Add: multifetch_rows_from_table endpoint to db_handler that allows fetching based on multiple datapoints</li>
+				<li>Add: multicount_rows_from_table endpoint to db_handler that allows fetching a count of the db query instead of the data itself</li>
+				<li>Add: ping endpoint to db_handler to ping if db connection is alive</li>
+				<li>Add: Deprecationwarning on lib_parsers.ifgate</li>
+				<li>Add: docstrings to all lib_parsers endpoints</li>
+				<li>Add: LeXdPyK V1.3.3:</li>
+				<ul>
+					<li>Add: typing to all of kernel</li>
+					<li>Add: error logging to err.log</li>
+					<li>Add: errors are not raised to dpy, instead printed with traceback by the kernel</li>
+					<li>Add: handle discord.errors.Forbidden on sending error messages from kernel</li>
+				</ul>
+				<li>Change: grab_files returns bare io.BytesIO discord.File to allow for no underlying circular references</li>
+				<li>Add: grab_filter_infractions to db_hlapi, deprecates grab_user_infractions and grab_moderator_infractions</li>
+			</ul>
+			<h3>Runtime Environment:</h3>
+			<ul>
+				<li>Add: autotest easy threading test script</li>
+				<li>Change: bump requirements</li>
+			</ul>
+			<div class="divider"></div>
 			<h2>Sonnet V1.2.4 "Over the Rainbow"</h2>
 			<h3>Frontend:</h3>
 			<ul>
