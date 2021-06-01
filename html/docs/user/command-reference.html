@@ -31,15 +31,27 @@
 					<th>Permission Level</th>
 				</tr>
 				<tr>
+					<td>message-edit-log &lt;channel&gt;</td>
+					<td>Change message edit log, overloads message-log</td>
+					<td>None</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
 					<td>message-log &lt;channel&gt;</td>
 					<td>Change message log</td>
 					<td>None</td>
 					<td>Administrator</td>
 				</tr>
 				<tr>
+					<td>leave-log &lt;channel&gt;</td>
+					<td>Change leave log, overloads join-log</td>
+					<td>None</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
 					<td>join-log &lt;channel&gt;</td>
 					<td>Change join log</td>
-					<td>leave-log</td>
+					<td>None</td>
 					<td>Administrator</td>
 				</tr>
 				<tr>
@@ -106,6 +118,12 @@
 					<th>Description</th>
 					<th>Aliases</th>
 					<th>Permission Level</th>
+				</tr>
+				<tr>
+					<td>set-joinrule &lt;type&gt; &lt;parameter&gt;</td>
+					<td>set joinrules to notify for</td>
+					<td>None</td>
+					<td>Administrator</td>
 				</tr>
 				<tr>
 					<td>wb-change &lt;csv list&gt;</td>
@@ -291,7 +309,7 @@
 					<td>Moderator</td>
 				</tr>
 				<tr>
-					<td>search-infractions &lt;-u USER | -m MOD&gt; [-t TYPE] [-p PAGE] [--no-automod]</td>
+					<td>search-infractions &lt;-u USER | -m MOD&gt; [-t TYPE] [-p PAGE] [-i INF PER PAGE] [--no-automod]</td>
 					<td>Grab infractions of a user</td>
 					<td>warnings, list-infractions</td>
 					<td>Moderator</td>
