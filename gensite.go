@@ -36,13 +36,13 @@ func (S Str) Str() string {
 
 type Walkstruct map[string]string
 
-func (H *Walkstruct) walkerfunc(fpath string, info fs.FileInfo, err error) error {
+func (H Walkstruct) walkerfunc(fpath string, info fs.FileInfo, err error) error {
 
 	fname := info.Name()
 	if Str(fname).EndsWith(".b.html") && !info.IsDir() {
 		cont, err := os.ReadFile(fpath)
 		if err == nil {
-			(*H)[fpath] = string(cont)
+			H[fpath] = string(cont)
 		}
 	}
 	return nil
