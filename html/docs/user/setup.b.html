@@ -1,64 +1,131 @@
 0
 First Time Setup - Sonnet
 <h1>First Time Setup</h1>
-<p>Follow the instructions for your desired database. If you are not migrating from Sonnet's predecessor, Rhea, follow instructions for a "Fresh Install"</p>
-<h2>Part 1: Init Database</h2>
-<h3>MariaDB, Fresh Install</h3>
+Updated as of sonnet V1.2.5
+<h2>Part 1: Getting it all Installed</h2>
 <ul>
-	<li>Specify <span class="codequote">mariadb</span> for <span class="codequote">DB_TYPE</span> in <span class="codequote">sonnet_cfg</span></li>
-	<li>Install MariaDB migrator for sonnet-mariadb
-		<ul>
-			<li>Run init phase of MariaDB migrator, have a MariaDB server running that you have root to</li>
-		</ul>
-	</li>
-	<li>Copy <span class="codequote">.login-info.txt</span> file to Sonnet run location for MariaDB login.</li>
+	<li><h3>1.1: Python</h3></li>
+		<p>
+			To start off you will need python 3.8 or greater installed (currently 3.10 cannot be supported due to discord.py 1.7 using endpoints that will be removed then, but this issue will resolve itself with the release of dpy2.0)<br>
+			This can be done via <code>sudo apt install python3</code> for debian based distributions, if you are not using a debian based distro then use the appropriate package manager, if you are not using sudo in favor of something like doas then understand this guide is made for people who barely even know what sudo is<br> 
+            Make sure that the version installed will work by running <code>python3 --version</code> if it isn't a high enough version install python from a different source
+		</p>
+	<li><h3>1.2: Cloning + Base Dependencies</h3></li>
+		<p>
+			Once python is installed you can move on to installing sonnet itself, this can be done with <code>git clone https://github.com/sonnet-discord/sonnet-py</code><br>
+			If you get a error that git is not installed, refer to your package manager command to install git<br>
+			<br>
+			After installing sonnet, move into the sonnet directory, assuming you just git cloned it that should be possible with <code>cd ./sonnet-py</code><br>
+			Now install sonnets dependencies with <code>python3 -m pip install -r requirements.txt</code><br>
+			If you get an error that python3 is not found, but you installed python, then try replacing <code>python3</code> with <code>python</code>, do this for the rest of the guide, if it still errors then ensure python is actually installed
+		</p>
+	<li><h3>1.3: Extra Dependencies</h3></li>
+		<h4>mariadb (please don't) (abstract guide)</h4>
+		<p>
+		Why not: mariadb has a complicated process to install, doesnt support as much common sql as sqlite3, and has higher latency than sqlite3, unless you have a reason to you should just use sqlite3<br>
+			If you are planning on using mariadb over sqlite3 then there are extra steps involved to installing mariadb:<br>
+			<ul>
+				<li>Install <code>mariadb connector/C</code> from your package manager</li>
+				<li>Have a mariadb server set up inside your linux machine, if you are using a network attached server you will have to make the sonnet user manually</li>
+				<li>Use <code>python3 -m pip install mariadb</code> to install the mariadb connector/Python library</li>
+				<li>Use the mariadb-migrator-py script from the sonnet-discord github organization to INITDB, it will spit out a <code>.login-info.txt</code> file, put that in the sonnet root dir</li>
+			</ul>
+		</p>
+		<h4>re2 (please do) (abstract guide)</h4>
+		<p>
+			Why yes: re2 is more secure than the competing library, re, this is due to re being turing complete, leaving room for exploit attacks on the bots regex parser if allowed on insecure guilds, if you are hosting a public instance you absolutely must use re2 for security<br>
+			If you are planning on using re2 over re there are some extra steps you must complete
+			<ul>
+				<li>Install google-re2, this may be called libre2 or libre2-dev depending on the distros package manager</li>
+				<li>Use <code>python3 -m pip install pybind11</code> to install pybind, this is a compile time dependency of google-re2</li>
+				<li>Use <code>python3 -m pip install google-re2</code>, if this fails it means your version of re2 is out of date (this is the case on Ubuntu LTS 20.04 repos), in which case you must compile re2 from source to use it</li>
+			</ul>
+		</p>
 </ul>
-<h3>MariaDB, Migrating From Rhea</h3>
+<h2>Part 2: Configuring Sonnet</h2>
 <ul>
-	<li>Specify <span class="codequote">mariadb</span> for <span class="codequote">DB_TYPE</span> in <span class="codequote">sonnet_cfg</span></li>
-	<li>Install MariaDB migrator for sonnet-mariadb in Rhea runtime location
-		<ul>
-			<li>Run init phase of MariaDB migrator, have a MariaDB server running that you have root to</li>
-			<li>Run migration phase of MariaDB migrator</li>
-		</ul>
-	</li>
-	<li>Copy <span class="codequote">.login-info.txt</span> file to Sonnet run location for MariaDB login.</li>
+	<li><h3>2.1: sonnet_cfg.py</h3></li>
+		<p>
+			Once sonnet has been installed it is time to configure the bot
+			<table>
+				<tr>
+					<th>Conf Name</th>
+					<th>Type</th>
+					<th>Description</th>
+				</tr>
+				<tr>
+					<td>GLOBAL_PREFIX</td>
+					<td>str</td>
+					<td>Default global prefix, can be set per server</td>
+				</tr>
+				<tr>
+					<td>BLACKLIST_ACTION</td>
+					<td>str(warn|mute|kick|ban)</td>
+					<td>Default action to occur when someone breaks blacklist, can be set per server</td>
+				</tr>
+				<tr>
+					<td>STARBOARD_EMOJI</td>
+					<td>str</td>
+					<td>Default emoji to use for starboard, can be set per server</td>
+				</tr>
+				<tr>
+					<td>STARBOARD_COUNT</td>
+					<td>int|str</td>
+					<td>Default starboard reaction threshhold, can be set per server</td>
+				</tr>
+				<tr>
+					<td>DB_TYPE</td>
+					<td>str(mariadb|sqlite3)</td>
+					<td>Choose between using mariadb or sqlite3</td>
+				</tr>
+				<tr>
+					<td>SQLITE3_LOCATION</td>
+					<td>str</td>
+					<td>If using sqlite3, the location where the database will go</td>
+				</tr>
+				<tr>
+					<td>REGEX_VERSION</td>
+					<td>str(re|re2)</td>
+					<td>Configure whether to use re2 or re, any public instance must use re2 due to exploits, however re is cross platform and easier to set up</td>
+				</tr>
+				<tr>
+					<td>CLIB_LOAD</td>
+					<td>bool</td>
+					<td>Configure whether or not to compile and run the c loader, this requires gcc and make to be installed</td>
+				</tr>
+			</table>
+		</p>
+	<li><h3>2.2: LeXdPyK_conf.py</h3></li>
+		<p>
+			After configuring sonnet you must configure the bot owner(s)<br>
+			the BOT_OWNER variable can be either strings of or ints in a list, or can just be one string or int<br>
+			A normal single user install might look like <code>BOT_OWNER = 123456789</code>
+		</p>
 </ul>
-<h3>SQLite3, Fresh Install</h3>
+<h2>Part 3: Starting sonnet</h2>
 <ul>
-	<li>Specify <span class="codequote">sqlite3</span> for <span class="codequote">DB_TYPE</span> in <span class="codequote">sonnet_cfg</span></li>
-	<li>Configure <span class="codequote">SQLITE3_LOCATION</span> in <span class="codequote">sonnet_cfg</span></li>
-</ul>
-<h3>SQLite3, Migrating From Rhea</h3>
+	<li><h3>3.1: Getting a bot token</h3></li>
+		<p>
+			Go to <a href="https://discord.com/developers/">https://discord.com/developers/</a> and obtain a bot token, the specifics of that is out of the scope of this guide, so I will trust you figured it out somehow
+		</p>
+	<li><h3>3.2: Putting your token in sonnet</h3></li>
+		<p>
+			There are 3 options to chose from when putting your token into sonnet:
+			<ul>
+				<li>Using env var SONNET_TOKEN: Set SONNET_TOKEN to the discord token</li>
+				<li>Using env var RHEA_TOKEN: Set RHEA_TOKEN to the discord token, this is kept for backwards compatibility with rhea, sonnets predecesor</li>
+				<li>Using encryptboot: start sonnet with the --generate-token flag, it will ask for the token and a password, on next boot do not put --generate-token, it will ask for the password and read from an encrypted token file</li>
+			</ul>
+		</p>
+	<li><h3>3.3: Starting sonnet</h3></li>
+		<p>
+			Everything is installed and configured, your discord token is set, it is now time to boot sonnet<br>
+			<br>
+			Run <code>python3 main.py</code>, if sonnet booted sucessfully then congratulations, you now have a sonnet instance<br>
+			<br>
+			If something breaks, try and read the error and look back to make sure you did not skip a step<br>
+			Enjoy sonnet, and enjoy modularity<br>
+			<br>
+			-- Ultrabear
+	</p>
 <ul>
-	<li>Specify <span class="codequote">sqlite3</span> for <span class="codequote">DB_TYPE</span> in <span class="codequote">sonnet_cfg</span></li>
-	<li>Install MariaDB migrator for sonnet-sqlite3 in Rhea runtime location
-		<ul>
-			<li>Specify <span class="codequote">sqlite3 db output</span></li>
-			<li>Run migration phase of SQLite3 migrator</li>
-		</ul>
-	</li>
-	<li>Set <span class="codequote">SQLITE3_LOCATION</span> in <span class="codequote">sonnet_cfg</span> to same place as shown in the migration tool</li>
-</ul>
-<h2>Part 2: Configure Bot Token</h2>
-<h3>Migrating From Rhea</h3>
-<p>Rhea token environment variables are accepted by default for logins, no step needed.</p>
-<h3>Fresh Install</h3>
-<p>Configure environment variable <span class="codequote">SONNET_TOKEN</span> or <span class="codequote">RHEA_TOKEN</span> to hold bot token.</p>
-<h2>Part 3: Install Dependencies</h2>
-<ul>
-	<li>Install Python 3.8 or greater</li>
-	<li>Install discord.py >= 1.6 using <span class="codequote">python3 -m pip install --upgrade discord.py</span></li>
-	<li>If using MariaDB, install MariaDB connector using <span class="codequote">python3 -m pip install --upgrade mariadb</span></li>
-</ul>
-<h2>Part 4: Configure and Run Bot</h2>
-<ul>
-	<li>Read through configuration file <span class="codequote">sonnet_cfg</span> and <span class="codequote">LeXdPyK_conf</span>
-		<ul>
-			<li>Decide on global defaults in <span class="codequote">sonnet_cfg</span></li>
-			<li>Configure bot owner in <span class="codequote">LeXdPyK_conf</span>, used for accessing debug commands</li>
-		</ul>
-	</li>
-	<li>Run <span class="codequote">python3 main.py</span></li>
-</ul>
-<p>The bot should initialize with Discord after loading kernel modules</p>
