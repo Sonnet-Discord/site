@@ -21,6 +21,48 @@
 		<div class="content">
 			<h1>Changelog</h1>
 			<div class="divider"></div>
+			<h2>Sonnet V1.2.6 "A Voice and a Void"</h2>
+			<h3>Frontend:</h3>
+			<ul>
+				<li>Add: asyncmap/amap, allows for faster concurrent command execution, but fares poorly with error handling</li>
+				<li>Add: some parserlibs now detect when their db entries are corrupt and warn the end user</li>
+				<li>Add: paging to help command, 25*25 limit no longer exists</li>
+			</ul>
+			<h3>Under the Hood:</h3>
+			<ul>
+				<li>Add: cache directives: a way for caches to specify an exact cache dir or file to remove, allowing for turing complete and finer cache control</li>
+				<li>Change: infraction processor now grabs infraction time once</li>
+				<li>Add: <code>automod: bool</code> flag to commands api, used by infraction processing commands</li>
+				<li>Deprecate: db_hlapi(lock: threading.Lock=), it could cause async deadlock</li>
+				<li>Change: on_message_delete now supports logging 4000c messages</li>
+				<li>Deprecate: lib_loaders.inc_statistics, just use inc_statistics_better</li>
+				<li>Deprecate: db_hlapi.add_to_starboard, db_hlapi.in_starboard</li>
+				<li>Change: lib_encryption_wrapper.encrypted_reader errors are now custom, they inherit from the same exceptions so they should not cause errors to preexisting code</li>
+				<li>Add: some documentation to lib_loaders and lib_parsers functions</li>
+				<li>Change: SONNETAES errors now just purge files and does not top level error</li>
+				<li>Add: db_hlapi.hlapi_version that says what api version it is on</li>
+				<li>Add: db_hlapi now checks the underlying db config version, this will let us change it later and upgrade old dbs</li>
+				<li>Add: delete_enum: deletes a row in the enum table</li>
+				<li>Deprecate: db_hlapi.database, you are not supposed to call this anyways, the new internal endpoint is db_hlapi._db</li>
+				<li>Add: documentation to some db_hlapi endpoints</li>
+				<li>Add: LeXdPyK 1.3.4: supports strict type checking</li>
+			</ul>
+			<h3>Runtime Environment:</h3>
+			<ul>
+				<li>Add: strict mypy type checking (woo)</li>
+				<li>Add: BANNED.md, the no list of sonnet</li>
+				<li>Change: cmds_to_html now validates cache names and validates all items required by kernel</li>
+				<li>Change: cmds_to_html now uses rudimentary html escaper for sonnet inputs</li>
+				<li>Change: dependency version bump on all deps</li>
+			</ul>
+			<h3>Bugs:</h3>
+			<ul>
+				<li>Change: emoji validator from 2 max chars to 5</li>
+				<li>Fix: starboard-count accepted float input, caused infinities errors, now no longer does</li>
+				<li>Fix: race condition with blacklist parsing on members becoming users</li>
+				<li>Fix: help command no longer errors on a command module with no commands (this is stupid but ok)</li>
+			</ul>
+			<div class="divider"></div>
 			<h2>Sonnet V1.2.5-1</h2>
 			<h3>Bugs:</h3>
 			<ul>

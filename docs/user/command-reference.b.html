@@ -198,25 +198,25 @@ Default Command Reference - Sonnet
 		<th>Permission Level</th>
 	</tr>
 	<tr>
-		<td>set-color-primary &lt;hexcolor|"reset"&gt;</td>
+		<td>set-color-primary &lt;hexcolor|&#34;reset&#34;&gt;</td>
 		<td>Set primary embed color</td>
 		<td>set-colour-primary</td>
 		<td>Administrator</td>
 	</tr>
 	<tr>
-		<td>set-color-creation &lt;hexcolor|"reset"&gt;</td>
+		<td>set-color-creation &lt;hexcolor|&#34;reset&#34;&gt;</td>
 		<td>Set creation embed color</td>
 		<td>set-colour-creation</td>
 		<td>Administrator</td>
 	</tr>
 	<tr>
-		<td>set-color-edit &lt;hexcolor|"reset"&gt;</td>
+		<td>set-color-edit &lt;hexcolor|&#34;reset&#34;&gt;</td>
 		<td>Set edit embed color</td>
 		<td>set-colour-edit</td>
 		<td>Administrator</td>
 	</tr>
 	<tr>
-		<td>set-color-deletion &lt;hexcolor|"reset"&gt;</td>
+		<td>set-color-deletion &lt;hexcolor|&#34;reset&#34;&gt;</td>
 		<td>Set deletion embed color</td>
 		<td>set-colour-deletion</td>
 		<td>Administrator</td>
@@ -234,7 +234,7 @@ Default Command Reference - Sonnet
 	</tr>
 	<tr>
 		<td>jkb &lt;uid&gt;</td>
-		<td>"bans" a user</td>
+		<td>&#34;bans&#34; a user</td>
 		<td>None</td>
 		<td>Moderator</td>
 	</tr>
@@ -387,6 +387,12 @@ Default Command Reference - Sonnet
 		<td>None</td>
 		<td>Moderator</td>
 	</tr>
+	<tr>
+		<td>amap [-e args] &lt;command&gt; (&lt;args&gt;)+</td>
+		<td>Like map, but processes asynchronously, meaning it ignores errors</td>
+		<td>None</td>
+		<td>Moderator</td>
+	</tr>
 </table>
 <h2 id="starboard">
 	<a href="#starboard">Starboard</a>
@@ -446,7 +452,7 @@ Default Command Reference - Sonnet
 		<td>Everyone</td>
 	</tr>
 	<tr>
-		<td>help [category|command]</td>
+		<td>help [category|command] [-p PAGE]</td>
 		<td>Print helptext</td>
 		<td>None</td>
 		<td>Everyone</td>
