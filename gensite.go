@@ -9,37 +9,20 @@ import (
 	"strings"
 )
 
-var templateroot string = "./builders/"
-var htmlroot string = "./html/"
-
-type Str string
-
-func (S Str) EndsWith(suffix string) bool {
-	return strings.HasSuffix(string(S), suffix)
-}
-
-func (S Str) Join(slice []string) Str {
-	return Str(strings.Join(slice, string(S)))
-}
-
-func (S Str) Split(by string) []string {
-	return strings.Split(string(S), by)
-}
-
-func (S Str) Replace(before, after string) Str {
-	return Str(strings.Replace(string(S), before, after, -1))
-}
-
-func (S Str) Str() string {
-	return string(S)
-}
+const (
+	templateroot = "./builders/"
+	htmlroot = "./html/"
+)
 
 type Walkstruct map[string]string
 
 func (H Walkstruct) walkerfunc(fpath string, info fs.FileInfo, err error) error {
+	if err != nil {
+		return err
+	}
 
 	fname := info.Name()
-	if Str(fname).EndsWith(".b.html") && !info.IsDir() {
+	if strings.HasSuffix(fname, ".b.html") && !info.IsDir() {
 		cont, err := os.ReadFile(fpath)
 		if err == nil {
 			H[fpath] = string(cont)
@@ -48,19 +31,22 @@ func (H Walkstruct) walkerfunc(fpath string, info fs.FileInfo, err error) error 
 	return nil
 }
 
-func transform(filePath, fileData, temp string, tlates map[string]string, rch chan int) {
-	dat := Str(fileData).Split("\n")
+func transform(filePath, fileData, temp string, rch chan int) {
+	dat := strings.Split(fileData, "\n")
 	if dat[0] == "0" {
+
+		// Parse bhtml headers and content
 		title := dat[1]
-		content := Str("\n\t\t\t").Join(dat[2:]).Str()
-		nextemp := Str(temp)
-		// Add templatedata files
-		for k, v := range tlates {
-			ev := Str("\n\t\t\t").Join(Str(v).Split("\n")).Str()
-			nextemp = nextemp.Replace("<TEMPLATE>["+k+"]</TEMPLATE>", ev)
-		}
+		content := strings.Join(dat[2:], "\n\t\t\t")
+
 		// Add title and content
-		nextemp = nextemp.Replace("<TEMPLATE>[HTML-TITLE]</TEMPLATE>", title).Replace("<TEMPLATE>[HTML-CONTENT]</TEMPLATE>", content)
+		replaces := []string{
+			"<TEMPLATE>[HTML-TITLE]</TEMPLATE>", title,
+			"<TEMPLATE>[HTML-CONTENT]</TEMPLATE>", content,
+		}
+
+		nextemp := strings.NewReplacer(replaces...).Replace(temp)
+
 		newfile, ferr := os.Create(filePath[:len(filePath)-6] + "html")
 		defer newfile.Close()
 		if ferr != nil {
@@ -86,7 +72,7 @@ func main() {
 
 	for _, f := range tfiles {
 		fname := f.Name()
-		if Str(fname).EndsWith(".t.html") {
+		if strings.HasSuffix(fname, ".t.html") {
 			cont, readerr := os.ReadFile(templateroot + "templatedata/" + fname)
 			if readerr != nil {
 				fmt.Println("Error reading file:", fname)
@@ -113,9 +99,20 @@ func main() {
 
 	rch := make(chan int)
 
-	for path, data := range ConvFiles {
-		go transform(path, data, rawstart, templates, rch)
+	// Add templatedata files
+	replacements := make([]string, 0, len(templates)*2)
+	for k, v := range templates {
+		ev := strings.Join(strings.Split(v, "\n"), "\n\t\t\t")
+		replacements = append(replacements, "<TEMPLATE>["+k+"]</TEMPLATE>", ev)
 	}
+
+	rawstart = strings.NewReplacer(replacements...).Replace(rawstart)
+
+	for path, data := range ConvFiles {
+		go transform(path, data, rawstart, rch)
+	}
+
+	// wait for threads to finish
 	for range ConvFiles {
 		<-rch
 	}
