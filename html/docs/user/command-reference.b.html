@@ -294,13 +294,13 @@ Default Command Reference - Sonnet
 	<tr>
 		<td>search-infractions &lt;-u USER | -m MOD&gt; [-t TYPE] [-p PAGE] [-i INF PER PAGE] [--no-automod]</td>
 		<td>Grab infractions of a user</td>
-		<td>warnings, list-infractions</td>
+		<td>warnings, list-infractions, infractions</td>
 		<td>Moderator</td>
 	</tr>
 	<tr>
 		<td>infraction-details &lt;infractionID&gt;</td>
 		<td>Grab details of an infractionID</td>
-		<td>get-infraction</td>
+		<td>get-infraction, grab-infraction</td>
 		<td>Moderator</td>
 	</tr>
 	<tr>
@@ -425,6 +425,12 @@ Default Command Reference - Sonnet
 	<tr>
 		<td>starboard-count &lt;number&gt;</td>
 		<td>Set starboard reaction count threshold</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>starboard-forceboard &lt;message&gt;</td>
+		<td>Forcibly starboard a message and add it to the starboard db</td>
 		<td>None</td>
 		<td>Administrator</td>
 	</tr>
