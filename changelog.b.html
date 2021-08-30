@@ -2,6 +2,43 @@
 Changelog - Sonnet
 <h1>Changelog</h1>
 <div class="divider"></div>
+<h2>Sonnet V1.2.7 "Start of the Road"</h2>
+Every end to a road is the start of another.
+<h3>Frontend:</h3>
+<ul>
+	<li>Add(starboard-forceboard): allows forcing a message to be starboarded</li>
+	<li>Change(mute): under gotools parser, 5m2s type parsing is allowed now</li>
+</ul>
+<h3>Under the Hood:</h3>
+<ul>
+	<li>Change(search-infractons): Improve infraction renderer to show most amount of chars possible</li>
+	<li>Add: gotools library to handle time parsing</li>
+	<li>Add: gotools GenerateCacheFile (10x as fast as python variant)</li>
+	<li>Change: move alot of code to use io.StringIO</li>
+	<li>Add: dpy-stubs typing to codebase</li>
+	<li>Change: remove &ndash;implicit-reexport mypy flag as its no longer needed</li>
+	<li>LeXdPyK 1.4: support for dpy typing, faster ramfs multi dir lookups</li>
+	<li>Add(lib_sonnetconfig): Support for dynamic config loading</li>
+	<li>Change: reformat wordlist to be alphabetic, add new words</li>
+	<li>Change(parsedate): parsedate functions now take optional datetime to conform to dpy typing</li>
+	<li>Add: Starting stubs for a new database version, this is not finalized</li>
+	</ul>
+<h3>Runtime Environment:</h3>
+<ul>
+	<li>Add: new configs without breaking old config files:  and</li>
+</ul>
+<h3>Bugs:</h3>
+<ul>
+	<li>Patch(datetime): timestamps are now more uniformly UTC on non UTC system clocks</li>
+	<ul>
+		<li>This does not affect antispam as dpy datetimes are non aware</li>
+	</ul>
+	<li>Patch: Remove alot of race conditions and channel type errors by adding dpy typing</li>
+	<li>Patch(help): Help command total commands count was not correct</li>
+	<li>Patch(cloader): Make cloader differentiate between processing error and FileNotFound</li>
+	<li>Patch(update_log_channel): now checks for type of channel, must be TextChannel</li>
+</ul>
+<div class="divider"></div>
 <h2>Sonnet V1.2.6-2</h2>
 <h3>Bugs:</h3>
 <ul>
