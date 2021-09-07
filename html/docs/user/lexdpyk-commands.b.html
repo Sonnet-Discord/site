@@ -1,0 +1,75 @@
+0
+LeXdPyK Debug Commands - Sonnet
+<h1>LeXdPyK Debug Commands</h1>
+<p>
+The LeXdPyK kernel comes with hidden debug commands for bot owners to update and manage their bots uptime, along with blacklist users and guilds.<br>
+All commands are invoked as &lt;command&gt; &lt;botid&gt; [args]<br>
+This is because the kernel commands have no prefix and are instead tied to the specific bot, allowing cross guild bots with the same ui and same guild lexdpyk bots that dont collide
+</p>
+<table>
+	<tr>
+		<th>Command</th>
+		<th>Description</th>
+		<th>Args</th>
+	</tr>
+	<tr>
+		<td>debug-add-guild-blacklist</td>
+		<td>Adds a guild to the LeXdPyK system level blacklist</td>
+		<td>bot_id guild_id</td>
+	</tr>
+	<tr>
+		<td>debug-add-user-blacklist</td>
+		<td>Adds a user to the LeXdPyK system level blacklist</td>
+		<td>bot_id user_id</td>
+	</tr>
+	<tr>
+		<td>debug-remove-guild-blacklist</td>
+		<td>Removes a guild from the LeXdPyK system level blacklist</td>
+		<td>bot_id guild_id</td>
+	</tr>
+	<tr>
+		<td>debug-remove-user-blacklist</td>
+		<td>Removes a user from the LeXdPyK system level blacklist</td>
+		<td>bot_id user_id</td>
+	</tr>
+	<tr>
+		<td>debug-modules-load</td>
+		<td>Loads new command/dlib files and unloads ones not present, does not reload prexisting files</td>
+		<td>bot_id</td>
+	</tr>
+	<tr>
+		<td>debug-modules-reload</td>
+		<td>Reloads all current command/dlib files, but does not load new ones, will fallback to previous import if reimport fails, ensuring uptime of as much as possible. Also calls drop-ramfs</td>
+		<td>bot_id</td>
+	</tr>
+	<tr>
+		<td>debug-logout-system</td>
+		<td>Exits the bot, used for remote shutdown (and dramatic effect)</td>
+		<td>bot_id</td>
+	</tr>
+	<tr>
+		<td>debug-drop-ramfs</td>
+		<td>Deletes the ramfs and resets it to a new one, used for debugging and module reloads</td>
+		<td>bot_id</td>
+	</tr>
+	<tr>
+		<td>debug-drop-kramfs</td>
+		<td>Deletes the kernel_ramfs and resets it to a new one, NOTE the bot is designed that the kernel_ramfs does not get reset until reboot, this may cause odd behavior, notably uptime statistics being reset</td>
+		<td>bot_id</td>
+	</tr>
+	<tr>
+		<td>debug-drop-modules</td>
+		<td>Drops dlib modules entirely, used for extreme edge cases where a dlib is causing problems but cant be reset, and rebooting is not an option</td>
+		<td>bot_id</td>
+	</tr>
+	<tr>
+		<td>debug-drop-commands</td>
+		<td>Drops command modules entirely, used for extreme edge cases where command is causing problems but cant be reset locally</td>
+		<td>bot_id</td>
+	</tr>
+	<tr>
+		<td>debug-toggle-logging</td>
+		<td>Toggles the log level between INFO and DEBUG</td>
+		<td>bot_id</td>
+	</tr>
+</table>
