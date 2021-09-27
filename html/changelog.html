@@ -21,6 +21,36 @@
 		<div class="content">
 			<h1>Changelog</h1>
 			<div class="divider"></div>
+			<h2>Sonnet V1.2.8 "Chronos Across Worlds"</h2>
+			<h3>Frontend:</h3>
+			<ul>
+				<li>Change(set-viewinfractions): Improved grammar substantially</li>
+				<li>Add(url-blacklist): Add url blacklist system</li>
+				<li>Add(list-automod): &ndash;raw flag to dump to file</li>
+				<li>Change(version-info): Discord.py renamed to Wrapper to support pycord going forwards</li>
+			</ul>
+			<h3>Under the Hood:</h3>
+			<ul>
+				<li>Change(cloader): Refactored to use memory safe string header implementation</li>
+				<li>Change(cloader): Now compiles with</li>
+				<li>Add(LeXdPyK): Testing for ramfs functionality in CI</li>
+				<li>Add(csv blacklists): Add validation of characters inputted to prevent user errors, add - rm flag to clear</li>
+				<li>Add(csv blacklists): Overall cleanup on system</li>
+				<li>Add(lib_compatibility): compat system to allow the bot to run on dpy/pycord 2.0</li>
+				<li>Add(lib_loaders): datetime_unix call to make a datetime from a unix timestamp</li>
+				<li>Add(lib_starboard): Starboard deduplication library to prevent non uniform functionality</li>
+				<li>Add(LeXdPyK): LeXdPyK 1.4.4, faster and more flexible than 1.4</li>
+				<li>Change(db_hlapi): Values that take a sentinel None now check for None, type checks now use isinstance</li>
+			</ul>
+			<h3>Runtime Environment:</h3>
+			<ul>
+				<li>If you used LeXdPyK 1.4.1 or 1.4.2 during the development of 1.2.8, you must swap to >=1.4.3 as there is a ramfs bug causing caching errors</li>
+			</ul>
+			<h3>Bugs:</h3>
+			<ul>
+				<li>Patch(RegEx blacklist): Multi capture group regex would error the automod parser, it no longer does</li>
+			</ul>
+			<div class="divider"></div>
 			<h2>Sonnet V1.2.7-2</h2>
 			<h3>Bugs:</h3>
 			<ul>
