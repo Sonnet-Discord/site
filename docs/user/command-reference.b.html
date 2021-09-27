@@ -109,8 +109,8 @@ Default Command Reference - Sonnet
 		<td>Administrator</td>
 	</tr>
 	<tr>
-		<td>wb-change &lt;csv list&gt;</td>
-		<td>Change word blacklist</td>
+		<td>wb-change &lt;csv list&gt; [rm|remove]</td>
+		<td>Change word blacklist, use `wb-change - rm` to reset</td>
 		<td>None</td>
 		<td>Administrator</td>
 	</tr>
@@ -121,8 +121,8 @@ Default Command Reference - Sonnet
 		<td>Administrator</td>
 	</tr>
 	<tr>
-		<td>wiwb-change &lt;csv list&gt;</td>
-		<td>Change the WordInWord blacklist</td>
+		<td>wiwb-change &lt;csv list&gt; [rm|remove]</td>
+		<td>Change the WordInWord blacklist, use `wiwb-change - rm` to reset</td>
 		<td>None</td>
 		<td>Administrator</td>
 	</tr>
@@ -133,14 +133,20 @@ Default Command Reference - Sonnet
 		<td>Administrator</td>
 	</tr>
 	<tr>
-		<td>ftb-change &lt;csv list&gt;</td>
-		<td>Change filetype blacklist</td>
+		<td>ftb-change &lt;csv list&gt; [rm|remove]</td>
+		<td>Change filetype blacklist, use `ftb-change - rm` to reset</td>
 		<td>None</td>
 		<td>Administrator</td>
 	</tr>
 	<tr>
-		<td>list-automod</td>
-		<td>List automod configs</td>
+		<td>urlb-change &lt;csv list&gt; [rm|remove]</td>
+		<td>Change url blacklist, use `urlb-change - rm` to reset</td>
+		<td>None</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>list-automod [-r | --raw]</td>
+		<td>List automod configs, use --raw to forcedump json file</td>
 		<td>list-blacklist</td>
 		<td>Moderator</td>
 	</tr>
