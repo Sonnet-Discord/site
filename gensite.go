@@ -24,15 +24,25 @@ func (H Walkstruct) walkerfunc(fpath string, info fs.FileInfo, err error) error 
 	fname := info.Name()
 	if strings.HasSuffix(fname, ".b.html") && !info.IsDir() {
 		cont, err := os.ReadFile(fpath)
-		if err == nil {
-			H[fpath] = string(cont)
+
+		if err != nil {
+			return err
 		}
+
+		H[fpath] = string(cont)
+
 	}
+
 	return nil
 }
 
 func transform(filePath, fileData, temp string, rch chan int) {
 	dat := strings.Split(fileData, "\n")
+
+	if len(dat) <= 3 {
+		log.Fatal(filePath, ": File has incomplete BHTML headers")
+	}
+
 	if dat[0] == "0" {
 
 		// Parse bhtml headers and content
