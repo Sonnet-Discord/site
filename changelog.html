@@ -21,6 +21,28 @@
 		<div class="content">
 			<h1>Changelog</h1>
 			<div class="divider"></div>
+			<h2>Sonnet V1.2.9 "Real Users"</h2>
+			<h3>Frontend:</h3>
+			<ul>
+				<li>Add(remove-regexblacklist): Remove a regex by its index</li>
+				<li>Change(search-infractions): Only specifying a uid will default to user infractions</li>
+				<li>Change(help): Typing <code>help 2</code> etc for a second help page will prompt the user the correct syntax</li>
+			</ul>
+			<h3>Under the Hood:</h3>
+			<ul>
+				<li>Add(clang-format): C formatter</li>
+				<li>Change(cloader): Make cloader use long in place of int for arbitrary temp numbers</li>
+				<li>Add(slots): Add dunder slots to many classes, lowering class overhead</li>
+				<li>Add(format_duration): End user duration formatting for arbitrary seconds (used in mute)</li>
+				<li>Change(lib_db_handler): Libraries are now more memory efficient by replacing list comprehensions with generators</li>
+				<li>Add(db_hlapi.list_enum): list_enum call to list all primary keys in an enum</li>
+				<li>Add(LeXdPyK): 1.4.6: Previously mentioned dunder slots and encoding specifiers</li>
+			</ul>
+			<h3>Bugs:</h3>
+			<ul>
+				<li>Patch(encoding): Make all file opens specify utf8 encoding</li>
+			</ul>
+			<div class="divider"></div>
 			<h2>Sonnet V1.2.8-1</h2>
 			<h3>Bugs:</h3>
 			<ul>
