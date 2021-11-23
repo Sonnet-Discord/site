@@ -2,6 +2,36 @@
 Changelog - Sonnet
 <h1>Changelog</h1>
 <div class="divider"></div>
+<h2>Sonnet V1.2.10 "Hardened Steel"</h2>
+Happy Anniversary!
+<h3>Frontend:</h3>
+<ul>
+	<li>Add(list-mutes): Command to list all muted users in mutedb</li>
+	<li>Add(remove-mute): Command to remove userid from mutedb</li>
+	<li>Change(on_message): Bot will only say its prefix if being mentioned is the entire message</li>
+	<li>Add(rejoin-mute): Muted users will be remuted on rejoin</li>
+</ul>
+<h3>Under the Hood:</h3>
+<ul>
+	<li>Add(classes): Empty <code>__slots__</code> to all classes to lower memory footprint</li>
+	<li>Change(commandapi): Commands no longer need to specify a cache or permission behavior</li>
+	<li>Add(db_hlapi.fetch_guild_mutes): Function to grab a guilds mute table</li>
+	<li>Add(has_default_avatar): Helper function to check if a user has a default avatar</li>
+	<li>Change(lib_compatibility): Version checks now happen at init time, not runtime</li>
+	<li>Add(lib_sonnetcommands): Helper to wrap and type a sonnet command</li>
+</ul>
+<h3>Runtime Environmnet:</h3>
+<ul>
+	<li>Add(BOT_NAME): Config to set the name of the bot</li>
+	<li>Add(confcheck): Most string configs are now validated at init time</li>
+	<li>Upgrade(dependencies): Sonnet now builds and tests with latest libraries, be sure to update sometime!</li>
+</ul>
+<h3>Bugs:</h3>
+<ul>
+	<li>Patch(mute-recovery): Make mute recovery only print users to unmute that are not no unmute users</li>
+	<li>Patch(user_avatar_url): Would not grab default avatar in 2.0</li>
+</ul>
+<div class="divider"></div>
 <h2>Sonnet V1.2.9 "Real Users"</h2>
 <h3>Frontend:</h3>
 <ul>
