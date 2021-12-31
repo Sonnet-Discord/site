@@ -1,7 +1,7 @@
 0
 First Time Setup - Sonnet
 <h1>First Time Setup</h1>
-Updated as of sonnet V1.2.5
+Updated as of sonnet V1.2.10
 <h2>Part 1: Getting it all Installed</h2>
 <ul>
 	<li><h3>1.1: Python</h3></li>
@@ -46,52 +46,79 @@ Updated as of sonnet V1.2.5
 <ul>
 	<li><h3>2.1: sonnet_cfg.py</h3></li>
 		<p>
-			Once sonnet has been installed it is time to configure the bot
+			Once sonnet has been installed it is time to configure the bot, if a config is not defined it will become its default
 			<table>
 				<tr>
 					<th>Conf Name</th>
 					<th>Type</th>
+					<th>Default</th>
 					<th>Description</th>
 				</tr>
 				<tr>
 					<td>GLOBAL_PREFIX</td>
 					<td>str</td>
+					<td>!</td>
 					<td>Default global prefix, can be set per server</td>
 				</tr>
 				<tr>
 					<td>BLACKLIST_ACTION</td>
 					<td>str(warn|mute|kick|ban)</td>
+					<td>warn</td>
 					<td>Default action to occur when someone breaks blacklist, can be set per server</td>
 				</tr>
 				<tr>
 					<td>STARBOARD_EMOJI</td>
 					<td>str</td>
+					<td>⭐</td>
 					<td>Default emoji to use for starboard, can be set per server</td>
 				</tr>
 				<tr>
 					<td>STARBOARD_COUNT</td>
 					<td>int|str</td>
+					<td>5</td>
 					<td>Default starboard reaction threshhold, can be set per server</td>
 				</tr>
 				<tr>
 					<td>DB_TYPE</td>
 					<td>str(mariadb|sqlite3)</td>
+					<td>mariadb</td>
 					<td>Choose between using mariadb or sqlite3</td>
 				</tr>
 				<tr>
 					<td>SQLITE3_LOCATION</td>
 					<td>str</td>
+					<td>datastore/sonnetdb.db</td>
 					<td>If using sqlite3, the location where the database will go</td>
 				</tr>
 				<tr>
 					<td>REGEX_VERSION</td>
 					<td>str(re|re2)</td>
+					<td>re2</td>
 					<td>Configure whether to use re2 or re, any public instance must use re2 due to exploits, however re is cross platform and easier to set up</td>
 				</tr>
 				<tr>
 					<td>CLIB_LOAD</td>
 					<td>bool</td>
+					<td>True</td>
 					<td>Configure whether or not to compile and run the c loader, this requires gcc and make to be installed</td>
+				</tr>
+				<tr>
+					<td>GOLIB_LOAD</td>
+					<td>bool</td>
+					<td>True</td>
+					<td>Configure whether or not to compile and run the go loader, this requires go and make to be installed</td>
+				</tr>
+				<tr>
+					<td>GOLIB_VERSION</td>
+					<td>str</td>
+					<td>go</td>
+					<td>Configure the go binary to attempt to run when compiling go code, this can be ignored unless you want a sepcific go version</td>
+				</tr>
+				<tr>
+					<td>BOT_NAME</td>
+					<td>str</td>
+					<td>Sonnet</td>
+					<td>Configure the name that the bot will refer to itself as, instead of sonnet</td>
 				</tr>
 			</table>
 		</p>
@@ -99,7 +126,13 @@ Updated as of sonnet V1.2.5
 		<p>
 			After configuring sonnet you must configure the bot owner(s)<br>
 			the BOT_OWNER variable can be either strings of or ints in a list, or can just be one string or int<br>
-			A normal single user install might look like <code>BOT_OWNER = 123456789</code>
+			A normal single user install might look like <code>BOT_OWNER = 123456789</code>, while a multi user install might look like <code>BOT_OWNER = [23423, 354345]</code>
+		</p>
+	<li><h3>2.3: Optional sonnet-modules</h3></li>
+		<p>
+			If you want more features out of sonnet you can grab them off the sonnet-modules repo<br>
+			<code>git clone https://github.com/sonnet-discord/sonnet-modules</code> in the same dir you were in when you git cloned sonnet, and use modmanager.py to install custom modules easily<br>
+			An example is installing ultrabear/usertrust for the usertrust system, enter the sonnet-modules directory with <code>cd ./sonnet-modules</code> and run <code>python modmanager.py -S ultrabear/usertrust</code>, assuming sonnet-py is in the same directory it will automatically install, use <code>python modmanager.py -R ultrabear/usertrust</code> to uninstall the module
 		</p>
 </ul>
 <h2>Part 3: Starting sonnet</h2>
@@ -128,4 +161,4 @@ Updated as of sonnet V1.2.5
 			<br>
 			-- Ultrabear
 	</p>
-<ul>
+</ul>
