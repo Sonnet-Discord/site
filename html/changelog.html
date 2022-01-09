@@ -21,6 +21,41 @@
 		<div class="content">
 			<h1>Changelog</h1>
 			<div class="divider"></div>
+			<h2>Sonnet V1.2.11 PythonicT</h2>
+			<h3>Frontend:</h3>
+			<ul>
+				<li>Change(infractions): infraction perm failure messages will now refer to the bot using the bots name</li>
+				<li>Add(ban): -d parameter to specify amount of days to delete messages for</li>
+				<li>Add(search-infractions): -f parameter to filter with regex</li>
+				<li>Change(search-infractions): arguments are now split using shlex, meaning quotations may be used</li>
+				<li>Add(grab-message): -r flag to send the message contents as a file, bypassing discord rendering bugs</li>
+				<li>Add(help): help now says when you have the permission listed in per command help</li>
+				<li>Add(help): -c flag to only scan for a command, previously if a category and command had the same name it would jump to the category</li>
+				<li>Change(version-info): now prints what implementation of python is being used</li>
+			</ul>
+			<h3>Under the Hood:</h3>
+			<ul>
+				<li>Add(cmds_to_html): now test for correct permspec on custom permissions</li>
+				<li>Add(lib_tparse): typesafe argument parsing library for commands</li>
+				<li>Add(CommandCtx): a typesafe ctx object that may be passed to commands instead of kwargs, new api has been implemented without breaking old commands</li>
+				<li>Improve(infractions): a failed to dm info message will not halt processing of the ban success message anymore</li>
+				<li>Refactor: a test set of commands have implemented commandctx with no issues and are more easily typesafe</li>
+				<li>Change(cmd_scripting): commands have been reworked to use CommandCtx, making them more readable</li>
+				<li>Change(help): split into smaller subcommands to improve readability</li>
+				<li>Add(help): ability for modules to supply their own help page, allowing for guild level custom help</li>
+				<li>Add(CommandError): a special exception that will print to the user and exit normally instead of raising to the kernel from a command context</li>
+				<li>Add(enum_context): nested context manager for a specific dbenum, allowing more concise and less error prone code for accessing said enum</li>
+				<li>Add(parse_user_member_noexcept): concept function that raises a commanderror on failure, nominally lowering boilerplate at the call site</li>
+				<li>Add(parse_channe_message_noexcept): concept function that raises a commanderror on failure, nominally lowering boilerplate at the call site</li>
+				<li>Add(CallCtx,CallKwargs): call modifier functions for easily adapting to new CommandCtx based api</li>
+				<li>Change(grab_filter_infractions): now accepts true/false/None for automod, allowing filtering both ways or neither ways</li>
+				<li>Change(LeXdPyK): V1.4.8: argparse is now used to aide in commandline arguments, file uses main function instead of segmented startup</li>
+			</ul>
+			<h3>Runtime Environment:</h3>
+			<ul>
+				<li>Upgrade(libraries): sonnet has upgraded library versions and added a new library (typing-extensions), you may need to install these to update properly</li>
+			</ul>
+			<div class="divider"></div>
 			<h2>Sonnet V1.2.10 "Hardened Steel"</h2>
 			Happy Anniversary!
 			<h3>Frontend:</h3>

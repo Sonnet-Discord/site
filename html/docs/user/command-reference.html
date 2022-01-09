@@ -305,8 +305,8 @@
 					<td>Moderator</td>
 				</tr>
 				<tr>
-					<td>ban &lt;uid&gt; [reason]</td>
-					<td>Ban a user</td>
+					<td>ban &lt;uid&gt; [-d DAYS] [reason]</td>
+					<td>Ban a user, optionally delete messages with -d</td>
 					<td>None</td>
 					<td>Moderator</td>
 				</tr>
@@ -329,8 +329,8 @@
 					<td>Moderator</td>
 				</tr>
 				<tr>
-					<td>search-infractions &lt;-u USER | -m MOD&gt; [-t TYPE] [-p PAGE] [-i INF PER PAGE] [--no-automod]</td>
-					<td>Grab infractions of a user</td>
+					<td>search-infractions &lt;-u USER | -m MOD&gt; [-t TYPE] [-p PAGE] [-i INF PER PAGE] [--[no-]automod] [-f FILTER]</td>
+					<td>Grab infractions of a user, -f uses regex</td>
 					<td>warnings, list-infractions, infractions</td>
 					<td>Moderator</td>
 				</tr>
@@ -347,8 +347,8 @@
 					<td>Administrator</td>
 				</tr>
 				<tr>
-					<td>grab-message &lt;message&gt;</td>
-					<td>Grab a message and show its contents</td>
+					<td>grab-message &lt;message&gt; [-r]</td>
+					<td>Grab a message and show its contents, specify -r to get message content as a file</td>
 					<td>get-message</td>
 					<td>Moderator</td>
 				</tr>
@@ -495,8 +495,8 @@
 					<td>Everyone</td>
 				</tr>
 				<tr>
-					<td>help [category|command] [-p PAGE]</td>
-					<td>Print helptext</td>
+					<td>help [category|command] [-p PAGE] [-c]</td>
+					<td>Print helptext, `-c` designates to only look for a command</td>
 					<td>None</td>
 					<td>Everyone</td>
 				</tr>
