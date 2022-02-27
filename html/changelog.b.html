@@ -2,6 +2,37 @@
 Changelog - Sonnet
 <h1>Changelog</h1>
 <div class="divider"></div>
+<h2>Sonnet V1.2.12 "Feature Together"</h2>
+<h3>Frontend:</h3>
+<ul>
+	<li>Add(infraction modifiers): Modifiers that add fields to logging embeds</li>
+	<li>Add(mutelength): Option for mute command to display mute length to users</li>
+	<li>Add(logging): Message content to file logging to capture arbitrary text</li>
+	<li>Change(search-infractions): Per Page limit changed to 1-40 from 5-40</li>
+	<li>Add(map): Add <code>-s</code> flag to map and amap</li>
+	<li>Add(role-info): Command to return permission and usercount info of roles (extends Sonnet&rsquo;s &ldquo;Deal With Discord&rdquo; policy)</li>
+</ul>
+<h3>Under the Hood:</h3>
+<ul>
+	<li>Change(autotest): Make autotest use a typesafe wrapper around processes</li>
+	<li>Add(unisafe): Unicode safety checker (disallows arbitrary unicode in codebase)</li>
+	<li>Add(paginate_noexcept): Complex pagination library that attempts to fit all content within a limited space</li>
+	<li>Add(reactionroles): Sanity limit of 750 reactionroles per guild</li>
+	<li>Change(coinflip): Command now checks if it is a subcommand, and runs a faster loop if it is</li>
+	<li>Add(constants): Self defined permission constants (dpy1.7.3 is out of date in this area)</li>
+	<li>Change(urlb): Account for multiline url embeds (this is a discord &ldquo;feature&rdquo;)</li>
+	<li>Change(parse_channel_message): Add reply capture feature</li>
+	<li>Add(cache_sweep): commands cache control behavior has been moved to lib_sonnetcommands</li>
+	<li>Add(SonnetCommand.sweep_cache): Convenience method to sweep cache after a SonnetCommand runs</li>
+	<li>Add(SonnetCommand(aliasmap)): Pass command hashmap directly to automatically reroute aliases</li>
+	<li>Change(starboard): Add image url grabbing from message content</li>
+	<li>Add(LeXdPyK): V1.4.10: add <code>--version</code> flag and user mentions now work for debug commands</li>
+</ul>
+<h3>Runtime Environment:</h3>
+<ul>
+	<li>Add(sonnetconfig): Warning about using re instead of re2</li>
+</ul>
+<div class="divider"></div>
 <h2>Sonnet V1.2.11-1</h2>
 <h3>Bugs:</h3>
 <ul>
