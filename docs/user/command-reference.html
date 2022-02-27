@@ -40,6 +40,36 @@
 					<th>Permission Level</th>
 				</tr>
 				<tr>
+					<td>set-show-mutetime &lt;bool&gt;</td>
+					<td>Set whether to show the mute time to a user who has been muted</td>
+					<td>None</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>list-infraction-modifiers [page]</td>
+					<td>list all infraction modifiers</td>
+					<td>None</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
+					<td>rm-infraction-modifier &lt;key&gt; &lt;title&gt; &lt;value&gt;</td>
+					<td>Delete an infraction modifier with the given key</td>
+					<td>None</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>add-infraction-modifier &lt;key&gt; &lt;title&gt; &lt;value&gt;</td>
+					<td>Add a new infraction modifier with the given key, title, and value</td>
+					<td>None</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>set-filelog-behavior [text|gzip|none]</td>
+					<td>Set the message to file log behavior to store text, gzip, or not store</td>
+					<td>set-filelog-behaviour</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
 					<td>message-edit-log &lt;channel&gt;</td>
 					<td>Change message edit log, overloads message-log</td>
 					<td>None</td>
@@ -190,7 +220,7 @@
 				</tr>
 				<tr>
 					<td>set-charantispam &lt;messages&gt; &lt;seconds&gt; &lt;chars&gt;</td>
-					<td>Set how many messages in seconds exeeding total chars to trigger antispam automute</td>
+					<td>Set how many messages in seconds exceeding total chars to trigger antispam automute</td>
 					<td>None</td>
 					<td>Administrator</td>
 				</tr>
@@ -217,6 +247,23 @@
 					<td>Remove an item from notifier list</td>
 					<td>None</td>
 					<td>Administrator</td>
+				</tr>
+			</table>
+			<h2 id="calculator">
+				<a href="#calculator">Calculator</a>
+			</h2>
+			<table class="lastctr">
+				<tr>
+					<th>Command Syntax</th>
+					<th>Description</th>
+					<th>Aliases</th>
+					<th>Permission Level</th>
+				</tr>
+				<tr>
+					<td>calc &lt;args&gt;</td>
+					<td>Calculate a value in polish notation</td>
+					<td>None</td>
+					<td>Everyone</td>
 				</tr>
 			</table>
 			<h2 id="colors">
@@ -271,6 +318,23 @@
 					<td>Moderator</td>
 				</tr>
 			</table>
+			<h2 id="lint">
+				<a href="#lint">SonnetLint</a>
+			</h2>
+			<table class="lastctr">
+				<tr>
+					<th>Command Syntax</th>
+					<th>Description</th>
+					<th>Aliases</th>
+					<th>Permission Level</th>
+				</tr>
+				<tr>
+					<td>lint</td>
+					<td>Run a linting pass over everything</td>
+					<td>None</td>
+					<td>Administrator</td>
+				</tr>
+			</table>
 			<h2 id="moderation">
 				<a href="#moderation">Moderation</a>
 			</h2>
@@ -289,12 +353,12 @@
 				</tr>
 				<tr>
 					<td>list-mutes [-p PAGE]</td>
-					<td>List all mutes in the mute databse</td>
+					<td>List all mutes in the mute database</td>
 					<td>None</td>
 					<td>Moderator</td>
 				</tr>
 				<tr>
-					<td>warn &lt;uid&gt; [reason]</td>
+					<td>warn [+modifiers] &lt;uid&gt; [reason]</td>
 					<td>Warn a user</td>
 					<td>None</td>
 					<td>Moderator</td>
@@ -306,13 +370,13 @@
 					<td>Moderator</td>
 				</tr>
 				<tr>
-					<td>kick &lt;uid&gt; [reason]</td>
+					<td>kick [+modifiers] &lt;uid&gt; [reason]</td>
 					<td>Kick a user</td>
 					<td>None</td>
 					<td>Moderator</td>
 				</tr>
 				<tr>
-					<td>ban &lt;uid&gt; [-d DAYS] [reason]</td>
+					<td>ban [+modifiers] &lt;uid&gt; [-d DAYS] [reason]</td>
 					<td>Ban a user, optionally delete messages with -d</td>
 					<td>None</td>
 					<td>Moderator</td>
@@ -324,7 +388,7 @@
 					<td>Moderator</td>
 				</tr>
 				<tr>
-					<td>mute &lt;uid&gt; [time[h|m|S]] [reason]</td>
+					<td>mute [+modifiers] &lt;uid&gt; [time[h|m|S]] [reason]</td>
 					<td>Mute a user, defaults to no unmute (0s)</td>
 					<td>None</td>
 					<td>Moderator</td>
@@ -426,13 +490,13 @@
 					<td>Moderator</td>
 				</tr>
 				<tr>
-					<td>map [-e args] &lt;command&gt; (&lt;args&gt;)+</td>
+					<td>map [-s args] [-e args] &lt;command&gt; (&lt;args&gt;)+</td>
 					<td>Map a single command with multiple arguments</td>
 					<td>None</td>
 					<td>Moderator</td>
 				</tr>
 				<tr>
-					<td>amap [-e args] &lt;command&gt; (&lt;args&gt;)+</td>
+					<td>amap [-s args] [-e args] &lt;command&gt; (&lt;args&gt;)+</td>
 					<td>Like map, but processes asynchronously, meaning it ignores errors</td>
 					<td>None</td>
 					<td>Moderator</td>
@@ -488,6 +552,12 @@
 					<th>Description</th>
 					<th>Aliases</th>
 					<th>Permission Level</th>
+				</tr>
+				<tr>
+					<td>role-info &lt;role&gt;</td>
+					<td>Get information on a role</td>
+					<td>roleinfo</td>
+					<td>Everyone</td>
 				</tr>
 				<tr>
 					<td>ping</td>
@@ -560,7 +630,8 @@
 					<td>stats</td>
 					<td>Everyone</td>
 				</tr>
-			</table></div>
+			</table>
+			</div>
 		<div class="footer">
 			<div class="divider"></div>
 			<p>
