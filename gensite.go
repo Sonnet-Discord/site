@@ -7,16 +7,17 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"sync"
 )
 
 const (
 	templateroot = "./builders/"
-	htmlroot = "./html/"
+	htmlroot     = "./html/"
 )
 
-type Walkstruct map[string]string
+type walkstruct map[string]string
 
-func (H Walkstruct) walkerfunc(fpath string, info fs.FileInfo, err error) error {
+func (H walkstruct) walkerfunc(fpath string, info fs.FileInfo, err error) error {
 	if err != nil {
 		return err
 	}
@@ -36,7 +37,7 @@ func (H Walkstruct) walkerfunc(fpath string, info fs.FileInfo, err error) error 
 	return nil
 }
 
-func transform(filePath, fileData, temp string, rch chan int) {
+func transform(filePath, fileData, temp string, rch *sync.WaitGroup) {
 	dat := strings.Split(fileData, "\n")
 
 	if len(dat) <= 3 {
@@ -68,7 +69,7 @@ func transform(filePath, fileData, temp string, rch chan int) {
 		}
 	}
 	// Tell the main thread we are done
-	rch <- 0
+	rch.Done()
 }
 
 func main() {
@@ -92,7 +93,7 @@ func main() {
 		}
 	}
 
-	ConvFiles := Walkstruct{}
+	ConvFiles := walkstruct{}
 	walkerr := filepath.Walk(htmlroot, ConvFiles.walkerfunc)
 
 	if walkerr != nil {
@@ -107,8 +108,6 @@ func main() {
 
 	rawstart := string(templatefile)
 
-	rch := make(chan int)
-
 	// Add templatedata files
 	replacements := make([]string, 0, len(templates)*2)
 	for k, v := range templates {
@@ -118,12 +117,13 @@ func main() {
 
 	rawstart = strings.NewReplacer(replacements...).Replace(rawstart)
 
+	done := new(sync.WaitGroup)
+	done.Add(len(ConvFiles))
+
 	for path, data := range ConvFiles {
-		go transform(path, data, rawstart, rch)
+		go transform(path, data, rawstart, done)
 	}
 
 	// wait for threads to finish
-	for range ConvFiles {
-		<-rch
-	}
+	done.Wait()
 }
