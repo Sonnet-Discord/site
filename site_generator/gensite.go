@@ -221,6 +221,13 @@ func (C changelog) assertVersionID() string {
 	return ""
 }
 
+var changeMap = []struct{ name, prettyName string }{
+	{"frontend", "Frontend"},
+	{"backend", "Under the Hood"},
+	{"runtime", "Runtime Environment"},
+	{"bugs", "Bugs"},
+}
+
 func (C changelog) toHTMLBuilder(buffer io.Writer) {
 
 	writer := bufio.NewWriter(buffer)
@@ -234,13 +241,6 @@ func (C changelog) toHTMLBuilder(buffer io.Writer) {
 	if note, ok := C.Version["note"]; ok {
 		writer.WriteString(note)
 		writer.WriteByte('\n')
-	}
-
-	changeMap := []struct{ name, prettyName string }{
-		{"frontend", "Frontend"},
-		{"backend", "Under the Hood"},
-		{"runtime", "Runtime Environment"},
-		{"bugs", "Bugs"},
 	}
 
 	for _, v := range changeMap {
@@ -263,9 +263,69 @@ func (C changelog) toHTMLBuilder(buffer io.Writer) {
 
 }
 
+func changeToMD(s string) string {
+
+	// requires LF line endings
+	splits := strings.Split(s, "\n")
+
+	builder := strings.Builder{}
+
+	builder.WriteString("- " + splits[0] + "\n")
+
+	if len(splits) == 1 {
+		return builder.String()
+	}
+
+	for _, v := range splits[1:] {
+
+		if strings.Trim(v, " ") != "" {
+			builder.WriteString("  - " + strings.Trim(v, " ") + "\n")
+		}
+
+	}
+
+	return builder.String()
+
+}
+
+func (C changelog) toMDBuilder(b io.Writer) {
+
+	writer := bufio.NewWriter(b)
+
+	writer.WriteString(fmt.Sprintf("# Sonnet V%s\n", C.assertVersionID()))
+
+	if note, ok := C.Version["note"]; ok {
+		writer.WriteString(note)
+		writer.WriteByte('\n')
+	}
+
+	for _, v := range changeMap {
+		if changes, ok := C.Changes[v.name]; ok {
+
+			writer.WriteString(fmt.Sprintf("## %s\n", v.prettyName))
+
+			for _, change := range changes {
+
+				writer.WriteString(changeToMD(change))
+
+			}
+
+		}
+	}
+
+	writer.Flush()
+
+}
+
 func (C changelog) toHTML() string {
 	builder := new(strings.Builder)
 	C.toHTMLBuilder(builder)
+	return builder.String()
+}
+
+func (C changelog) toMD() string {
+	builder := new(strings.Builder)
+	C.toMDBuilder(builder)
 	return builder.String()
 }
 
@@ -356,6 +416,19 @@ func semVerFromString(s string) SemVer {
 func writeChangeLog() {
 
 	changelog := generateChangelog()
+
+	if len(os.Args) >= 3 && os.Args[1] == "--md-version" {
+		log.Println("Writing requested version as MD to stdout and quitting")
+
+		semver := semVerFromString(os.Args[2])
+
+		if change, ok := changelog[semver]; ok {
+			fmt.Println(change.toMD())
+			os.Exit(0)
+		} else {
+			log.Fatal("Could not find version ", semver, " in changelog db")
+		}
+	}
 
 	verlist := make([]SemVer, 0, len(changelog))
 	for k := range changelog {

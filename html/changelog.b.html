@@ -2,6 +2,50 @@
 Changelog - Sonnet
 <h1>Changelog</h1>
 <div class="divider"></div>
+<h2>Sonnet V1.2.13 "Error.context()"</h2>
+<h3>Frontend:</h3>
+<ul>
+	<li>Add(softban): Moderation command to ban and unban a user</li>
+	<li>Change(mute): Make duration error handling warn if no duration was specified, but one of the args was a duration</li>
+	<li>Change(map_preprocessor): Make preprocessor print what command triggered an error, for nested stack debugging</li>
+	<li>Add(map-expand): Command that expands the arguments to a call to map instead of running them, useful for debugging</li>
+	<li>Add(sub): Command that runs other command as a subcommand, allows silencing output on most commands that respect verbose</li>
+	<li>Add(sleep): Command to sleep for a set duration up to 30 seconds, useful in loosely timed scripts and as a toybox command</li>
+	<li>Change(profile): Add "Guild Perm Level" to profile, allowing for perm visibility</li>
+	<li>Change(help): Add how long processing took to help embed, along with version and module info when relevant</li>
+	<li>Move(grab-message): Move <code>grab-message</code> to utils as it is no longer a moderation command</li>
+	<li>Add(mentionprefix): Mentioning bot will now act as a command prefix</li>
+	<li>Change(parse_user_member): Make error handling try and guess what the id passed was</li>
+</ul>
+<h3>Under the Hood:</h3>
+<ul>
+	<li>Change(cmd_automod): Move function signatures to <code>CommandCtx</code>, make errors raise <code>CommandError</code></li>
+	<li>Split(cmd_moderation|cmd_bookkeeping): Split moderation module into 2 modules for easier management</li>
+	<li>Add(wordlist): More words in wordlist, fix some spelling issues in wordlist</li>
+	<li>Add(lib_datetimeplus): Library for easier working with datetime primitives</li>
+	<li>Refactor(Time): Make various parts of codebase use lib_datetimeplus instead of raw datetime calls</li>
+	<li>Add(KernelArgs): LeXdPyK arguments typesafe wrapper</li>
+	<li>Refactor(on_message): Make <code>on_message</code> use KernelArgs</li>
+	<li>Change(lib_constants): Add missing permissions names</li>
+	<li>Change(lib_encryption_wrapper): Remove mock encryptor/decryptor interfaces as cryptography updated its interfaces</li>
+	<li>Add(ParseDurationSuper): Function to parse a complex form duration in pure python</li>
+	<li>Add(parse_core_permissions): Lightweight permission parser that only parses basic permissions (no custom overloads) and has static assertions thanks to it</li>
+	<li>Update(LeXdPyK): 1.4.12: Support pyright typechecking</li>
+</ul>
+<h3>Runtime Environment:</h3>
+<ul>
+	<li>Change(dependencies): Lock all versions to semver, upgrade dependencies to latest stables</li>
+	<li>Add(manualtest): Unit testing writing helper</li>
+	<li>Change(autotest): Make tests return in order of first to finish, and show time took</li>
+	<li>Add(pyright): Typechecker used by dpy for compatibility</li>
+	<li>Remove(pytype): Remove pytype as a dependency</li>
+</ul>
+<h3>Bugs:</h3>
+<ul>
+	<li>Fix(lib_mdb/sql_handler): list_tables type signature was ill formed</li>
+	<li>Fix(starboard): Make image url parser parse more urls correctly</li>
+</ul>
+<div class="divider"></div>
 <h2>Sonnet V1.2.12-1</h2>
 <h3>Bugs:</h3>
 <ul>
