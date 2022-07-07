@@ -249,6 +249,47 @@
 					<td>Administrator</td>
 				</tr>
 			</table>
+			<h2 id="bookkeeping">
+				<a href="#bookkeeping">Bookkeeping</a>
+			</h2>
+			<table class="lastctr">
+				<tr>
+					<th>Command Syntax</th>
+					<th>Description</th>
+					<th>Aliases</th>
+					<th>Permission Level</th>
+				</tr>
+				<tr>
+					<td>remove-mute &lt;user&gt;</td>
+					<td>Removes a user from the mute database. Does not unmute in guild</td>
+					<td>None</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>list-mutes [-p PAGE]</td>
+					<td>List all mutes in the mute database</td>
+					<td>None</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
+					<td>search-infractions &lt;-u USER | -m MOD&gt; [-t TYPE] [-p PAGE] [-i INF PER PAGE] [--[no-]automod] [-f FILTER]</td>
+					<td>Grab infractions of a user, -f uses regex</td>
+					<td>warnings, list-infractions, infractions</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
+					<td>infraction-details &lt;infractionID&gt;</td>
+					<td>Grab details of an infractionID</td>
+					<td>get-infraction, grab-infraction</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
+					<td>delete-infraction &lt;infractionID&gt;</td>
+					<td>Delete an infraction by infractionID</td>
+					<td>remove-infraction, rm-infraction</td>
+					<td>Administrator</td>
+				</tr>
+			</table>
 			<h2 id="colors">
 				<a href="#colors">Colors</a>
 			</h2>
@@ -312,18 +353,6 @@
 					<th>Permission Level</th>
 				</tr>
 				<tr>
-					<td>remove-mute &lt;user&gt;</td>
-					<td>Removes a user from the mute database. Does not unmute in guild</td>
-					<td>None</td>
-					<td>Administrator</td>
-				</tr>
-				<tr>
-					<td>list-mutes [-p PAGE]</td>
-					<td>List all mutes in the mute database</td>
-					<td>None</td>
-					<td>Moderator</td>
-				</tr>
-				<tr>
 					<td>warn [+modifiers] &lt;uid&gt; [reason]</td>
 					<td>Warn a user</td>
 					<td>None</td>
@@ -354,6 +383,12 @@
 					<td>Moderator</td>
 				</tr>
 				<tr>
+					<td>softban [+modifiers] &lt;uid&gt; [-d DAYS] [reason]</td>
+					<td>Softban (ban and then immediately unban) a user, optionally delete messages with -d</td>
+					<td>None</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
 					<td>mute [+modifiers] &lt;uid&gt; [time[h|m|S]] [reason]</td>
 					<td>Mute a user, defaults to no unmute (0s)</td>
 					<td>None</td>
@@ -363,30 +398,6 @@
 					<td>unmute &lt;uid&gt;</td>
 					<td>Unmute a user, does not dm user</td>
 					<td>None</td>
-					<td>Moderator</td>
-				</tr>
-				<tr>
-					<td>search-infractions &lt;-u USER | -m MOD&gt; [-t TYPE] [-p PAGE] [-i INF PER PAGE] [--[no-]automod] [-f FILTER]</td>
-					<td>Grab infractions of a user, -f uses regex</td>
-					<td>warnings, list-infractions, infractions</td>
-					<td>Moderator</td>
-				</tr>
-				<tr>
-					<td>infraction-details &lt;infractionID&gt;</td>
-					<td>Grab details of an infractionID</td>
-					<td>get-infraction, grab-infraction</td>
-					<td>Moderator</td>
-				</tr>
-				<tr>
-					<td>delete-infraction &lt;infractionID&gt;</td>
-					<td>Delete an infraction by infractionID</td>
-					<td>remove-infraction, rm-infraction</td>
-					<td>Administrator</td>
-				</tr>
-				<tr>
-					<td>grab-message &lt;message&gt; [-r]</td>
-					<td>Grab a message and show its contents, specify -r to get message content as a file</td>
-					<td>get-message</td>
 					<td>Moderator</td>
 				</tr>
 				<tr>
@@ -464,6 +475,24 @@
 				<tr>
 					<td>amap [-s args] [-e args] &lt;command&gt; (&lt;args&gt;)+</td>
 					<td>Like map, but processes asynchronously, meaning it ignores errors</td>
+					<td>None</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
+					<td>map-expand [-s args] [-e args] &lt;command&gt; (&lt;args&gt;)+</td>
+					<td>Show what a map expression will expand to without actually running it</td>
+					<td>None</td>
+					<td>Moderator</td>
+				</tr>
+				<tr>
+					<td>sub &lt;command&gt; [args]+</td>
+					<td>runs a command as a subcommand</td>
+					<td>None</td>
+					<td>Everyone</td>
+				</tr>
+				<tr>
+					<td>sleep &lt;seconds&gt;</td>
+					<td>Suspends execution for up to 30 seconds, for use in map/sonnetsh</td>
 					<td>None</td>
 					<td>Moderator</td>
 				</tr>
@@ -553,6 +582,12 @@
 					<td>serverinfo</td>
 					<td>Get info on this guild</td>
 					<td>server-info</td>
+					<td>Everyone</td>
+				</tr>
+				<tr>
+					<td>grab-message &lt;message&gt; [-r]</td>
+					<td>Grab a message and show its contents, specify -r to get message content as a file</td>
+					<td>get-message</td>
 					<td>Everyone</td>
 				</tr>
 				<tr>
