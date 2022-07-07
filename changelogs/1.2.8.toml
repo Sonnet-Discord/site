@@ -1,0 +1,29 @@
+[version]
+id = "1.2.8"
+name = "Chronos Across Worlds"
+
+[changes]
+frontend = [
+  "Change(set-viewinfractions): Improved grammar substantially",
+  "Add(url-blacklist): Add url blacklist system",
+  "Add(list-automod): --raw flag to dump to file",
+  "Change(version-info): Discord.py renamed to Wrapper to support pycord going forwards",
+]
+backend = [
+  "Change(cloader): Refactored to use memory safe string header implementation",
+  "Change(cloader): Now compiles with `-Wall -Wextra -Werror -O3`",
+  "Add(LeXdPyK): Testing for ramfs functionality in CI",
+  "Add(csv blacklists): Add validation of characters inputted to prevent user errors, add - rm flag to clear",
+  "Add(csv blacklists): Overall cleanup on system",
+  "Add(lib_compatibility): compat system to allow the bot to run on dpy/pycord 2.0",
+  "Add(lib_loaders): datetime_unix call to make a datetime from a unix timestamp",
+  "Add(lib_starboard): Starboard deduplication library to prevent non uniform functionality",
+  "Add(LeXdPyK): LeXdPyK 1.4.4, faster and more flexible than 1.4",
+  "Change(db_hlapi): Values that take a sentinel None now check for None, type checks now use isinstance",
+]
+runtime = [
+  "If you used LeXdPyK 1.4.1 or 1.4.2 during the development of 1.2.8, you must swap to >=1.4.3 as there is a ramfs bug causing caching errors",
+]
+bugs = [
+  "Patch(RegEx blacklist): Multi capture group regex would error the automod parser, it no longer does",
+]

@@ -1,0 +1,27 @@
+[version]
+id = "1.1.3"
+name = "The Value of a Name"
+
+[changes]
+frontend = [
+  "Add admin role setting",
+  "Add moderator role setting",
+  "Add aliases to commands",
+  "Show current config on all config set commands with empty input",
+  "Rename antispam-set to set-antispam",
+  "Rename blacklist-whitelist to set-whitelist",
+  "Send to log channel when dmming a user an infraction failed",
+  "Refactor search-infractions to allow grabbing by mod or by user",
+  "Add channel to starboard embed",
+]
+backend = [
+  "Add conf_cache to commands api",
+  "Moved role parsing to shared processor",
+  "Improve sort on search-infractions",
+  "Refactor the help command again",
+  "Garbage collection on file objects once deleted",
+  "Improve encryption_wrapper to be seekable and peekable",
+]
+bugs = [
+  "Readback error in encrypted_reader",
+]

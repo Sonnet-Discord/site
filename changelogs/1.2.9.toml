@@ -1,0 +1,22 @@
+[version]
+id = "1.2.9"
+name = "Real Users"
+
+[changes]
+frontend = [
+  "Add(remove-regexblacklist): Remove a regex by its index",
+  "Change(search-infractions): Only specifying a uid will default to user infractions",
+  "Change(help): Typing `help 2` etc for a second help page will prompt the user the correct syntax",
+]
+backend = [
+  "Add(clang-format): C formatter",
+  "Change(cloader): Make cloader use long in place of int for arbitrary temp numbers",
+  "Add(slots): Add dunder slots to many classes, lowering class overhead",
+  "Add(format_duration): End user duration formatting for arbitrary seconds (used in mute)",
+  "Change(lib_db_handler): Libraries are now more memory efficient by replacing list comprehensions with generators",
+  "Add(db_hlapi.list_enum): list_enum call to list all primary keys in an enum",
+  "Add(LeXdPyK): 1.4.6: Previously mentioned dunder slots and encoding specifiers",
+]
+bugs = [
+  "Patch(encoding): Make all file opens specify utf8 encoding",
+]

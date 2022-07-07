@@ -1,0 +1,19 @@
+[version]
+id = "1.1.5"
+name = "Hard Split"
+
+[changes]
+frontend = [
+  "Add username change logging",
+  "Add reactionroles subsystem",
+]
+backend = [
+  "Change lib_parsers to have unique error types",
+  "Refactor ramfs storing to use unified `guild_id/data` from root dir",
+  "Refactor statistics to use dict objects instead of vnum datatype",
+  "Add cache configs to database cache loader",
+  "Add parse messageid lib, this will be replacing self handled messageid libs in later versions",
+]
+runtime = [
+  "Remove win build scripts, these are legacy and were never maintained",
+]

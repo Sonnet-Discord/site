@@ -1,0 +1,5 @@
+[version]
+id = "1.2.8.1"
+
+[changes]
+bugs = ["Patch((un)ban|kick): reasons over 512 would error on discords reason end"]

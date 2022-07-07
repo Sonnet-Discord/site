@@ -1,0 +1,25 @@
+[version]
+id = "1.1.2"
+name = "Flashback"
+
+[changes]
+frontend = [
+  "Add regex notifier system",
+  "Add usermention to infraction commands",
+  "Add flags to search-infractions",
+  "Allow parsing URLs in grab-message without disallowing additional args",
+  "Add replies to grab-message",
+  "Change profile command status to show status as a color",
+  "Change @ing bot to only work when bot is directly mentioned",
+  "Add replies to starboard",
+  "Return log channel as channel object instead of int when displayed",
+]
+backend = [
+  "Make grab-message parse files every time",
+  "Refactor on-message automod to not use, well whatever that thing was",
+  "No longer attempt to log files if a message is deleted instantly",
+  "Close encrypted files when done reading them, possibly caused errors",
+]
+bugs = [
+  "More random errors that apparently raw-reaction-add has",
+]

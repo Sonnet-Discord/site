@@ -1,0 +1,29 @@
+[version]
+id = "1.2.10"
+name = "Hardened Steel"
+note = "Happy Anniversary!"
+
+[changes]
+frontend = [
+  "Add(list-mutes): Command to list all muted users in mutedb",
+  "Add(remove-mute): Command to remove userid from mutedb",
+  "Change(on_message): Bot will only say its prefix if being mentioned is the entire message",
+  "Add(rejoin-mute): Muted users will be remuted on rejoin",
+]
+backend = [
+  "Add(classes): Empty `__slots__` to all classes to lower memory footprint",
+  "Change(commandapi): Commands no longer need to specify a cache or permission behavior",
+  "Add(db_hlapi.fetch_guild_mutes): Function to grab a guilds mute table",
+  "Add(has_default_avatar): Helper function to check if a user has a default avatar",
+  "Change(lib_compatibility): Version checks now happen at init time, not runtime",
+  "Add(lib_sonnetcommands): Helper to wrap and type a sonnet command",
+]
+runtime = [
+  "Add(BOT_NAME): Config to set the name of the bot",
+  "Add(confcheck): Most string configs are now validated at init time",
+  "Upgrade(dependencies): Sonnet now builds and tests with latest libraries, be sure to update sometime!",
+]
+bugs = [
+  "Patch(mute-recovery): Make mute recovery only print users to unmute that are not no unmute users",
+  "Patch(user_avatar_url): Would not grab default avatar in 2.0",
+]

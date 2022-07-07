@@ -1,0 +1,5 @@
+[version]
+id = "1.2.11.1"
+
+[changes]
+bugs = ["Fix(search-infractions): Fatal error would raise instead of erroring normally on a shlex parse failure"]

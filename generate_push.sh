@@ -1,5 +1,5 @@
 #!/bin/bash
-./gensite
+./site_generator/site_generator
 git add -A
 git commit -m "${1}"
 git push

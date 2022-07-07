@@ -1,0 +1,5 @@
+[version]
+id = "1.2.0.1"
+
+[changes]
+bugs = ["patch error in encrypted reader"]

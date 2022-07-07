@@ -1,0 +1,8 @@
+[version]
+id="1.1.0.1"
+
+[changes]
+bugs = [
+  "Discord websocket hiccup accounted for in antispam",
+  "Starboard no longer breaks down",
+]

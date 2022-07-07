@@ -1,0 +1,20 @@
+[version]
+id = "1.2.4"
+name = "Over the Rainbow"
+
+[changes]
+frontend = [
+  "Better confine antispam config bounds",
+  "add Char Antispam",
+  "Add guild specific color options",
+  "infraction-details and delete-infraction now show unix timestamps",
+  "add replying to field in deleted message logs",
+]
+backend = [
+  "Add sonnet embed color system",
+  "embed_colors and load_embed_color endpoints added to lib_loaders",
+  "More typing added",
+  "minor polishing on commands while typing them",
+  "add inc_statistics_better endpoint that supports better type checking",
+  "add lexdpyk_h for ramfs typing",
+]

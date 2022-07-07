@@ -1,0 +1,5 @@
+[version]
+id="1.0.1.1"
+
+[changes]
+bugs = ["Fix fatal flaw in profile command that stemmed from misreading code initially"]

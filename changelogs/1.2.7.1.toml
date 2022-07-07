@@ -1,0 +1,5 @@
+[version]
+id = "1.2.7.1"
+
+[changes]
+bugs = ["Patch(search-infractions) Improper bounds check on page index caused fatal error if page queried was one above limit"]

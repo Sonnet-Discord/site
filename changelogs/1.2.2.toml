@@ -1,0 +1,45 @@
+[version]
+id = "1.2.2"
+name = "A Moderation Focused bot"
+
+[changes]
+frontend = [
+  "Add stricter input validation to set-antispam",
+  "Add set-mutetime command",
+  "unban and unmute now insert reasons and logs into database",
+  "note infractions are like warns but dont log to infraction log or dm the user",
+  "Infraction searching now supports negative indexing",
+  "rr-purge added to remove all reactionroles from a message",
+  "map now takes -e parameter for appending args to the end of every command",
+  "Add absolute totals to % totals in statistics command",
+  "Support floating point seconds in antispam time",
+]
+backend = [
+  "Added return state to most commands, allows sonnetsh and map to stop execution after a failure",
+  "Remove unneeded imports from all files, this is thanks to the new addition of pyflakes and pylint in the workflow",
+  "GDPR now instancizes commands before running them",
+  """General infraction processor is no longer garbage
+    now gaurantees a user object or failure
+    can specify to not add an infraction to logs but put it in the database
+    just look at it its so much cleaner
+  """,
+  "muting a user now first clears them from the mute database and unmuting will also clear them from the database",
+  "Ping function now uses timestamp generation template function",
+  "Uptime printing now uses shared function, no longer prints as \"days\" when the count of days is 1",
+  "Userupdate no longer checks for changed usernames as that event happens on on-user-update",
+  """Update kernel to LeXdPyK 1.3.1
+    Updates to support discord.py 1.7 deprecations
+    error printing is now pretty
+    """,
+]
+runtime = [
+  "Make re2 optional",
+  "Make loading the C lib optional",
+  "Add default lite config for running the bot without mariadb or re2",
+  "Move requirements.txt to requirements.txt and requirements.extras.txt to allow for not installing re2 or mariadb",
+]
+bugs = [
+  "Fix jkb on a non user would print None",
+  "Fix negative mute times that would proceed to not mute",
+  "Infraction searching no longer goes to last page when 0 is passed into it",
+]

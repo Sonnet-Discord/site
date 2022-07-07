@@ -1,0 +1,31 @@
+[version]
+id = "1.2.1"
+name = "Expand Beyond"
+
+[changes]
+frontend = [
+  "Added join and leave logging",
+  "General update on all libraries to use ERROR: in their return syntax",
+  "Version command now prints Clib version grabbed from DotHeaders",
+  "Automod infrations now print the item that was blacklisted",
+]
+backend = [
+  "Sonnetsh now makes a virtual message content to allow for more scripting possibilities",
+  "Permissions parser now supports reading custom permissions",
+  "Profile command flattened to use parsedate",
+  "DotHeaders added for easier loading of clib functions",
+  "Return tuple instead of list from lib_handlers",
+  "Comments added to all lib parsers functions",
+  "Lib parsers does not parse all permissions unless needed, shaving off minor processing time",
+  "Clean up db_hlapi add_infraction to use zipping",
+  "Retab and speed bump C loader",
+  """Update to LeXdPyK 1.3
+    Supports multi bot owner
+    Supports removing blacklisted users/guilds while running
+    Prints error message to discord instead of just generic text
+    Supports parsing multiple commands per event
+  """,
+]
+runtime = [
+  "Add upload function to db_hlapi",
+]

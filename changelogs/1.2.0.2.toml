@@ -1,0 +1,5 @@
+[version]
+id = "1.2.0.2"
+
+[changes]
+bugs = ["delete-infraction on nonexistent infraction would fatal error"]

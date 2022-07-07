@@ -1,0 +1,8 @@
+[version]
+id = "1.2.6.2"
+
+[changes]
+bugs = [
+    "Security: Limit map, amap, and sonnetsh to not run more than 1000 iterations",
+    "FastPass: Move member-is-user race cond to main as its more common than expected",
+]

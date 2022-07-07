@@ -1,0 +1,54 @@
+[version]
+id = "1.2.5"
+name = "Gatekeeper"
+
+[changes]
+frontend = [
+  "Add: error handling for GDPR download files too big to upload",
+  "Add: leave-log and message-edit-log overloads to logging channels, allows better seperation",
+  "Add: joinrules command subsets, allows user, timestamp, and default pfp warnings",
+  "Add: Show who the bot could not dm in infraction logging",
+  "Add: error parsing for forbidden errors on sending embeds",
+  "Add: search-infractions new flag for infractions per page",
+  "Change: sonnetsh/map now tell how long it took to execute and print a sucess message",
+  "Change: profile/pfp now support parsing members not in guild",
+  "Change: help command now shows total commands and total endpoints",
+  "Change: serverinfo now shows top role as a mention",
+  "Change: deletion log timestamps now show message creation time, not deletion time",
+  "Change: parse_log_channel and parse_role now allow typing remove|rm|delete to remove the log item",
+]
+backend = [
+  "Add: more typing to build_tools",
+  "Add: more typing to sonnet core and everywhere",
+  "Change: Seperate files from discord.File in GDPR command",
+  "Add: constants library for discord limits and sonnet error strings",
+  "Add: delete_config db_hlapi endpoint",
+  "Add: db_hlapi lock kwarg to allow for locking database queries per guild",
+  "Add: lib_parsers.parse_user_member to parse a user and member object from args",
+  "Change: search-infractions now uses SQL to query for infractions",
+  "Change: search-infractions now uses math to calculate page counts",
+  "Change: sonnetsh/map now use try: finally: syntax to gaurantee the message.content is not lost",
+  "Add: limits to deletion and editing logs to not go over (cause 4k char limits)",
+  "Add: dummy typing class for cryptography",
+  "Add: cmd_module, dlib_module and _dict counterparts to lib_lexdpyk_h",
+  "Add: lib_loaders endpoint to get_guild_lock for threadlocks",
+  "Add: TEXT_KEY endpoint to db_handler that says if TEXT is allowed to be used as a key or not",
+  "Add: make_new_index endpoint to db_handler to allow for creating indexes",
+  "Add: multifetch_rows_from_table endpoint to db_handler that allows fetching based on multiple datapoints",
+  "Add: multicount_rows_from_table endpoint to db_handler that allows fetching a count of the db query instead of the data itself",
+  "Add: ping endpoint to db_handler to ping if db connection is alive",
+  "Add: Deprecationwarning on lib_parsers.ifgate",
+  "Add: docstrings to all lib_parsers endpoints",
+  """Add: LeXdPyK V1.3.3:
+    Add: typing to all of kernel
+    Add: error logging to err.log
+    Add: errors are not raised to dpy, instead printed with traceback by the kernel
+    Add: handle discord.errors.Forbidden on sending error messages from kernel
+    """,
+  "Change: grab_files returns bare io.BytesIO discord.File to allow for no underlying circular references",
+  "Add: grab_filter_infractions to db_hlapi, deprecates grab_user_infractions and grab_moderator_infractions",
+]
+runtime = [
+  "Add: autotest easy threading test script",
+  "Change: bump requirements",
+]

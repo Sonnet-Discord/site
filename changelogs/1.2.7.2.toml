@@ -1,0 +1,5 @@
+[version]
+id = "1.2.7.2"
+
+[changes]
+bugs = ["Patch(antispam): if a user was muted indefinitely and antispam was triggered and antispam was set to auto unmute (non 0 mutetime) the user could escape the indefinite mute via antispam remuting them, this is patched by adding indefinite mutes as a 0 in the mute database, ensuring antispam doesnt clobber it."]

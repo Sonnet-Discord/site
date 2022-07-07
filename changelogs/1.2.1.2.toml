@@ -1,0 +1,5 @@
+[version]
+id = "1.2.1.2"
+
+[changes]
+bugs = ["Regex with / in name would cause the ramfs to create folders, fixed by hashing and hex valuing file names"]

@@ -1,0 +1,5 @@
+[version]
+id = "1.2.5.1"
+
+[changes]
+bugs = ["mariadb server version was not properly queried, oops"]

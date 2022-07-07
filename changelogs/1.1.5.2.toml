@@ -1,0 +1,5 @@
+[version]
+id = "1.1.5.2"
+
+[changes]
+bugs = ["starboard confset commands fatal errored on no input"]
