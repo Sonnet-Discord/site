@@ -133,11 +133,18 @@ func buildTemplates() {
 // converts \`\` codequotes to <code></code>
 func codeQuoteHTML(s string) string {
 
+	num_quotes := strings.Count(s, "`")
+
+	// skip allocation if no quotes
+	if num_quotes == 0 {
+		return s
+	}
+
 	inQuote := false
 
 	builder := strings.Builder{}
-	// will only realloc on insert of <code>, lazy mem saver
-	builder.Grow(len(s))
+	// account for length of quotes div 2, for every quote group allocate one code html (-2 for `` being removed)
+	builder.Grow(len(s) + (num_quotes / 2 * (len("<code></code>") - 2)))
 
 	for _, ch := range s {
 		if ch == '`' {
