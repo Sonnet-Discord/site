@@ -1,0 +1,41 @@
+[version]
+id = "1.2.3"
+name = "Eternity"
+
+[changes]
+frontend = [
+  "mutetime-set alias to set-mutetime",
+  "Infraction logging changed to have better timestamps and user mentions",
+  "purge command added",
+  "pfp added as alias to avatar",
+  "rr-rm and rr-ls aliased to rr-remove and rr-list",
+  "help command now prints all commands on default helptext",
+  "add timestamps to user joins and nick updates",
+  "add false print to a nonetype nickname in nick logging",
+]
+backend = [
+  "Massive amounts of static type checking added, decreasing room for bugs",
+  "set-prefix now grabs config cached prefix instead of db, replaces None with DEFAULT_PREFIX",
+  "basic emoji validation added to rr",
+  "rr commands changed to use inline error handling",
+  "json datatype added to cache, uses pickling to improve speed",
+  "db enumeration V1 rolled out, introduces grab_enum, set_enum, and inject_enum for runtime specific database schemas",
+  "antispam moved to vnum numbers",
+  "antispam added char count for later charantispam",
+  "improve on-message forbidden perm check handling",
+  "speed up startup jobs with walrus",
+  "directbinnumber and vnum writes sped up thanks to builtins",
+  "cache loader now uses vnum allocation",
+  "cache loader now loads defaults at load, not generation",
+  "cache loader now uses tail call recursion to grab values",
+  "ifgate method sped up by just using \"any\" builtin",
+  "LeXdPyK 1.3.2: support type checking and do not delete messages on kernel blacklist",
+]
+runtime = [
+  "cloader modified to work on x32 hardware, in theory",
+]
+bugs = [
+  "set jkb to dissallowed mentions",
+  "Spelling pass over codebase",
+  "fix on-delete erroring on dm events",
+]

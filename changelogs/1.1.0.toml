@@ -1,0 +1,42 @@
+[version]
+id = "1.1.0"
+name = "The all Seeing eye"
+
+[changes]
+frontend = [
+  "Remove joinlog command",
+  "Add antispam-set system",
+  "Rename blacklist category to automod category",
+  "Add joke ban command",
+  "Change mute command to be mute <uid> [time] [reason]",
+  "Add infraction-search of members not in guild, add infraction count to infraction search",
+  "Change ping command to represent blacklist and antispam as just automod",
+  "Add serverinfo command",
+  "Add padding to uptime and version-info uptime counters",
+  "Add 1 and 0 as valid boolean inputs",
+  "Add color to version-info",
+  "Add statistics command",
+  "Make starboard timestamps show starred message timestamps",
+]
+backend = [
+  "Add statistics system",
+  "Add kernel ramfs that is persistent",
+  "Ability to ban/warn members not in guild",
+  "Faster async based processing of infractions",
+  "Make wiwb space stripping work correctly",
+  "Split message handlers into 3 files",
+  "Add vnum processors to statistics system",
+  "Make LeXdPyK kernel, includes more headers and a inbuilt ramfs, new Kapi, and cleaner layout",
+  "Do antispam and blacklist actions in async to lower response times",
+  "Move ramfs into kernel",
+  "Add smart image detection of message images to starboard",
+  "Make database hlapi not create db on every call",
+  "Process commands in async to not inturrupt main thread",
+  "Make db_obfuscator only load sonnet dbs",
+]
+runtime = [
+  "Add LeXdPyK kernel configuration",
+  "Remove sqlite3_type from sonnet configuration",
+  "Add documentation of kernel api, command api, event handler overview, quickstart guide",
+  "Version bump to discord.py module",
+]

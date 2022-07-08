@@ -1,0 +1,27 @@
+[version]
+id = "1.1.1"
+name = "Privacy has no Cost"
+
+[changes]
+frontend = [
+  "Improve docs on antispam-set",
+  "If mutetime >= 256 hours, default to no unmute",
+  "Add grab-message command",
+  "Add poll command",
+  "Add coinflip command",
+  "Add python version to version-info",
+  "Add deleted file logging",
+  "If bot is mentioned it will now give guild prefix",
+]
+backend = [
+  "Add gif,webp to starboard image scanner",
+  "Desort wordlist loader, increases max possible combinations at cost of speed",
+  "Skip blank lines in wordlist loader, allows flexibility in wordlist.txt",
+  "Add encrypted fileio wrapper",
+  "Move blacklist whitelist to completely skip blacklist parsing",
+  "Improve handling of raw-reaction dblocking",
+  "New kernel supports proper tree and ls commands",
+]
+runtime = [
+  "Add cryptography and lz4 dependancy",
+]

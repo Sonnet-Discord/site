@@ -1,0 +1,35 @@
+[version]
+id = "1.2.7"
+name = "Start of the Road"
+note = "Every end to a road is the start of another."
+
+[changes]
+frontend = [
+  "Add(starboard-forceboard): allows forcing a message to be starboarded",
+  "Change(mute): under gotools parser, 5m2s type parsing is allowed now",
+]
+backend = [
+  "Change(search-infractons): Improve infraction renderer to show most amount of chars possible",
+  "Add: gotools library to handle time parsing",
+  "Add: gotools GenerateCacheFile (10x as fast as python variant)",
+  "Change: move alot of code to use io.StringIO",
+  "Add: dpy-stubs typing to codebase",
+  "Change: remove --implicit-reexport mypy flag as its no longer needed",
+  "LeXdPyK 1.4: support for dpy typing, faster ramfs multi dir lookups",
+  "Add(lib_sonnetconfig): Support for dynamic config loading",
+  "Change: reformat wordlist to be alphabetic, add new words",
+  "Change(parsedate): parsedate functions now take optional datetime to conform to dpy typing",
+  "Add: Starting stubs for a new database version, this is not finalized",
+]
+runtime = [
+  "Add: new configs without breaking old config files: `GOLIB_LOAD` and `GOLIB_VERSION`",
+]
+bugs = [
+  """Patch(datetime): timestamps are now more uniformly UTC on non UTC system clocks
+      This does not affect antispam as dpy datetimes are non aware
+  """,
+  "Patch: Remove alot of race conditions and channel type errors by adding dpy typing",
+  "Patch(help): Help command total commands count was not correct",
+  "Patch(cloader): Make cloader differentiate between processing error and FileNotFound",
+  "Patch(update_log_channel): now checks for type of channel, must be TextChannel",
+]

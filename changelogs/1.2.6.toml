@@ -1,0 +1,41 @@
+[version]
+id = "1.2.6"
+name = "A Voice and a Void"
+
+[changes]
+frontend = [
+  "Add: asyncmap/amap, allows for faster concurrent command execution, but fares poorly with error handling",
+  "Add: some parserlibs now detect when their db entries are corrupt and warn the end user",
+  "Add: paging to help command, 25*25 limit no longer exists",
+]
+backend = [
+  "Add: cache directives: a way for caches to specify an exact cache dir or file to remove, allowing for turing complete and finer cache control",
+  "Change: infraction processor now grabs infraction time once",
+  "Add: `automod: bool` flag to commands api, used by infraction processing commands",
+  "Deprecate: db_hlapi(lock: threading.Lock=), it could cause async deadlock",
+  "Change: on_message_delete now supports logging 4000c messages",
+  "Deprecate: lib_loaders.inc_statistics, just use inc_statistics_better",
+  "Deprecate: db_hlapi.add_to_starboard, db_hlapi.in_starboard",
+  "Change: lib_encryption_wrapper.encrypted_reader errors are now custom, they inherit from the same exceptions so they should not cause errors to preexisting code",
+  "Add: some documentation to lib_loaders and lib_parsers functions",
+  "Change: SONNETAES errors now just purge files and does not top level error",
+  "Add: db_hlapi.hlapi_version that says what api version it is on",
+  "Add: db_hlapi now checks the underlying db config version, this will let us change it later and upgrade old dbs",
+  "Add: delete_enum: deletes a row in the enum table",
+  "Deprecate: db_hlapi.database, you are not supposed to call this anyways, the new internal endpoint is db_hlapi._db",
+  "Add: documentation to some db_hlapi endpoints",
+  "Add: LeXdPyK 1.3.4: supports strict type checking",
+]
+runtime = [
+  "Add: strict mypy type checking (woo)",
+  "Add: BANNED.md, the no list of sonnet",
+  "Change: cmds_to_html now validates cache names and validates all items required by kernel",
+  "Change: cmds_to_html now uses rudimentary html escaper for sonnet inputs",
+  "Change: dependency version bump on all deps",
+]
+bugs = [
+  "Change: emoji validator from 2 max chars to 5",
+  "Fix: starboard-count accepted float input, caused infinities errors, now no longer does",
+  "Fix: race condition with blacklist parsing on members becoming users",
+  "Fix: help command no longer errors on a command module with no commands (this is stupid but ok)",
+]

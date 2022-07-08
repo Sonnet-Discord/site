@@ -1,0 +1,5 @@
+[version]
+id = "1.2.2.1"
+
+[changes]
+bugs = ["Fix race condition where a member object could become a user object while processing perms"]

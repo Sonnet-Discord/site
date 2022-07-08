@@ -1,0 +1,27 @@
+[version]
+id = "1.2.0"
+name = "Waterfront"
+
+[changes]
+frontend = [
+  "list-blacklist renamed to list-automod",
+  "upload file on rr-list being overloaded instead of just error messaging",
+  "add map command to run one command with multiple arguments",
+  "update profile command to be more accessible (removed reliance on colors)",
+  "add support for individual command help",
+]
+backend = [
+  "update profile command to be cleaner internally",
+  "database connections moved to self handling connection cache",
+  "infraction grabber no longer relies on message.content allowing sonnetsh scripting",
+  "add support for rich descriptions in command help",
+  "speed optomizations to lib_encryption_wrappr",
+  "support for file like objects in lib_encryption_wrapper",
+]
+runtime = [
+  "rename cmd_blacklist.py to cmd_automod.py",
+  "rename dlib_reactions.py to dlib_starboard.py",
+]
+bugs = [
+  "patch embed overflow 0 day in help command",
+]

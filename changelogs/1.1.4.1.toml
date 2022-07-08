@@ -1,0 +1,5 @@
+[version]
+id="1.1.4.1"
+
+[changes]
+bugs = ["deprecation warning on jban was completely nonfunctional"]

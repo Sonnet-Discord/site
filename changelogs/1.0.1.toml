@@ -1,0 +1,33 @@
+[version]
+id = "1.0.1"
+name = "Collision of Worlds"
+
+[changes]
+frontend = [
+  "Add antispam to mainloop processor and gdpr system",
+  "Add caches to gdpr downloader",
+  "Improve documentation of commands",
+  "No longer break on list-blacklist over 2k characters",
+  "Add unban message",
+  "Improve grammar on infraction commands",
+  "Add mutetime response to mute command",
+  "Add curcount return to starboard-count command",
+  "Add version-info command",
+  "Update blacklist processor to be less prone to bypasses",
+  "Add logchannel setting no input to show the current log channel",
+]
+backend = [
+  "Fix all mutetimer collision",
+  "Change command processing to kwargs system",
+  "Add version info to all command modules",
+  "Move all message handling to dynamiclibs",
+  "Add mute recovery subsystem, may collide timers but its better than all mutes being dropped",
+  "Change message config loader to be more modular",
+  "Update db_handler's to include list_tables command",
+]
+runtime = [
+  "Remove support for rhea type databases that have shown to be problematic",
+  "Remove support for python 3.7 and python 3.6 in favor of cleaner future proof code",
+  "Add SONNET_TOKEN alongside RHEA_TOKEN for environment vars to get token from",
+  "Added warning for bot not having token",
+]

@@ -1,0 +1,36 @@
+[version]
+id = "1.2.11"
+name = "PythonicT"
+
+[changes]
+frontend = [
+  "Change(infractions): infraction perm failure messages will now refer to the bot using the bots name",
+  "Add(ban): -d parameter to specify amount of days to delete messages for",
+  "Add(search-infractions): -f parameter to filter with regex",
+  "Change(search-infractions): arguments are now split using shlex, meaning quotations may be used",
+  "Add(grab-message): -r flag to send the message contents as a file, bypassing discord rendering bugs",
+  "Add(help): help now says when you have the permission listed in per command help",
+  "Add(help): -c flag to only scan for a command, previously if a category and command had the same name it would jump to the category",
+  "Change(version-info): now prints what implementation of python is being used",
+]
+backend = [
+  "Add(cmds_to_html): now test for correct permspec on custom permissions",
+  "Add(lib_tparse): typesafe argument parsing library for commands",
+  "Add(CommandCtx): a typesafe ctx object that may be passed to commands instead of kwargs, new api has been implemented without breaking old commands",
+  "Improve(infractions): a \"failed to dm\" info message will not halt processing of the ban success message anymore",
+  "Refactor: a test set of commands have implemented commandctx with no issues and are more easily typesafe",
+  "Change(cmd_scripting): commands have been reworked to use CommandCtx, making them more readable",
+  "Change(help): split into smaller subcommands to improve readability",
+  "Add(help): ability for modules to supply their own help page, allowing for guild level custom help",
+  "Add(CommandError): a special exception that will print to the user and exit normally instead of raising to the kernel from a command context",
+  "Add(enum_context): nested context manager for a specific dbenum, allowing more concise and less error prone code for accessing said enum",
+  "Add(parse_user_member_noexcept): concept function that raises a commanderror on failure, nominally lowering boilerplate at the call site",
+  "Add(parse_channe_message_noexcept): concept function that raises a commanderror on failure, nominally lowering boilerplate at the call site",
+  "Add(CallCtx,CallKwargs): call modifier functions for easily adapting to new CommandCtx based api",
+  "Change(grab_filter_infractions): now accepts true/false/None for automod, allowing filtering both ways or neither ways",
+  "Change(LeXdPyK): V1.4.8: argparse is now used to aide in commandline arguments, file uses main function instead of segmented startup",
+]
+runtime = [
+  "Upgrade(libraries): sonnet has upgraded library versions and added a new library (typing-extensions), you may need to install these to update properly",
+]
+

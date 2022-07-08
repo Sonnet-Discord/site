@@ -1,0 +1,45 @@
+[version]
+id = "1.2.13"
+name = "Error.context()"
+
+[changes]
+frontend = [
+  "Add(softban): Moderation command to ban and unban a user",
+  "Change(mute): Make duration error handling warn if no duration was specified, but one of the args was a duration",
+  "Change(map_preprocessor): Make preprocessor print what command triggered an error, for nested stack debugging",
+  "Add(map-expand): Command that expands the arguments to a call to map instead of running them, useful for debugging",
+  "Add(sub): Command that runs other command as a subcommand, allows silencing output on most commands that respect verbose",
+  "Add(sleep): Command to sleep for a set duration up to 30 seconds, useful in loosely timed scripts and as a toybox command",
+  "Change(profile): Add \"Guild Perm Level\" to profile, allowing for perm visibility",
+  "Change(help): Add how long processing took to help embed, along with version and module info when relevant",
+  "Move(grab-message): Move `grab-message` to utils as it is no longer a moderation command",
+  "Add(mentionprefix): Mentioning bot will now act as a command prefix",
+  "Change(parse_user_member): Make error handling try and guess what the id passed was",
+]
+backend = [
+  "Change(cmd_automod): Move function signatures to `CommandCtx`, make errors raise `CommandError`",
+  "Split(cmd_moderation|cmd_bookkeeping): Split moderation module into 2 modules for easier management",
+  "Add(wordlist): More words in wordlist, fix some spelling issues in wordlist",
+  "Add(lib_datetimeplus): Library for easier working with datetime primitives",
+  "Refactor(Time): Make various parts of codebase use lib_datetimeplus instead of raw datetime calls",
+  "Add(KernelArgs): LeXdPyK arguments typesafe wrapper",
+  "Refactor(on_message): Make `on_message` use KernelArgs",
+  "Change(lib_constants): Add missing permissions names",
+  "Change(lib_encryption_wrapper): Remove mock encryptor/decryptor interfaces as cryptography updated its interfaces",
+  "Add(ParseDurationSuper): Function to parse a complex form duration in pure python",
+  "Add(parse_core_permissions): Lightweight permission parser that only parses basic permissions (no custom overloads) and has static assertions thanks to it",
+  "Update(LeXdPyK): 1.4.12: Support pyright typechecking",
+]
+runtime = [
+  "Change(dependencies): Lock all versions to semver, upgrade dependencies to latest stables",
+  "Add(manualtest): Unit testing writing helper",
+  "Change(autotest): Make tests return in order of first to finish, and show time took",
+  "Add(pyright): Typechecker used by dpy for compatibility",
+  "Remove(pytype): Remove pytype as a dependency",
+]
+bugs = [
+  "Fix(lib_mdb/sql_handler): list_tables type signature was ill formed",
+  "Fix(starboard): Make image url parser parse more urls correctly",
+]
+
+

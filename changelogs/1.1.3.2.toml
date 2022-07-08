@@ -1,0 +1,9 @@
+[version]
+id="1.1.3.2"
+
+[changes]
+bugs = [
+  """Remove on-raw-reaction-add from starboard, it only existed to grab messages not in the cache but it has caused too much trouble for what it is worth
+      the on-raw-reaction-add call is also needed for V1.1.4 Reaction Roles, so cleaning it up beforehand helps
+  """,
+]

@@ -1,0 +1,5 @@
+[version]
+id="1.1.1.2"
+
+[changes]
+bugs = ["FINALLY the on-raw-reaction-add bug was found and patched\nTHIS BUG HAS EXISTED SINCE 1.0.1"]

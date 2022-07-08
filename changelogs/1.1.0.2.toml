@@ -1,0 +1,8 @@
+[version]
+id="1.1.0.2"
+
+[changes]
+bugs = [
+  "Patches to dmmessage errors",
+  "Move bot to re2 parser, patches regex fork exploit found by Vord",
+]

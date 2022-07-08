@@ -1,0 +1,24 @@
+[version]
+id = "1.0.2"
+name = "EndlessTime"
+
+[changes]
+frontend = [
+  "Add uptime command",
+  "Add starboard for old messages and images",
+  "Fix starboard boarding messages in starboard channel",
+  "Improve version-info command",
+]
+backend = [
+  "Rewrite portions of help command to make it less bad",
+  "Change db connection type to keep connections open per module",
+  "Convert lib_sql_handler to unix line endings",
+]
+runtime = [
+  "Make all static libs able to be edited during runtime",
+]
+bugs = [
+  "Fix editing null message caused by images",
+  "Fix dmmessage errors",
+  "Fix editing messages over 1024 len causing error in embed field limits",
+]

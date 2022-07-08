@@ -1,0 +1,28 @@
+[version]
+id = "1.1.4"
+name = "Droplets of Salt"
+
+[changes]
+frontend = [
+  "Infractions now check role hierarchy",
+  "Jban renamed to jkb",
+]
+backend = [
+  """New kernel (LeXdPyK 1.2.1) with new features and stability
+    Offers new f_type and f_args for ramfs
+    Encrypted token boot using miniflip encryption
+    Blacklisting
+    Logging file system
+    Return values on debug commands
+    Remote shutdown of bot
+    Stability in event of broken module load
+  """,
+  "Regex blacklists are stored as compiled objects",
+  "Optional compile C acceleration for wordlist loader",
+]
+runtime = [
+  "Option for encrypted token boot",
+]
+bugs = [
+  "Muting a user and then banning them caused mute timers to error out",
+]

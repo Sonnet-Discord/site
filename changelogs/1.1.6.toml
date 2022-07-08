@@ -1,0 +1,17 @@
+[version]
+id = "1.1.6"
+name = "_sh"
+
+[changes]
+frontend = [
+  "Add sonnetsh command",
+  "Add rr-addmany and rr-list",
+]
+backend = [
+  "Optimize infraction searching sort system",
+  "Add verbose flag to command api",
+  "Add commands dict to command api",
+]
+bugs = [
+  "Perm check on starboard message sending",
+]

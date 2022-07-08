@@ -1,0 +1,6 @@
+[version]
+id = "1.2.12.1"
+
+[changes]
+bugs = ["Patch(map): Fatal error on passing -s/-e flags to map without a command"]
+

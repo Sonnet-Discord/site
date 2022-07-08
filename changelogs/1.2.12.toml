@@ -1,0 +1,31 @@
+[version]
+id = "1.2.12"
+name = "Feature Together"
+
+[changes]
+frontend = [
+  "Add(infraction modifiers): Modifiers that add fields to logging embeds",
+  "Add(mutelength): Option for mute command to display mute length to users",
+  "Add(logging): Message content to file logging to capture arbitrary text",
+  "Change(search-infractions): Per Page limit changed to 1-40 from 5-40",
+  "Add(map): Add `-s` flag to map and amap",
+  "Add(role-info): Command to return permission and usercount info of roles (extends Sonnet's \"Deal With Discord\" policy)",
+]
+backend = [
+  "Change(autotest): Make autotest use a typesafe wrapper around processes",
+  "Add(unisafe): Unicode safety checker (disallows arbitrary unicode in codebase)",
+  "Add(paginate_noexcept): Complex pagination library that attempts to fit all content within a limited space",
+  "Add(reactionroles): Sanity limit of 750 reactionroles per guild",
+  "Change(coinflip): Command now checks if it is a subcommand, and runs a faster loop if it is",
+  "Add(constants): Self defined permission constants (dpy1.7.3 is out of date in this area)",
+  "Change(urlb): Account for multiline url embeds (this is a discord \"feature\")",
+  "Change(parse_channel_message): Add reply capture feature",
+  "Add(cache_sweep): commands cache control behavior has been moved to lib_sonnetcommands",
+  "Add(SonnetCommand.sweep_cache): Convenience method to sweep cache after a SonnetCommand runs",
+  "Add(SonnetCommand(aliasmap)): Pass command hashmap directly to automatically reroute aliases",
+  "Change(starboard): Add image url grabbing from message content",
+  "Add(LeXdPyK): V1.4.10: add `--version` flag and user mentions now work for debug commands",
+]
+runtime = [
+  "Add(sonnetconfig): Warning about using re instead of re2",
+]
