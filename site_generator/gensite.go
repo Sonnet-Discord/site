@@ -20,7 +20,7 @@ import (
 const (
 	TemplateDir  = "./builders/"
 	HTMLDir      = "./html/"
-	ChangelogDir = "./changelogs/"
+	ChangelogDir = "./html/changelogs/"
 )
 
 type walkstruct map[string]string
@@ -445,6 +445,17 @@ func writeChangeLog() {
 	for _, k := range verlist {
 		fp.WriteString("<div class=\"divider\"></div>\n")
 		changelog[k].toHTMLBuilder(fp)
+	}
+
+	indexp := unwrapExit(os.Create(ChangelogDir + "index.txt"))
+	defer indexp.Close()
+
+	// resort to low -> high order
+	sort.Sort(SemVerList(verlist))
+
+	for _, version := range verlist {
+		versionData := changelog[version]
+		indexp.WriteString(versionData.Version["id"] + ".toml\n")
 	}
 
 }
