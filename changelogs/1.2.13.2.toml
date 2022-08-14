@@ -1,0 +1,5 @@
+[version]
+id = "1.2.13.2"
+
+[changes]
+bugs = ["Fix(rr-list): if a message was added to reactionroles and then removed from reactionroles calling `rr-list` would error on trying to make an empty embed object for its fragments\nfragments are now removed on `rr-remove` and `rr-list` is resiliant against this"]
