@@ -1,0 +1,39 @@
+[version]
+id = "1.2.14"
+name = "Preparing for the Light"
+
+[changes]
+frontend = [
+  "Add(mprotect): Moderator+ infraction protection tools",
+  "Change(join-log): Join logs alone may now be disabled through `set-leave-log-is-join-log`",
+  "Change(message-log): Message logs alone may now be disabled through `set-edit-log-is-message-log`",
+  "Add(unmute-on-ban): Banned members may now be auto unmuted via `set-unmute-on-ban`",
+  "Change(purge): Purge now prints how many messages were purged and what user initiated the purge",
+  "Change(automod): Automod is now active on bot users, this is to allow use of webhook based user accounts",
+  "Change(rr-add/remove): Adding or removing a reactionrole will make the bot attempt to add or remove a reaction of that emoji to the message",
+  "Change(help): Help command no longer prints full command list if length of one embed field is larger than 512 bytes, instead truncates",
+  "Change(version-info): Will now print the time of last reload to version-info, letting users track the last patch date of the sonnet instance",
+]
+backend = [
+  "Add(private_message): Privatized error message endpoint for CommandErrors\nCurrently this is unused but has an api endpoint so it can be used in the future",
+  "Refactor(antispam): Antispam code has been completely rewritten, improving readability and stability substantially",
+  "Refactor(on_message(_edit)): Systems no longer panic on missing ban/kick/mute/warn commands in automod, instead they warn to terminal",
+  "Update(lexdpyk): release LeXdPyK 1.4.15: improve logging and UX, make all events logged in developer mode (replaces dev.py kernel)",
+  "Change(parse_skip_message): Add flag to allow bot users for parsing anyways, while still skipping self",
+  "Add(lib_lexdpyk_h): BotOwners class to lexdpyk headers to allow accessing the current bot owners",
+  "Add(parse_boolean_strict): Parse boolean clone that has a more sane api",
+  "Deprecate(parse_boolean): Deprecate parse boolean as the better method parse_boolean_strict is now available",
+  "Add(manualtest): Add extra ramfs assertions to manualtest",
+  "Add(boolean_to_db_helper): Administration subcommand to parse a boolean entry to the database",
+  """Change(reactionroles): Reactionrole data is now stored in a new format on the database in a forward incompatible way
+    Downgrading sonnet 1.2.14 reactionrole data to 1.2.13-3 or below will not work as intended""",
+  "Change(filelog): Files in the file log are now stored for 60 minutes instead of 30 minutes",
+]
+runtime = [
+  "Add(cached_yapf): Build tool to autocache yapf results and speed up linting time",
+]
+bugs = [
+  "Patch(allowed_chars): Spaces are now allowed in message contents before it is sent to the file logging system",
+  "Patch(antispam): Previously sending 2 messages that should be antispammed between a lagspike would not trigger antispam, this is no longer the case",
+  "Patch(reactionroles): Animated emojis will now work with reactionroles",
+]
