@@ -147,6 +147,30 @@
 					<td>None</td>
 					<td>Administrator</td>
 				</tr>
+				<tr>
+					<td>set-moderator-protect &lt;bool&gt;</td>
+					<td>Set whether to disallow infractions being given to moderator+ members, disabled by default</td>
+					<td>None</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>set-leave-log-is-join-log &lt;bool&gt;</td>
+					<td>Set whether the leave-log config should fallback to join-log if it doesn&#39;t exist</td>
+					<td>None</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>set-edit-log-is-message-log &lt;bool&gt;</td>
+					<td>Set whether the message-edit-log config should fallback to message-log if it doesn&#39;t exist</td>
+					<td>None</td>
+					<td>Administrator</td>
+				</tr>
+				<tr>
+					<td>set-unmute-on-ban &lt;bool&gt;</td>
+					<td>Set whether to unmute a user upon banning them</td>
+					<td>None</td>
+					<td>Administrator</td>
+				</tr>
 			</table>
 			<h2 id="automod">
 				<a href="#automod">Automod</a>
@@ -290,6 +314,23 @@
 					<td>Administrator</td>
 				</tr>
 			</table>
+			<h2 id="changelog">
+				<a href="#changelog">Changelog</a>
+			</h2>
+			<table class="lastctr">
+				<tr>
+					<th>Command Syntax</th>
+					<th>Description</th>
+					<th>Aliases</th>
+					<th>Permission Level</th>
+				</tr>
+				<tr>
+					<td>get-changelog &lt;version&gt;</td>
+					<td>Gets a changelog by version id and returns it as an embed</td>
+					<td>None</td>
+					<td>Everyone</td>
+				</tr>
+			</table>
 			<h2 id="colors">
 				<a href="#colors">Colors</a>
 			</h2>
@@ -402,7 +443,7 @@
 				</tr>
 				<tr>
 					<td>purge &lt;limit&gt; [user]</td>
-					<td>Purge messages from a given channel and optionally only from a specified user</td>
+					<td>Purge messages from a given channel and optionally only from a specified user, this will not purge the command invocation</td>
 					<td>None</td>
 					<td>Moderator</td>
 				</tr>
@@ -536,6 +577,29 @@
 					<td>Forcibly starboard a message and add it to the starboard db</td>
 					<td>None</td>
 					<td>Administrator</td>
+				</tr>
+			</table>
+			<h2 id="url_strip">
+				<a href="#url_strip">Url Strip</a>
+			</h2>
+			<table class="lastctr">
+				<tr>
+					<th>Command Syntax</th>
+					<th>Description</th>
+					<th>Aliases</th>
+					<th>Permission Level</th>
+				</tr>
+				<tr>
+					<td>strip-url &lt;url|message with url&gt;</td>
+					<td>Strips a url given or parsed from a grabbed message and returns the output</td>
+					<td>None</td>
+					<td>Everyone</td>
+				</tr>
+				<tr>
+					<td>update-url-strip</td>
+					<td>Updates url_strip to a compatible version</td>
+					<td>None</td>
+					<td>Bot-owner</td>
 				</tr>
 			</table>
 			<h2 id="utilities">
