@@ -1,0 +1,31 @@
+[version]
+id = "2.0.0"
+name = "Farewell and Hello"
+
+[changes]
+frontend = [
+  "Add(threads/vcs): Sonnet will now fully react to message events in thread and vc channels including automod and commands",
+  "Add(timeout): Moderation tools to facilitate timing out a user",
+  "Add(antispam-timeout): Option to timeout users instead of muting for antispam",
+  "Add(avatar): Make avatar have a flagswitch to grab global avatar, now defaults to guild avatar",
+]
+backend = [
+  """Update(LeXdPyK): 2.0.3:
+      Support dpy2.0.1
+      Make reload of library imports optional
+      Make multiple events able to be registered per event regardless of other modules event usage
+      Add new dpy2 specific events
+  """,
+  "Change(db_handler): Make database handler store in an interface to ensure unified api between sqlite and mariadb",
+  "Refactor(imports): Many modules no longer reload imports as per LeXdPyK 2, significantly lowering init time",
+  "Add(to_snowflake): Compatibility method to get around since patched dpy bug",
+  "Add(is_guild_messageable): Clearer intent method to typeguard if an item is within a guild and messageable",
+  "Refactor(codebase): Code has been changed to no longer use deprecated methods for dpy2",
+  "Add(require_in_guild): Parameter to infraction processor to express commands that require a user is in the guild",
+]
+runtime = [
+  "Upgrade(libraries): Libraries have been updated, you must update to run Sonnet 2.0",
+]
+bugs = [
+  "Patch(enrypted_writer): Add flush method to conform to api",
+]

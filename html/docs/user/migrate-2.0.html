@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<title>Migrating to 2.0 - Sonnet</title>
+		<meta name="og:description" content="Migrating to 2.0 - Sonnet">
+		<meta property="og:site_name" content="Sonnet-py Website">
+		<link rel="stylesheet" href="/style.css">
+		<link rel="icon" href="/favicon.png" sizes="32x32" type="image/png">
+	</head>
+	<body>
+		<div class="title">
+			<a href="/">
+				<img src="/resources/sonnet-sidebyside-shadow.svg" alt="Sonnet">
+			</a>
+			</div>
+		<div class="menubar">
+			<a href="/">Home</a>
+			<a href="/downloads.html">Downloads</a>
+			<a href="/instances.html">Public&nbsp;Instances</a>
+			<a href="/changelog.html">Changelog</a>
+			<a href="/docs/">Documentation</a>
+			<!-- Use link unicode to imply these are external links -->
+			<a href="https://github.com/sonnet-discord/sonnet-py">GitHub &#128279;</a> 
+			<a href="https://discord.gg/H7eAVbbyqV">Discord &#128279;</a>
+			</div>
+		<div class="content">
+			<h1>Migrating to Sonnet 2.0.0</h1>
+			<p>
+			  Sonnet 2.0 introduced a breaking change by using discord.py 2.0 under the hood, this guide aims to help users migrate away from Sonnet 1.x installs without coming into too much trouble
+			</p>
+			<h2>1. Cleaning the Install</h2>
+			<p>
+			  During Sonnets install you were instructed to do <code>pip install -r requirements.txt</code>, this installed a handful of dependencies, one of which may now need to be removed<br>
+			  Attempt to run <code>pip uninstall discord.py-stubs</code>, if pip states that this package is not installed that is perfectly fine, otherwise proceed to uninstall when it prompts you to confirm
+			</p>
+			<h2>2. Ubuntu 20.04 Issues</h2>
+			<p>
+			  If you installed mariadb or google-re2 with sonnet and use 20.04 LTS, do not attempt to upgrade optional dependencies in <code>requirements.extras.txt</code>, 20.04 LTS uses outdated subdependencies, and while Sonnet works best with newer dependencies not having these ones is non critical, if you wish you may try and install them as far as you can, it is known that versions up to mariadb 1.1 work.
+			</p>
+			<h2>3. Upgrading Requirements</h2>
+			<p>
+			  Run <code>pip install -r requirements.txt</code> to install latest dependencies, Sonnet should now boot normally, please report any misc errors to the support channel in the discord, and they may be reflected in this guide later
+			</p>
+			</div>
+		<div class="footer">
+			<div class="divider"></div>
+			<p>
+				Sonnet developed by <a href="https://ultrabear.xyz">UltraBear</a>, <a href="https://github.com/xFuney">xFuney</a>, and <a href="https://github.com/bredo228">Bredo</a>.<br>
+				Sonnet website designed and previously maintained by <a href="https://mckinley.cc/">McKinley</a>, now maintained by <a href="https://ultrabear.xyz">UltraBear</a>.<br>
+				<a href="/resources/">Sonnet logo</a> originally made by Wulf.
+			</p>
+			</div>
+	</body>
+</html>

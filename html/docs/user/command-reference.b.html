@@ -229,9 +229,15 @@ Default Command Reference - Sonnet
 		<td>Administrator</td>
 	</tr>
 	<tr>
-		<td>set-mutetime &lt;time[h|m|S]&gt;</td>
-		<td>Set how many seconds a person should be muted for with antispam automute</td>
-		<td>mutetime-set</td>
+		<td>set-antispam-timeout &lt;time[h|m|S]&gt;</td>
+		<td>Set how many seconds a person should be out for with antispam auto mute/timeout</td>
+		<td>mutetime-set, set-mutetime</td>
+		<td>Administrator</td>
+	</tr>
+	<tr>
+		<td>set-antispam-action [timeout|mute]</td>
+		<td>set whether to use mute or timeout for antispam triggers</td>
+		<td>None</td>
 		<td>Administrator</td>
 	</tr>
 	<tr>
@@ -286,23 +292,6 @@ Default Command Reference - Sonnet
 		<td>Delete an infraction by infractionID</td>
 		<td>remove-infraction, rm-infraction</td>
 		<td>Administrator</td>
-	</tr>
-</table>
-<h2 id="changelog">
-	<a href="#changelog">Changelog</a>
-</h2>
-<table class="lastctr">
-	<tr>
-		<th>Command Syntax</th>
-		<th>Description</th>
-		<th>Aliases</th>
-		<th>Permission Level</th>
-	</tr>
-	<tr>
-		<td>get-changelog &lt;version&gt;</td>
-		<td>Gets a changelog by version id and returns it as an embed</td>
-		<td>None</td>
-		<td>Everyone</td>
 	</tr>
 </table>
 <h2 id="colors">
@@ -392,7 +381,7 @@ Default Command Reference - Sonnet
 		<td>Moderator</td>
 	</tr>
 	<tr>
-		<td>unban &lt;uid&gt;</td>
+		<td>unban &lt;uid&gt; [reason]</td>
 		<td>Unban a user, does not dm user</td>
 		<td>None</td>
 		<td>Moderator</td>
@@ -410,9 +399,21 @@ Default Command Reference - Sonnet
 		<td>Moderator</td>
 	</tr>
 	<tr>
-		<td>unmute &lt;uid&gt;</td>
+		<td>unmute &lt;uid&gt; [reason]</td>
 		<td>Unmute a user, does not dm user</td>
 		<td>None</td>
+		<td>Moderator</td>
+	</tr>
+	<tr>
+		<td>timeout [+modifiers] &lt;uid&gt; [time[h|m|S]] [reason]</td>
+		<td>Timeout a member, defaults to longest timeout possible (28 days)</td>
+		<td>None</td>
+		<td>Moderator</td>
+	</tr>
+	<tr>
+		<td>remove-timeout &lt;uid&gt; [reason]</td>
+		<td>Remove a timeout on a member</td>
+		<td>untimeout</td>
 		<td>Moderator</td>
 	</tr>
 	<tr>
@@ -553,29 +554,6 @@ Default Command Reference - Sonnet
 		<td>Administrator</td>
 	</tr>
 </table>
-<h2 id="url_strip">
-	<a href="#url_strip">Url Strip</a>
-</h2>
-<table class="lastctr">
-	<tr>
-		<th>Command Syntax</th>
-		<th>Description</th>
-		<th>Aliases</th>
-		<th>Permission Level</th>
-	</tr>
-	<tr>
-		<td>strip-url &lt;url|message with url&gt;</td>
-		<td>Strips a url given or parsed from a grabbed message and returns the output</td>
-		<td>None</td>
-		<td>Everyone</td>
-	</tr>
-	<tr>
-		<td>update-url-strip</td>
-		<td>Updates url_strip to a compatible version</td>
-		<td>None</td>
-		<td>Bot-owner</td>
-	</tr>
-</table>
 <h2 id="utilities">
 	<a href="#utilities">Utilities</a>
 </h2>
@@ -611,8 +589,8 @@ Default Command Reference - Sonnet
 		<td>Everyone</td>
 	</tr>
 	<tr>
-		<td>avatar [user]</td>
-		<td>Get avatar of a user</td>
+		<td>avatar [user] [--global]</td>
+		<td>Get avatar of a user, returns guild avatar if it exists unless --global is specified</td>
 		<td>pfp</td>
 		<td>Everyone</td>
 	</tr>
