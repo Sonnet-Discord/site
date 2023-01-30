@@ -1,0 +1,36 @@
+[version]
+id = "2.0.1"
+name = "Hopes and Dreams"
+
+[changes]
+frontend = [
+    "Change(scripting): Further limits have been imposed (3 minute runtime, 200 execs)",
+    "Add(kill-script): Ability to kill any running script via the message id it was sent with",
+    "Change(antispam): Antispam now properly defines when it is off and can be set by the user to 'off' in the configuration commands",
+    "Add(error_context): Some errors in sonnet now give additional private error context in the form of a ui interaction",
+    "Change(mute): The longest mutetime is now 28 days to match discord timeouts",
+    "Add(banner): Util function to get the banner of a user",
+    "Change(scripting): Usage of slanted quotes will now be raised as a note to the user if there was an error parsing arguments",
+    "Add(what-is): Command that combines every form of snowflake parsing in sonnet to guess what type a raw ID is and give rich context",
+    "Change(nickname-logging): An unset nickname now uses more human readable text to explain the nickname is unset",
+]
+backend = [
+    "Refactor(errors): Many commands have been upgraded to use CommandError and CommandError::private_message",
+    "Change(CommandCtx): CommandCtx is now a dataclass and has slightly increased performance",
+    "Add(CommandCtx): command_name and prefix are now accessable through CommandCtx",
+    "Refactor(loaders): Now uses LeXdPyK 1.2 ramfs api, as LeXdPyK 2.0 is now the minimum that sonnet-core will run on",
+    "Change(parse_user_member): Now allows requiring fetching a user regardless of cached entries (as some datums require this api call, thanks discord)",
+    "Add(database_connection): Database connection errors that previously raised an 'uncatchable' error may now be caught for graceful database connection loss handling",
+]
+runtime = [
+    "Add(cfg): Added config `STATELESS` to sonnet_cfg to disable local caching in a environment where the db may be updated by another process",
+    "Add(cfg): Added config `AUTOMOD_ENABLED` to sonnet_cfg to entirely disable automod on an instance globally",
+    "Upgrade(deps): Sonnets dependencies have been upgraded! It is reccomended to reboot sonnet after updating them",
+]
+bugs = [
+    "Change(antispam): Antispam is now disabled by default, this is a breaking change but can be considered a bug (no other automod systems are on by default)",
+    "Fix(kick): When kicking a moderator+ user while mprotect was disabled, sonnet would send the mprotect warning text twice erroneously",
+    "Fix(LeXdPyK): 2.0.4 applies fix for module import order erroring on new top level items being created out of sync",
+    "Fix(timeout): passing a timeout below 0 will now properly timeout for the max of 28 days (just as mute becomes infinite when 0 is passed)",
+    "Fix(vuln): Bump `cryptography` version due to openSSL vuln",
+]
