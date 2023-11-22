@@ -1,0 +1,27 @@
+[version]
+id = "2.0.2"
+name = "Long Haul"
+
+[changes]
+frontend = [
+  "Update(set-whitelist): Calling `set-whitelist` is now whitelisted for guild owners always regardless of blacklist settings",
+  "Update(mention-hint): Sonnet now has a more advanced hint, which displays not only the prefix but how to access help, and how to use the mention prefix",
+]
+backend = [
+  "Add(ruff): New linter pass over codebase",
+  "Update(LeXdPyK): 2.0.5: Patch mypy errors",
+  "Refactor(ruff): Various small changes that ruff suggested",
+  "Add(sonnetcommands): `parse_command_novalidate` that parses a command name and arguments from any supported prefix",
+  "Refactor(mypy/pyright): Apply new lint suggetions since the last time mypy/pyright was run",
+  "Add(design): Markdown file containing general design guidelines for sonnet",
+  "Add(checklist): Release checklist for new sonnet versions",
+]
+runtime = [
+  "Update(cryptography): Raise min version to patch out CVE",
+  "Change(wordlist): Differentiation was mispelled as differentiaton, spellchecked", 
+  "Add(py310): Python 3.10 to development CI, Sonnet might deprecate python 3.8 in the future, and this will ensure it works on the new target",
+]
+bugs = [
+  "Fix(starboard): Attached images not being shown due to trackerparams being added to url",
+  "Fix(server-info): Roles feild now properly pluralizes `Roles` to say `Role` when the count is 1",
+]
