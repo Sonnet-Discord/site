@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 ./site_generator/site_generator
 git add -A
 git commit -m "${1}"
