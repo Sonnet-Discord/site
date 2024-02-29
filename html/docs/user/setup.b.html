@@ -1,12 +1,14 @@
 0
 First Time Setup - Sonnet
 <h1>First Time Setup</h1>
-Updated as of sonnet V1.2.10
+Updated as of sonnet V2.0.2-1
 <h2>Part 1: Getting it all Installed</h2>
 <ul>
 	<li><h3>1.1: Python</h3></li>
 		<p>
-			To start off you will need python 3.8 or greater installed (currently 3.10 cannot be supported due to discord.py 1.7 using endpoints that will be removed then, but this issue will resolve itself with the release of dpy2.0)<br>
+      This guide will assume you are using a debian based distribution, and provides "common issues support" specifically for Ubuntu LTS, if you are not confident with Linux it is strongly recommended to use the latest Ubuntu LTS version to install Sonnet (as of writing this is Ubuntu 22.04)<br>
+      If you are using Ubuntu and this is a fresh install, start by running <code>sudo apt update; sudo apt upgrade</code> and follow prompts to update packages, this avoids most problems of out of sync packages causing issues<br>
+			To start off you will need python 3.8 or greater installed (In the near future this will become 3.10 or greater, I do not recommend doing a 3.8 or 3.9 install)<br>
 			This can be done via <code>sudo apt install python3</code> for debian based distributions, if you are not using a debian based distro then use the appropriate package manager, if you are not using sudo in favor of something like doas then understand this guide is made for people who barely even know what sudo is<br> 
             Make sure that the version installed will work by running <code>python3 --version</code> if it isn't a high enough version install python from a different source
 		</p>
@@ -120,7 +122,19 @@ Updated as of sonnet V1.2.10
 					<td>Sonnet</td>
 					<td>Configure the name that the bot will refer to itself as, instead of sonnet</td>
 				</tr>
-			</table>
+        <tr>
+          <td>STATELESS</td>
+          <td>bool</td>
+          <td>False</td>
+          <td>Configure whether the bot should run in stateless mode, which disables process local caching of the database, only turn this option on if you are running Sonnet on a shared database</td>
+        </tr>
+        <tr>
+          <td>AUTOMOD_ENABLED</td>
+          <td>bool</td>
+          <td>True</td>
+          <td>Globally enable or disable all automod functionality (all blacklists, all notifiers), disabling this may be handy if you are performing a non moderation focused install</td>
+        </tr>
+    </table>
 		</p>
 	<li><h3>2.2: LeXdPyK_conf.py</h3></li>
 		<p>
@@ -147,7 +161,7 @@ Updated as of sonnet V1.2.10
 			<ul>
 				<li>Using env var SONNET_TOKEN: Set SONNET_TOKEN to the discord token</li>
 				<li>Using env var RHEA_TOKEN: Set RHEA_TOKEN to the discord token, this is kept for backwards compatibility with rhea, sonnets predecesor</li>
-				<li>Using encryptboot: start sonnet with the --generate-token flag, it will ask for the token and a password, on next boot do not put --generate-token, it will ask for the password and read from an encrypted token file</li>
+        <li>Using encryptboot: start sonnet with the --generate-token flag, it will ask for the token and a password, on next boot do not put --generate-token, it will ask for the password and read from an encrypted token file named <code>.tokenfile</code></li>
 			</ul>
 		</p>
 	<li><h3>3.3: Starting sonnet</h3></li>
