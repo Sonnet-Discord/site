@@ -1,0 +1,10 @@
+[version]
+id = "2.0.2.1"
+
+[changes]
+backend = [
+  "Fix(pyright): Remove deprecated dpy1x stuff in lib_compatibility, and Protocol type mismatches (argnames with no slash)",
+]
+runtime = [
+  "Update(cryptography): Raise min version to patch out CVE",
+]
